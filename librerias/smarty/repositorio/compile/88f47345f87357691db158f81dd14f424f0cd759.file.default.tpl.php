@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-03-11 00:07:50
+<?php /* Smarty version Smarty-3.1.11, created on 2016-03-12 00:06:14
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:200058433755e4995bd4c484-25432014%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1457676468,
+      1 => 1457762761,
       2 => 'file',
     ),
   ),
@@ -146,7 +146,7 @@ plugins/upload/css/jquery.fileupload.css">
 							<span>Gestión escolar</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
 						<ul class="treeview-menu">
-							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='registro'){?>class="active"<?php }?>><a href="registro"><<i class="fa fa-graduation-cap"></i> Registro</a></li>
+							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='estudiantes'){?>class="active"<?php }?>><a href="estudiantes"><<i class="fa fa-graduation-cap"></i> Registro</a></li>
 							
 						</ul>
 						<a href="#">
@@ -234,8 +234,7 @@ plugins/knob/jquery.knob.js"></script>
     <script src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
 plugins/daterangepicker/daterangepicker.js"></script>
     <!-- datepicker -->
-    <script src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
-plugins/datepicker/bootstrap-datepicker.js"></script>
+
     <!-- Bootstrap WYSIHTML5 -->
     <script src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
 plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>

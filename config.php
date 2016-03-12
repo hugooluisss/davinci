@@ -156,4 +156,27 @@ $conf['ccuidados'] = array(
 	'descripcion' => 'Controlador de cuidados',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
+	
+/*Estudiante*/
+$conf['estudiantes'] = array(
+	'controlador' => 'estudiantes.php',
+	'vista' => 'estudiantes/panel.tpl',
+	'descripcion' => 'Administración de estudiantes',
+	'seguridad' => true,
+	'js' => array('estudiante.class.js'),
+	'jsTemplate' => array('estudiantes.js'),
+	'capa' => LAYOUT_DEFECTO);
+
+$conf['listaEstudiantes'] = array(
+	'controlador' => 'estudiantes.php',
+	'vista' => 'estudiantes/lista.tpl',
+	'descripcion' => 'Lista de estudiantes',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['cestudiantes'] = array(
+	'controlador' => 'estudiantes.php',
+	'descripcion' => 'Controlador de estudiantes',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
 ?>

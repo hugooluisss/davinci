@@ -100,7 +100,7 @@
 							<span>Gestión escolar</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
 						<ul class="treeview-menu">
-							<li {if $PAGE.modulo eq 'registro'}class="active"{/if}><a href="registro"><<i class="fa fa-graduation-cap"></i> Registro</a></li>
+							<li {if $PAGE.modulo eq 'estudiantes'}class="active"{/if}><a href="estudiantes"><<i class="fa fa-graduation-cap"></i> Registro</a></li>
 							
 						</ul>
 						<a href="#">
@@ -174,7 +174,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
     <script src="{$PAGE.ruta}plugins/daterangepicker/daterangepicker.js"></script>
     <!-- datepicker -->
-    <script src="{$PAGE.ruta}plugins/datepicker/bootstrap-datepicker.js"></script>
+
     <!-- Bootstrap WYSIHTML5 -->
     <script src="{$PAGE.ruta}plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
     <!-- Slimscroll -->
