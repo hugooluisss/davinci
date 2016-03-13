@@ -59,12 +59,12 @@ switch($objModulo->getId()){
 			break;
 			case 'calcularMatricula':
 				$db = TBase::conectaDB();
-				$rs = $db->Execute("select inicial from nivel where idNivel = ".$_POST['nivel']);
+				$objNivel = new TNivel($_POST['nivel']);
 
-				$nivel = $rs->fields['inicial'];				
+				$nivel = $objNivel->getInicial();				
 				$ingreso = $_POST['ingreso'];
 				$sexo = $_POST['genero'];
-				$consecutivo = 1;
+				$consecutivo = $objNivel->siguiente(false);
 				
 				if ($nivel == '' or $ingreso == '' or $sexo == '' or $consecutivo == '')
 					echo json_encode(array("band" => false));
