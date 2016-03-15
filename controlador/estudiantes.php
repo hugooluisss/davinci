@@ -61,7 +61,7 @@ switch($objModulo->getId()){
 				$db = TBase::conectaDB();
 				$objNivel = new TNivel($_POST['nivel']);
 
-				$nivel = $objNivel->getInicial();				
+				$nivel = $objNivel->getInicial();
 				$ingreso = $_POST['ingreso'];
 				$sexo = $_POST['genero'];
 				$consecutivo = $objNivel->siguiente(false);

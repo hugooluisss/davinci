@@ -116,7 +116,7 @@ $(document).ready(function(){
 			txtDelegacion: "Escribe la delegación o municipio donde viven"
 		},
 		submitHandler: function(form){
-			alert("POk");
+
         }
     });
 
