@@ -17,4 +17,37 @@ TEstudiante = function(){
 					fn.after(data);
 			}, "json");
 	}
+	
+	this.guardar = function(id, nivel, nombre, app, apm, curp, sexo, nacimiento, estadoNac, calle, noExt, noInt, colonia, codigoPostal, delegacion, estatura, peso, anio, sanguineo, fn){
+		if (fn.before !== undefined)
+			fn.before();
+			
+		$.post('index.php?mod=cestudiantes&action=add', {
+				"id": id,
+				"nivel": nivel, 
+				"nombre": nombre, 
+				"app": app, 
+				"apm": apm, 
+				"curp": curp, 
+				"sexo": sexo, 
+				"nacimiento": nacimiento, 
+				"estadoNac": estadoNac, 
+				"calle": calle, 
+				"noExt": noExt, 
+				"noInt": noInt, 
+				"colonia": colonia, 
+				"codigoPostal": codigoPostal, 
+				"delegacion": delegacion, 
+				"estatura": estatura, 
+				"peso": peso, 
+				"anio": anio,
+				"sanguineo": sanguineo
+			}, function(data){
+				if (data.band == 'false')
+					console.log(data.mensaje);
+					
+				if (fn.after !== undefined)
+					fn.after(data);
+			}, "json");
+	}
 }

@@ -2,9 +2,9 @@ CREATE DATABASE  IF NOT EXISTS `davinci` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `davinci`;
 -- MySQL dump 10.13  Distrib 5.6.13, for osx10.6 (i386)
 --
--- Host: 127.0.0.1    Database: davinci
+-- Host: localhost    Database: davinci
 -- ------------------------------------------------------
--- Server version	5.6.13
+-- Server version	5.6.17
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -18,27 +18,34 @@ USE `davinci`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `grupoSanguineo`
+-- Table structure for table `estudiantenivel`
 --
 
-DROP TABLE IF EXISTS `grupoSanguineo`;
+DROP TABLE IF EXISTS `estudiantenivel`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `grupoSanguineo` (
-  `idSanguineo` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
-  `abbr` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`idSanguineo`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+CREATE TABLE `estudiantenivel` (
+  `matricula` varchar(11) NOT NULL,
+  `idEstudiante` bigint(20) unsigned NOT NULL,
+  `idNivel` smallint(5) unsigned NOT NULL,
+  `anio` year(4) NOT NULL,
+  `estado` char(1) DEFAULT 'A',
+  PRIMARY KEY (`matricula`),
+  KEY `key_nivelEstudiante` (`idEstudiante`,`idNivel`),
+  KEY `fk_nivel_idx` (`idNivel`),
+  CONSTRAINT `fk_nivelnivel` FOREIGN KEY (`idNivel`) REFERENCES `nivel` (`idNivel`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_estudiante` FOREIGN KEY (`idEstudiante`) REFERENCES `estudiante` (`idEstudiante`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `grupoSanguineo`
+-- Dumping data for table `estudiantenivel`
 --
 
-LOCK TABLES `grupoSanguineo` WRITE;
-/*!40000 ALTER TABLE `grupoSanguineo` DISABLE KEYS */;
-INSERT INTO `grupoSanguineo` VALUES (1,'AB+'),(2,'AB-'),(3,'A+'),(4,'A-'),(5,'B+'),(6,'B-'),(7,'O+'),(8,'O-');
-/*!40000 ALTER TABLE `grupoSanguineo` ENABLE KEYS */;
+LOCK TABLES `estudiantenivel` WRITE;
+/*!40000 ALTER TABLE `estudiantenivel` DISABLE KEYS */;
+INSERT INTO `estudiantenivel` VALUES ('P2016H00009',16,1,2016,'A'),('P2016H00010',17,1,2016,'A');
+/*!40000 ALTER TABLE `estudiantenivel` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-11  0:31:30
+-- Dump completed on 2016-03-15 14:07:55

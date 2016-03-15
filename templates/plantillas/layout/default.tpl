@@ -100,7 +100,7 @@
 							<span>Gestión escolar</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
 						<ul class="treeview-menu">
-							<li {if $PAGE.modulo eq 'estudiantes'}class="active"{/if}><a href="estudiantes"><<i class="fa fa-graduation-cap"></i> Registro</a></li>
+							<li {if $PAGE.modulo eq 'estudiantes'}class="active"{/if}><a href="estudiantes"><i class="fa fa-graduation-cap"></i> Registro</a></li>
 							
 						</ul>
 						<a href="#">
@@ -119,6 +119,7 @@
 							<li {if $PAGE.modulo eq 'cicloescolar'}class="active"{/if}><a href="cicloescolar"><i class="fa fa-flag"></i> Ciclos escolares</a></li>
 							<li {if $PAGE.modulo eq 'grupos'}class="active"{/if}><a href="grupos"><i class="fa fa-users"></i> Grupos</a></li>
 							<li {if $PAGE.modulo eq 'cuidados'}class="active"{/if}><a href="cuidados"><i class="fa fa-heartbeat"></i> Cuidados</a></li>
+							<li {if $PAGE.modulo eq 'niveles'}class="active"{/if}><a href="niveles"><i class="fa fa-university"></i> Niveles educativos</a></li>
 						</ul>
 					</li>
 				</ul>

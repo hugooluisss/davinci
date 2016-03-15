@@ -82,6 +82,17 @@
 					<input class="form-control" id="txtPeso" name="txtPeso">
 				</div>
 			</div>
+			<div class="form-group">
+				<label for="selSanguineo" class="col-lg-2">Grupo sanguineo</label>
+				<div class="col-lg-2">
+					<select id="selSanguineo" name="selSanguineo" class="form-control">
+						<option value=""></option>
+					{foreach from=$gruposSanguineos item="row"}
+						<option value="{$row.idSanguineo}">{$row.abbr}
+					{/foreach}
+					</select>
+				</div>
+			</div>
 
 			<hr />
 			<h2>Domicilio</h2>

@@ -179,4 +179,20 @@ $conf['cestudiantes'] = array(
 	'descripcion' => 'Controlador de estudiantes',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
+
+/*Niveles*/
+$conf['niveles'] = array(
+	'controlador' => 'niveles.php',
+	'vista' => 'niveles/panel.tpl',
+	'descripcion' => 'Administración de niveles',
+	'seguridad' => true,
+	'js' => array('nivel.class.js'),
+	'jsTemplate' => array('niveles.js'),
+	'capa' => LAYOUT_DEFECTO);
+	
+$conf['cniveles'] = array(
+	'controlador' => 'niveles.php',
+	'descripcion' => 'Controlador de niveles',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
 ?>

@@ -24,6 +24,7 @@ class TEstudiante{
 	private $estatura;
 	private $peso;
 	private $estado;
+	private $sexo;
 	
 	/**
 	* Constructor de la clase
@@ -475,7 +476,7 @@ class TEstudiante{
 	* @return boolean True si se realizó sin problemas
 	*/
 	
-	public function setApm($val = 0){
+	public function setPeso($val = 0){
 		$this->peso = $val;
 		return true;
 	}
@@ -517,6 +518,32 @@ class TEstudiante{
 	public function getEstado(){
 		return $this->estado;
 	}
+	
+	/**
+	* Establece el sexo
+	*
+	* @autor Hugo
+	* @access public
+	* @param char $val Valor a asignar
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setSexo($val = 'H'){
+		$this->sexo = $val;
+		return true;
+	}
+	
+	/**
+	* Retorna el sexo
+	*
+	* @autor Hugo
+	* @access public
+	* @return char Texto
+	*/
+	
+	public function getSexo(){
+		return $this->sexo;
+	}
 		
 	/**
 	* Guarda los datos en la base de datos, si no existe un identificador entonces crea el objeto
@@ -533,7 +560,7 @@ class TEstudiante{
 		$db = TBase::conectaDB();
 		
 		if ($this->getId() == ''){
-			$rs = $db->Execute("INSERT INTO estudiante(idSanguineo, idEstadoNacimiento) VALUES(".$this->getSanguineo().", ".$this->getEstadoNacimiento().");");
+			$rs = $db->Execute("INSERT INTO estudiante(idSanguineo, idEstadoNac) VALUES(".$this->getSanguineo().", ".$this->getEstadoNacimiento().");");
 			if (!$rs) return false;
 				
 			$this->idEstudiante = $db->Insert_ID();
@@ -548,18 +575,17 @@ class TEstudiante{
 				nombre = '".$this->getNombre()."',
 				app = '".$this->getApp()."',
 				apm = '".$this->getApm()."',
-				nacimiento = '".$this->getNacimiento()."',
+				nacimiento = '".$this->getFechaNacimiento()."',
 				idEstadoNac = ".$this->getEstadoNacimiento().",
-				calle = '".$this->getCalle()()."',
-				noInt = '".$this->getNoInt()."',
-				colonia = '".$this->getColonia()."',
+				calle = '".$this->getCalle()."',
+				noInt = '".$this->getNumeroInterior()."',
+				noExt = '".$this->getNumeroExterior()."',
 				codigoPostal = '".$this->getCodigoPostal()."',
 				delegacion = '".$this->getDelegacion()."',
 				curp = '".$this->getCURP()."',
 				estatura = ".$this->getEstatura().",
 				peso = ".$this->getPeso().",
-				estado = '".$this->getEstado()."',
-				matricula = ".$this->getMatricula()."
+				sexo = '".$this->getSexo()."'
 			WHERE idEstudiante = ".$this->getId());
 			
 		return $rs?true:false;
@@ -580,5 +606,21 @@ class TEstudiante{
 		$rs = $db->Execute("delete from estudiante where idEstudiante = ".$this->getId());
 		
 		return $rs?true:false;
+	}
+	
+	/**
+	* Retorna la matricula
+	*
+	* @autor Hugo
+	* @access public
+	* @return string matricula
+	*/
+	
+	public function getMatricula(){
+		$db = TBase::conectaDB();
+		
+		$rs = $db->Execute("select matricula from estudiantenivel where idEstudiante = ".$this->getId()." and estado = 'A'");
+		
+		return $rs->fields['matricula'];
 	}
 }

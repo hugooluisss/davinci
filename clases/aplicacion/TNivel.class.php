@@ -117,9 +117,55 @@ class TNivel{
 			$rs = $db->Execute("UPDATE nivel
 				SET
 					consecutivo = consecutivo + 1
-				WHERE idConsecutivo = ".$this->getId());
+				WHERE idNivel = ".$this->getId());
 		}
 			
 		return $next;
+	}
+	
+	/**
+	* Generar matrícula
+	*
+	* @autor Hugo
+	* @access public
+	* @param $anio Año de ingreso del estudiante
+	* @param $sexo Identificador del sexo
+	* @return integer siguiente
+	*/
+	
+	public function generaMatricula($anio, $idEstudiante){
+		if ($this->getId() == '') return false;
+		if ($idEstudiante == '') return false;
+		
+		$estudiante = new TEstudiante($idEstudiante);
+		$db = TBase::conectaDB();
+		do{
+			$matricula = strtoupper($this->getInicial().$anio.$estudiante->getSexo().sprintf("%05s", $this->siguiente(true)));
+			$rs = $db->Execute("select idEstudiante from estudiantenivel where matricula = '".$matricula."'");
+			
+		}while(!$rs->EOF);
+		
+		$db->Execute("update estudiantenivel set estado = 'I' where idEstudiante = ".$estudiante->getId());
+		$rs = $db->Execute("insert into estudiantenivel (matricula, idEstudiante, idNivel, anio, estado) values ('".$matricula."', ".$estudiante->getId().", ".$this->getId().", '".$anio."', 'A')");
+		
+		return $rs?true:false;
+	}
+	
+	/**
+	* Establece el consecutivo
+	*
+	* @autor Hugo
+	* @access public
+	* @param boolean $band Si es true realiza el cambio, si no, solo retorna el siguiente
+	* @return integer siguiente
+	*/
+	
+	public function consecutivo($val = 0){
+		if ($this->getId() == '') return false;
+		$db = TBase::conectaDB();
+		
+		$rs = $db->Execute("update nivel set consecutivo = ".$val." where idNivel = ".$this->getId());
+			
+		return $rs?true:false;
 	}
 }

@@ -26,6 +26,17 @@ switch($objModulo->getId()){
 		}
 		
 		$smarty->assign("nivel", $datos);
+		
+		$rs = $db->Execute("select * from grupoSanguineo order by abbr");
+		
+		$datos = array();
+		while(!$rs->EOF){
+			array_push($datos, $rs->fields);
+			
+			$rs->moveNext();
+		}
+		
+		$smarty->assign("gruposSanguineos", $datos);
 	break;
 	case 'listaEstudiantes':
 		$db = TBase::conectaDB();
@@ -43,18 +54,39 @@ switch($objModulo->getId()){
 	case 'cestudiantes':
 		switch($objModulo->getAction()){
 			case 'add':
-				$db = TBase::conectaDB();
-				
-				$obj = new TCuidado();
+				$obj = new TEstudiante();
 				
 				$obj->setId($_POST['id']);
 				$obj->setNombre($_POST['nombre']);
-				$obj->setDescripcion($_POST['descripcion']);
+				$obj->setApp($_POST['app']);
+				$obj->setApm($_POST['apm']);
+				$obj->setCURP($_POST['curp']);
+				$obj->setSexo($_POST['sexo']);
+				$obj->setFechaNacimiento($_POST['nacimiento']);
+				$obj->setEstadoNacimiento($_POST['estadoNac']);
+				$obj->setCalle($_POST['calle']);
+				$obj->setNumeroExterior($_POST['noExt']);
+				$obj->setNumeroInterior($_POST['noInt']);
+				$obj->setColonia($_POST['colonia']);
+				$obj->setCodigoPostal($_POST['codigoPostal']);
+				$obj->setDelegacion($_POST['delegacion']);
+				$obj->setEstatura($_POST['estatura']);
+				$obj->setPeso($_POST['peso']);
+				$obj->setSanguineo($_POST['sanguineo']);
 				
-				echo json_encode(array("band" => $obj->guardar()));
+				if ($obj->guardar()){
+					if ($_POST['id'] == ''){
+						$nivel = new TNivel($_POST['nivel']);
+						$nivel->generaMatricula($_POST['anio'], $obj->getId());
+						
+						echo json_encode(array("band" => true, "matricula" => $obj->getMatricula()));
+					}else
+						echo json_encode(array("band" => false));
+				}else
+					echo json_encode(array("band" => false, "mensaje" => "No se pudieron guardar los datos del estudiantes"));
 			break;
 			case 'del':
-				$obj = new TCuidado($_POST['id']);
+				$obj = new TEstudiante($_POST['id']);
 				echo json_encode(array("band" => $obj->eliminar()));
 			break;
 			case 'calcularMatricula':

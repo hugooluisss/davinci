@@ -81,7 +81,8 @@ $(document).ready(function(){
 			txtCodigoPostal: {
 				digits: true
 			},
-			txtDelegacion: "required"
+			txtDelegacion: "required",
+			selSanguineo: "required"
 			
 		},
 		messages: {
@@ -113,10 +114,35 @@ $(document).ready(function(){
 				digits: "Solo se aceptan números"
 			},
 			txtCodigoPostal: "Solo se aceptan números",
-			txtDelegacion: "Escribe la delegación o municipio donde viven"
+			txtDelegacion: "Escribe la delegación o municipio donde viven",
+			selSanguineo: "Selecciona un grupo sanguineo"
 		},
 		submitHandler: function(form){
-
+			var obj = new TEstudiante;
+			
+			obj.guardar($("#id").val(), $("#selNivel").val(), $("#txtNombre").val(), $("#txtApp").val(), $("#txtApm").val(), $("#txtCURP").val(), $("#selSexo").val(), $("#txtNacimiento").val(), $("#selEstadoNacimiento").val(), $("#txtDireccion").val(), $("#txtNoExt").val(), $("#txtNoInt").val(), $("#txtColonia").val(), $("#txtCodigoPostal").val(), $("#txtDelegacion").val(), $("#txtEstatura").val(), $("#txtPeso").val(), $("#selIngreso").val(), $("#selSanguineo").val(), {
+				before: function(){
+					$("#frmAdd input, #frmAdd select").prop("disabled", true);
+				},
+				after: function(result){
+					$("#frmAdd input, #frmAdd select").prop("disabled", false);
+					$("#txtMatricula").prop("disabled", true);
+					
+					if (result.band == true){
+						alert("Estudiante Agregado");
+						
+						if (result.matricula != '' || result.matricula != undefined)
+							if (result.matricula != $("#txtMatricula").val()){
+								alert("La matrícula asignada al estudiante fue la " + $("#txtMatricula").val())
+								$("#txtMatricula").val(result.matricula);
+							}
+								
+						
+						$("#frmAdd").reset();
+					}else
+						alert("Upps ocurrió un error: " + result.mensaje);
+				}
+			});
         }
     });
 

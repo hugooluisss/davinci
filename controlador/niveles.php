@@ -1,10 +1,10 @@
 <?php
 global $objModulo;
 switch($objModulo->getId()){
-	case 'listaCiclos':
+	case 'niveles':
 		$db = TBase::conectaDB();
 		
-		$rs = $db->Execute("select * from ciclo");
+		$rs = $db->Execute("select * from nivel");
 		$datos = array();
 		while(!$rs->EOF){
 			$rs->fields['json'] = json_encode($rs->fields);
@@ -14,22 +14,17 @@ switch($objModulo->getId()){
 		}
 		$smarty->assign("lista", $datos);
 	break;
-	case 'ccicloescolar':
+	case 'cniveles':
 		switch($objModulo->getAction()){
-			case 'add':
+			case 'update':
 				$db = TBase::conectaDB();
 				
-				$obj = new TCiclo();
+				$obj = new TNivel();
 				
 				$obj->setId($_POST['id']);
-				$obj->setNombre($_POST['nombre']);
-				$obj->setEstado($_POST['estado']);
+				$obj->setConsecutivo($_POST['consecutivo']);
 				
 				echo json_encode(array("band" => $obj->guardar()));
-			break;
-			case 'del':
-				$obj = new TCiclo($_POST['id']);
-				echo json_encode(array("band" => $obj->eliminar()));
 			break;
 		}
 	break;
