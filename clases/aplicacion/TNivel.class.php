@@ -160,7 +160,7 @@ class TNivel{
 	* @return integer siguiente
 	*/
 	
-	public function consecutivo($val = 0){
+	public function setConsecutivo($val = 0){
 		if ($this->getId() == '') return false;
 		$db = TBase::conectaDB();
 		

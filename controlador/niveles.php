@@ -22,9 +22,8 @@ switch($objModulo->getId()){
 				$obj = new TNivel();
 				
 				$obj->setId($_POST['id']);
-				$obj->setConsecutivo($_POST['consecutivo']);
 				
-				echo json_encode(array("band" => $obj->guardar()));
+				echo json_encode(array("band" => $obj->setConsecutivo($_POST['consecutivo'])));
 			break;
 		}
 	break;

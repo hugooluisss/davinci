@@ -146,4 +146,31 @@ $(document).ready(function(){
         }
     });
 
+    $("#btnResponsables").click(function(){
+    	$("#winResponsables").modal();
+    });
+    
+    $("#frmAddParentesco").validate({
+		debug: true,
+		rules: {
+			selParentesco: "required",
+			txtNombre: "required",
+			txtApp: "required",
+			txtCelular: {
+				required: true,
+				number: true
+			}
+		},
+		messages: {
+			selEstadoNacimiento: "Selecciona el parentesco con el estudiante",
+			txtNombre: "Es necesario este campo",
+			txtApp: "Es necesario este campo",
+			txtCelular: {
+				required: "Es necesario este campo",
+				number: "Solo acepta números"
+			}
+		},
+		submitHandler: function(form){
+        }
+    });
 });

@@ -37,6 +37,17 @@ switch($objModulo->getId()){
 		}
 		
 		$smarty->assign("gruposSanguineos", $datos);
+		
+		$rs = $db->Execute("select * from parentesco");
+		
+		$datos = array();
+		while(!$rs->EOF){
+			array_push($datos, $rs->fields);
+			
+			$rs->moveNext();
+		}
+		
+		$smarty->assign("parentesco", $datos);
 	break;
 	case 'listaEstudiantes':
 		$db = TBase::conectaDB();

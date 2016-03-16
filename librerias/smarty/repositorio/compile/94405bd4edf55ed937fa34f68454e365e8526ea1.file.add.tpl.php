@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-03-15 13:06:03
+<?php /* Smarty version Smarty-3.1.11, created on 2016-03-16 12:39:40
          compiled from "templates/plantillas/modulos/estudiantes/add.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:108640278856e3a3b81f0cf5-28355239%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '94405bd4edf55ed937fa34f68454e365e8526ea1' => 
     array (
       0 => 'templates/plantillas/modulos/estudiantes/add.tpl',
-      1 => 1458068761,
+      1 => 1458153393,
       2 => 'file',
     ),
   ),
@@ -25,6 +25,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'anio2' => 0,
     'estados' => 0,
     'gruposSanguineos' => 0,
+    'PAGE' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -144,7 +145,9 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 					</select>
 				</div>
 			</div>
-
+			<div class="row text-center">
+				<a href="#" id="btnResponsables" class="btn btn-danger"><i class="fa fa-street-view"></i> Tutor y responsables</a>
+			</div>
 			<hr />
 			<h2>Domicilio</h2>
 			<div class="form-group">
@@ -180,4 +183,40 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 			<input type="hidden" id="id"/>
 		</div>
 	</div>
-</form><?php }} ?>
+</form>
+
+<div id="winResponsables" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" data-toogle="modal">
+    <div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h1>Tutor y responsables</h1>
+			</div>
+			<div class="modal-body">
+				<ul id="tabNombresNumeros" class="nav nav-tabs">
+					<li class="active"><a data-toggle="tab" href="#nuevoNombreNumero">Nuevo / modificar</a></li>
+					<li><a data-toggle="tab" href="#listaNombresNumeros">Lista</a></li>
+				</ul>
+				
+				<div class="tab-content"> 
+					<div id="nuevoNombreNumero" class="tab-pane fade in active">
+						<div class="box">
+							<div class="box-body">
+								<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).('/modulos/estudiantes/addResponsable.tpl'), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
+							</div>
+						</div>
+					</div>
+					<div id="listaNombresNumeros" class="tab-pane fade in">
+						<div class="box">
+							<div class="box-body">
+								asdf2
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div><?php }} ?>

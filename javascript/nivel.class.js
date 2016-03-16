@@ -1,7 +1,7 @@
-TCiclo = function(){
+TNivel = function(){
 	var self = this;
 	
-	this.add = function(id,	consecutivo, fn){
+	this.update = function(id,	consecutivo, fn){
 		if (fn.before !== undefined) fn.before();
 		
 		$.post('index.php?mod=cniveles&action=update', {
