@@ -79,7 +79,7 @@
     <!-- jQuery Knob Chart -->
     <script src="{$PAGE.ruta}plugins/knob/jquery.knob.js"></script>
     <!-- daterangepicker -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+    <script src="{$PAGE.ruta}moment.min.js"></script>
     <script src="{$PAGE.ruta}plugins/daterangepicker/daterangepicker.js"></script>
     <!-- datepicker -->
     <script src="{$PAGE.ruta}plugins/datepicker/bootstrap-datepicker.js"></script>
@@ -98,7 +98,7 @@
 	{/foreach}
     
     {if $PAGE.debug}
-    	<script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.3.1/less.min.js" type="text/javascript"></script>
+    	<script src="{$PAGE.ruta}plugins/less.min.js"></script>
     {else}
     
     

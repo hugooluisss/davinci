@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-03-15 14:00:12
+<?php /* Smarty version Smarty-3.1.11, created on 2016-03-17 09:57:24
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:200058433755e4995bd4c484-25432014%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1458072009,
+      1 => 1458230239,
       2 => 'file',
     ),
   ),
@@ -216,7 +216,8 @@ plugins/jQueryUI/jquery-ui.css">
     <script src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
 bootstrap/js/bootstrap.min.js"></script>
     <!-- Morris.js charts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
+plugins/raphael-min.js"></script>
     <script src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
 plugins/morris/morris.min.js"></script>
     <!-- Sparkline -->
@@ -231,9 +232,10 @@ plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
     <script src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
 plugins/knob/jquery.knob.js"></script>
     <!-- daterangepicker -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
     <script src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
 plugins/daterangepicker/daterangepicker.js"></script>
+    <script src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
+moment.min.js"></script>
     <!-- datepicker -->
 
     <!-- Bootstrap WYSIHTML5 -->

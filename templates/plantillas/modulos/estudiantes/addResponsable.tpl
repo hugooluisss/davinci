@@ -1,5 +1,4 @@
 <form role="form" id="frmAddParentesco" class="form-horizontal" onsubmit="javascript: return false;">
-	<h2>Generales</h2>
 	<div class="form-group">
 		<label for="selParentesco" class="col-lg-4">Parentesco</label>
 		<div class="col-lg-8">
@@ -51,9 +50,9 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="txtTelefono" class="col-lg-4">Teléfono</label>
+		<label for="txtTelefonoContacto" class="col-lg-4">Teléfono</label>
 		<div class="col-lg-8">
-			<input class="form-control" id="txtTelefono" name="txtTelefono" placeholder="Teléfono de contacto">
+			<input class="form-control" id="txtTelefonoContacto" name="txtTelefonoContacto" placeholder="Teléfono de contacto">
 		</div>
 	</div>
 	<div class="form-group">

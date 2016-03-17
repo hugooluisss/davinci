@@ -162,7 +162,7 @@
     <!-- Bootstrap 3.3.5 -->
     <script src="{$PAGE.ruta}bootstrap/js/bootstrap.min.js"></script>
     <!-- Morris.js charts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="{$PAGE.ruta}plugins/raphael-min.js"></script>
     <script src="{$PAGE.ruta}plugins/morris/morris.min.js"></script>
     <!-- Sparkline -->
     <script src="{$PAGE.ruta}plugins/sparkline/jquery.sparkline.min.js"></script>
@@ -172,8 +172,8 @@
     <!-- jQuery Knob Chart -->
     <script src="{$PAGE.ruta}plugins/knob/jquery.knob.js"></script>
     <!-- daterangepicker -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
     <script src="{$PAGE.ruta}plugins/daterangepicker/daterangepicker.js"></script>
+    <script src="{$PAGE.ruta}moment.min.js"></script>
     <!-- datepicker -->
 
     <!-- Bootstrap WYSIHTML5 -->

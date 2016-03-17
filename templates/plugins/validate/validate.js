@@ -73,3 +73,9 @@ $.validator.addMethod( "pattern", function( value, element, param ) {
 	}
 	return param.test( value );
 }, "Invalid format." );
+
+$.validator.addMethod("phoneMX", function( value, element, param ) {
+    phone_number = value.replace(/\s+/g, ''); 
+    return phone_number.length > 9 &&
+        phone_number.match(/^\+?\d{1,3}?[- .]?\(?(?:\d{2,3})\)?[- .]?\d\d\d[- .]?\d\d\d\d$/);
+}, "Please enter a valid phone number.");

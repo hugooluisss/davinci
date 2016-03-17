@@ -163,7 +163,7 @@ $conf['estudiantes'] = array(
 	'vista' => 'estudiantes/panel.tpl',
 	'descripcion' => 'Administración de estudiantes',
 	'seguridad' => true,
-	'js' => array('estudiante.class.js'),
+	'js' => array('estudiante.class.js', 'responsable.class.js'),
 	'jsTemplate' => array('estudiantes.js'),
 	'capa' => LAYOUT_DEFECTO);
 
@@ -195,4 +195,18 @@ $conf['cniveles'] = array(
 	'descripcion' => 'Controlador de niveles',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
+	
+/*Responsables*/
+$conf['listaResponsablesEstudiante'] = array(
+	'controlador' => 'responsables.php',
+	'vista' => 'estudiantes/listaResponsables.tpl',
+	'descripcion' => 'Lista de responsables del estudiante',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['cresponsables'] = array(
+	'controlador' => 'responsables.php',
+	'descripcion' => 'Controlador de responsables',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX)
 ?>

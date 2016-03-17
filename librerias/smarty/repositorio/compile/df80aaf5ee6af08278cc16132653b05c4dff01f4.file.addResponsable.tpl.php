@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-03-16 13:28:03
+<?php /* Smarty version Smarty-3.1.11, created on 2016-03-17 11:26:37
          compiled from "templates/plantillas/modulos/estudiantes/addResponsable.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:197626187456e9a86d21c221-16909055%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'df80aaf5ee6af08278cc16132653b05c4dff01f4' => 
     array (
       0 => 'templates/plantillas/modulos/estudiantes/addResponsable.tpl',
-      1 => 1458156426,
+      1 => 1458235445,
       2 => 'file',
     ),
   ),
@@ -25,7 +25,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_56e9a86d22c320_91624183')) {function content_56e9a86d22c320_91624183($_smarty_tpl) {?><form role="form" id="frmAddParentesco" class="form-horizontal" onsubmit="javascript: return false;">
-	<h2>Generales</h2>
 	<div class="form-group">
 		<label for="selParentesco" class="col-lg-4">Parentesco</label>
 		<div class="col-lg-8">
@@ -83,9 +82,9 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="txtTelefono" class="col-lg-4">Teléfono</label>
+		<label for="txtTelefonoContacto" class="col-lg-4">Teléfono</label>
 		<div class="col-lg-8">
-			<input class="form-control" id="txtTelefono" name="txtTelefono" placeholder="Teléfono de contacto">
+			<input class="form-control" id="txtTelefonoContacto" name="txtTelefonoContacto" placeholder="Teléfono de contacto">
 		</div>
 	</div>
 	<div class="form-group">

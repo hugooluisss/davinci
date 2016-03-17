@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	listaResponsables();
 	$.each([$('#selSexo'), $('#selNivel'), $("#selIngreso")], function(index, obj) {
 		obj.change(function(){
 			var obj = new TEstudiante;
@@ -120,7 +121,7 @@ $(document).ready(function(){
 		submitHandler: function(form){
 			var obj = new TEstudiante;
 			
-			obj.guardar($("#id").val(), $("#selNivel").val(), $("#txtNombre").val(), $("#txtApp").val(), $("#txtApm").val(), $("#txtCURP").val(), $("#selSexo").val(), $("#txtNacimiento").val(), $("#selEstadoNacimiento").val(), $("#txtDireccion").val(), $("#txtNoExt").val(), $("#txtNoInt").val(), $("#txtColonia").val(), $("#txtCodigoPostal").val(), $("#txtDelegacion").val(), $("#txtEstatura").val(), $("#txtPeso").val(), $("#selIngreso").val(), $("#selSanguineo").val(), {
+			obj.guardar($("#frmAdd #id").val(), $("#frmAdd #selNivel").val(), $("#frmAdd #txtNombre").val(), $("#frmAdd #txtApp").val(), $("#frmAdd #txtApm").val(), $("#frmAdd #txtCURP").val(), $("#frmAdd #selSexo").val(), $("#frmAdd #txtNacimiento").val(), $("#frmAdd #selEstadoNacimiento").val(), $("#frmAdd #txtDireccion").val(), $("#frmAdd #txtNoExt").val(), $("#frmAdd #txtNoInt").val(), $("#frmAdd #txtColonia").val(), $("#frmAdd #txtCodigoPostal").val(), $("#frmAdd #txtDelegacion").val(), $("#frmAdd #txtEstatura").val(), $("#frmAdd #txtPeso").val(), $("#frmAdd #selIngreso").val(), $("#frmAdd #selSanguineo").val(), {
 				before: function(){
 					$("#frmAdd input, #frmAdd select").prop("disabled", true);
 				},
@@ -147,7 +148,15 @@ $(document).ready(function(){
     });
 
     $("#btnResponsables").click(function(){
-    	$("#winResponsables").modal();
+    	if ($("#frmAdd #id").val() == ''){
+    		alert("Es necesario primero registrar al estudiante");
+    		$("#txtCURP").focus();
+    	}else
+	    	$("#winResponsables").modal();
+    });
+    
+    $("#frmAddParentesco input[type=reset]").click(function(){
+    	$("#winResponsables").modal("hide");
     });
     
     $("#frmAddParentesco").validate({
@@ -158,7 +167,11 @@ $(document).ready(function(){
 			txtApp: "required",
 			txtCelular: {
 				required: true,
-				number: true
+				number: true,
+				phoneMX: true
+			},
+			txtEmail: {
+				email: true
 			}
 		},
 		messages: {
@@ -167,10 +180,68 @@ $(document).ready(function(){
 			txtApp: "Es necesario este campo",
 			txtCelular: {
 				required: "Es necesario este campo",
-				number: "Solo acepta números"
+				number: "Solo acepta números",
+				phoneMX: "El número telefónico no está correcto"
+			},
+			txtEmail:{
+				email: "El correo no es correcto"
 			}
 		},
 		submitHandler: function(form){
+			var obj = new TResponsable;
+			
+			obj.add($("#frmAddParentesco #id").val(), $("#frmAddParentesco #selParentesco").val(), $("#frmAddParentesco #txtNombre").val(), $("#frmAddParentesco #txtApp").val(), $("#frmAddParentesco #txtApm").val(), $("#frmAddParentesco #txtOcupacion").val(), $("#frmAddParentesco #txtEmpresa").val(), $("#frmAddParentesco #txtTelefono").val(), $("#frmAddParentesco #txtTelefonoContacto").val(), $("#frmAddParentesco #txtExtension").val(), $("#frmAddParentesco #txtCelular").val(), $("#frmAddParentesco #txtCorreo").val(), {
+				before: function(){
+					$("#frmAddParentesco input, #frmAddParentesco select").prop("disabled", true);
+				},
+				after: function(resp){
+					$("#frmAddParentesco input, #frmAddParentesco select").prop("disabled", false);
+					
+					if (resp.band == true){
+						$('#tabResponsables a[href="#listaResponsables"]').tab('show');
+					}else
+						alert("Ocurrió un error al registrar al responsable");
+				}
+			});
         }
     });
+    
+    function listaResponsables(){
+	    $.get("listaResponsablesEstudiante", function( data ) {
+			$("#listaResponsables").html(data);
+			
+			$("[action=eliminar]").click(function(){
+				if(confirm("¿Seguro?")){
+					var obj = new TGrupo;
+					obj.del($(this).attr("grupo"), {
+						after: function(data){
+							getLista();
+						}
+					});
+				}
+			});
+			
+			$("[action=modificar]").click(function(){
+				var el = jQuery.parseJSON($(this).attr("datos"));
+				
+				$("#id").val(el.idGrupo);
+				$("#txtNombre").val(el.nombre);
+				$("#selEstado").val(el.estado);
+				$("#selCiclo").val(el.idCiclo);
+				$("#selGrado").val(el.idGrado);
+				$('#panelTabs a[href="#add"]').tab('show');
+			});
+			
+			$("#tblResponsables").DataTable({
+				"responsive": true,
+				"language": espaniol,
+				"paging": false,
+				"lengthChange": false,
+				"ordering": true,
+				"info": true,
+				"autoWidth": false
+			});
+		});
+
+    }
 });
