@@ -98,32 +98,29 @@
 			<div class="form-group">
 				<label for="txtPapa" class="col-lg-2">Papá</label>
 				<div class="col-lg-1">
-					<a href="#" class="btn btn-success"><i class="fa fa-search"></i> Buscar</a>
+					<a href="#" class="btn btn-success responsable" tipo="1"><i class="fa fa-search"></i> Buscar</a>
 				</div>
 				<div class="col-lg-8">
-					<input class="form-control" id="txtPapa" name="txtPapa" placeholder="Escribe el nombre del papá">
+					<input class="form-control" id="txtPapa" name="txtPapa" placeholder="Escribe el nombre del papá" disabled>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="txtMama" class="col-lg-2">Mamá</label>
 				<div class="col-lg-1">
-					<a href="#" class="btn btn-success"><i class="fa fa-search"></i> Buscar</a>
+					<a href="#" class="btn btn-success responsable" tipo="2"><i class="fa fa-search"></i> Buscar</a>
 				</div>
 				<div class="col-lg-8">
-					<input class="form-control" id="txtMama" name="txtMama" placeholder="Escribe el nombre de la mamá">
+					<input class="form-control" id="txtMama" name="txtMama" placeholder="Escribe el nombre de la mamá" disabled>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="txtTutor" class="col-lg-2">Tutor</label>
 				<div class="col-lg-1">
-					<a href="#" class="btn btn-success"><i class="fa fa-search"></i> Buscar</a>
+					<a href="#" class="btn btn-success responsable" tipo="3"><i class="fa fa-search"></i> Buscar</a>
 				</div>
 				<div class="col-lg-8">
-					<input class="form-control" id="txtTutor" name="txtTutor" placeholder="Escribe el nombre del tutor">
+					<input class="form-control" id="txtTutor" name="txtTutor" placeholder="Escribe el nombre del tutor" disabled>
 				</div>
-			</div>
-			<div class="row text-center">
-				<a href="#" id="btnResponsables" class="btn btn-danger"><i class="fa fa-street-view"></i> Tutor y responsables</a>
 			</div>
 			<hr />
 			<h2>Domicilio</h2>

@@ -50,4 +50,33 @@ TEstudiante = function(){
 					fn.after(data);
 			}, "json");
 	}
+	
+	this.setResponsable = function(estudiante, parentesco, responsable, fn){
+		if (fn.before !== undefined)
+			fn.before(data);
+			
+		$.post('index.php?mod=cestudiantes&action=setParentesco', {
+				"parentesco": parentesco,
+				"responsable": responsable,
+				"estudiante": estudiante
+			}, function(data){
+				if (data.band == 'false')
+					console.log(data.mensaje);
+					
+				if (fn.after !== undefined)
+					fn.after(data);
+			}, "json");
+	}
+	
+	this.del = function(id, fn){
+		$.post('index.php?mod=cestudiantes&action=del', {
+			"id": id
+		}, function(data){
+			if (fn.after != undefined)
+				fn.after(data);
+			if (data.band == 'false'){
+				alert("Ocurrió un error al eliminar al estudiante");
+			}
+		}, "json");
+	};
 }

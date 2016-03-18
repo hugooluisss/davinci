@@ -37,22 +37,11 @@ switch($objModulo->getId()){
 		}
 		
 		$smarty->assign("gruposSanguineos", $datos);
-		
-		$rs = $db->Execute("select * from parentesco");
-		
-		$datos = array();
-		while(!$rs->EOF){
-			array_push($datos, $rs->fields);
-			
-			$rs->moveNext();
-		}
-		
-		$smarty->assign("parentesco", $datos);
 	break;
 	case 'listaEstudiantes':
 		$db = TBase::conectaDB();
 		
-		$rs = $db->Execute("select * from estudiantes where idEstado = 'A'");
+		$rs = $db->Execute("select * from estudiante where estado = 'A'");
 		$datos = array();
 		while(!$rs->EOF){
 			$rs->fields['json'] = json_encode($rs->fields);
@@ -90,7 +79,7 @@ switch($objModulo->getId()){
 						$nivel = new TNivel($_POST['nivel']);
 						$nivel->generaMatricula($_POST['anio'], $obj->getId());
 						
-						echo json_encode(array("band" => true, "matricula" => $obj->getMatricula()));
+						echo json_encode(array("band" => true, "matricula" => $obj->getMatricula(), "identificador" => $obj->getId()));
 					}else
 						echo json_encode(array("band" => false));
 				}else
@@ -113,6 +102,10 @@ switch($objModulo->getId()){
 					echo json_encode(array("band" => false));
 				else
 					echo json_encode(array("band" => true, "matricula" => strtoupper($nivel.$ingreso.$sexo.sprintf("%05s", $consecutivo))));
+			break;
+			case 'setParentesco':
+				$obj = new TEstudiante($_POST['estudiante']);
+				echo json_encode(array("band" => $obj->setParentesco($_POST['parentesco'], $_POST['responsable'])));
 			break;
 		}
 	break;

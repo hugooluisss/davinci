@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-03-17 12:49:45
+<?php /* Smarty version Smarty-3.1.11, created on 2016-03-17 23:14:09
          compiled from "templates/plantillas/modulos/estudiantes/listaResponsables.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:8048245356eafbdb24a067-97118501%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'e88b14982be536b54fd9ca7354e5d4ac60369b37' => 
     array (
       0 => 'templates/plantillas/modulos/estudiantes/listaResponsables.tpl',
-      1 => 1458240576,
+      1 => 1458278047,
       2 => 'file',
     ),
   ),
@@ -31,7 +31,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				<tr>
 					<th>#</th>
 					<th>Nombre</th>
-					<th>Parentesco</th>
 					<th>&nbsp;</th>
 				</tr>
 			</thead>
@@ -46,12 +45,12 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 </td>
 						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['nombre'];?>
 </td>
-						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['parentesco'];?>
-</td>
 						<td style="text-align: right">
-							<button type="button" class="btn btn-success btn-circle" action="modificar" title="Modificar" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
+							<button type="button" class="btn btn-primary btn-circle" action="seleccionar" title="Seleccionar" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
+'><i class="fa fa-hand-pointer-o"></i></button>
+							<button type="button" class="btn btn-success btn-circle" action="modificarResponsable" title="Modificar" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
 '><i class="fa fa-pencil"></i></button>
-							<button type="button" class="btn btn-danger btn-circle" action="eliminar" title="Eliminar" cuidado="<?php echo $_smarty_tpl->tpl_vars['row']->value['idCuidado'];?>
+							<button type="button" class="btn btn-danger btn-circle" action="eliminarResponsable" title="Eliminar" responsable="<?php echo $_smarty_tpl->tpl_vars['row']->value['idResponsable'];?>
 "><i class="fa fa-times"></i></button>
 						</td>
 					</tr>

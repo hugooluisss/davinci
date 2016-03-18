@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-03-17 13:59:17
+<?php /* Smarty version Smarty-3.1.11, created on 2016-03-17 22:51:50
          compiled from "templates/plantillas/modulos/estudiantes/add.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:108640278856e3a3b81f0cf5-28355239%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '94405bd4edf55ed937fa34f68454e365e8526ea1' => 
     array (
       0 => 'templates/plantillas/modulos/estudiantes/add.tpl',
-      1 => 1458244756,
+      1 => 1458276709,
       2 => 'file',
     ),
   ),
@@ -149,32 +149,29 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 			<div class="form-group">
 				<label for="txtPapa" class="col-lg-2">Papá</label>
 				<div class="col-lg-1">
-					<a href="#" class="btn btn-success"><i class="fa fa-search"></i> Buscar</a>
+					<a href="#" class="btn btn-success responsable" tipo="1"><i class="fa fa-search"></i> Buscar</a>
 				</div>
 				<div class="col-lg-8">
-					<input class="form-control" id="txtPapa" name="txtPapa" placeholder="Escribe el nombre del papá">
+					<input class="form-control" id="txtPapa" name="txtPapa" placeholder="Escribe el nombre del papá" disabled>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="txtMama" class="col-lg-2">Mamá</label>
 				<div class="col-lg-1">
-					<a href="#" class="btn btn-success"><i class="fa fa-search"></i> Buscar</a>
+					<a href="#" class="btn btn-success responsable" tipo="2"><i class="fa fa-search"></i> Buscar</a>
 				</div>
 				<div class="col-lg-8">
-					<input class="form-control" id="txtMama" name="txtMama" placeholder="Escribe el nombre de la mamá">
+					<input class="form-control" id="txtMama" name="txtMama" placeholder="Escribe el nombre de la mamá" disabled>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="txtTutor" class="col-lg-2">Tutor</label>
 				<div class="col-lg-1">
-					<a href="#" class="btn btn-success"><i class="fa fa-search"></i> Buscar</a>
+					<a href="#" class="btn btn-success responsable" tipo="3"><i class="fa fa-search"></i> Buscar</a>
 				</div>
 				<div class="col-lg-8">
-					<input class="form-control" id="txtTutor" name="txtTutor" placeholder="Escribe el nombre del tutor">
+					<input class="form-control" id="txtTutor" name="txtTutor" placeholder="Escribe el nombre del tutor" disabled>
 				</div>
-			</div>
-			<div class="row text-center">
-				<a href="#" id="btnResponsables" class="btn btn-danger"><i class="fa fa-street-view"></i> Tutor y responsables</a>
 			</div>
 			<hr />
 			<h2>Domicilio</h2>

@@ -623,4 +623,29 @@ class TEstudiante{
 		
 		return $rs->fields['matricula'];
 	}
+	
+	/**
+	* Establece el parentesco con el estudiante
+	*
+	* @autor Hugo
+	* @access public
+	* @param int $parentesco Identificador del parentesco
+	* @param int $responsable Identificador del familiar
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setParentesco($parentesco, $responsable){
+		if ($this->getId() == '') return false;
+		
+		$db = TBase::conectaDB();
+		$rs = $db->Execute("delete from responsableestudiante where idEstudiante = ".$this->getId()." and idParentesco = ".$parentesco);
+		
+		if (! $rs) return false;
+		
+		if ($responsable == '') return true;
+		
+		$rs = $db->Execute("insert into responsableestudiante (idResponsable, idEstudiante, idParentesco) values (".$_POST['responsable'].", ".$this->getId().", ".$_POST['parentesco'].")");
+		
+		return $rs?true:false;
+	}
 }

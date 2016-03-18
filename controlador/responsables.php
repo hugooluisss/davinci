@@ -4,7 +4,7 @@ switch($objModulo->getId()){
 	case 'listaResponsablesEstudiante':
 		$db = TBase::conectaDB();
 		
-		$rs = $db->Execute("select a.*, b.nombre as parentesco from responsable a join parentesco b using(idParentesco)");
+		$rs = $db->Execute("select *from responsable");
 		$datos = array();
 		while(!$rs->EOF){
 			$rs->fields['json'] = json_encode($rs->fields);
@@ -22,7 +22,6 @@ switch($objModulo->getId()){
 				$obj = new TResponsable();
 				
 				$obj->setId($_POST['id']);
-				$obj->setParentesco($_POST['parentesco']);
 				$obj->setNombre($_POST['nombre']);
 				$obj->setApp($_POST['app']);
 				$obj->setApm($_POST['apm']);
@@ -34,7 +33,7 @@ switch($objModulo->getId()){
 				$obj->setCelular($_POST['celular']);
 				$obj->setCorreo($_POST['correo']);
 				
-				echo json_encode(array("band" => $obj->guardar()));
+				echo json_encode(array("band" => $obj->guardar(), "identificador" => $obj->getId()));
 			break;
 			case 'del':
 				$obj = new TResponsable($_POST['id']);

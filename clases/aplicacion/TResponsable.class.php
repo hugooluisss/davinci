@@ -8,7 +8,6 @@
 
 class TResponsable{
 	private $idResponsable;
-	private $idParentezco;
 	private $nombre;
 	private $app;
 	private $apm;
@@ -63,32 +62,6 @@ class TResponsable{
 	
 	public function getId(){
 		return $this->idResponsable;
-	}
-	
-	/**
-	* Establece el identificador del parentesco
-	*
-	* @autor Hugo
-	* @access public
-	* @param Int $val valor
-	* @return boolean True si se realizó sin problemas
-	*/
-	
-	public function setParentesco($val = ''){
-		$this->idParentesco = $val;
-		return true;
-	}
-	
-	/**
-	* Retorna el parentesco
-	*
-	* @autor Hugo
-	* @access public
-	* @return string Texto
-	*/
-	
-	public function getParentesco(){
-		return $this->idParentesco;
 	}
 	
 	/**
@@ -360,11 +333,10 @@ class TResponsable{
 	*/
 	
 	public function guardar(){
-		if ($this->getParentesco() == '') return false;
 		$db = TBase::conectaDB();
 		
 		if ($this->getId() == ''){
-			$rs = $db->Execute("INSERT INTO responsable(idParentesco) VALUES(".$this->getParentesco().");");
+			$rs = $db->Execute("INSERT INTO responsable(nombre) VALUES('".$this->getNombre()."');");
 			if (!$rs) return false;
 				
 			$this->idResponsable = $db->Insert_ID();
@@ -384,8 +356,7 @@ class TResponsable{
 				extension = '".$this->getExtension()."',
 				telefonoContacto = '".$this->getTelefonoContacto()."',
 				celular = '".$this->getCelular()."',
-				correo = '".$this->getCorreo()."',
-				idParentesco = ".$this->getParentesco()."
+				correo = '".$this->getCorreo()."'
 			WHERE idResponsable = ".$this->getId());
 			
 		return $rs?true:false;
@@ -403,7 +374,7 @@ class TResponsable{
 		if ($this->getId() == '') return false;
 		
 		$db = TBase::conectaDB();
-		$rs = $db->Execute("delete from parentesco where idParentesco = ".$this->getId());
+		$rs = $db->Execute("delete from responsable where idResponsable = ".$this->getId());
 		
 		return $rs?true:false;
 	}

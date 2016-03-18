@@ -1,5 +1,7 @@
 $(document).ready(function(){
 	listaResponsables();
+	listaEstudiantes();
+	
 	$.each([$('#selSexo'), $('#selNivel'), $("#selIngreso")], function(index, obj) {
 		obj.change(function(){
 			var obj = new TEstudiante;
@@ -18,6 +20,8 @@ $(document).ready(function(){
 	$("[data-mask]").inputmask();
 	
 	$("#txtCURP").change(function(){
+		$("#txtCURP").val($("#txtCURP").val().toUpperCase());
+		
 		var curp = $("#txtCURP").val();
 		var dia = curp[8] + curp[9];
 		var mes = curp[6] + curp[7];
@@ -132,14 +136,42 @@ $(document).ready(function(){
 					if (result.band == true){
 						alert("Estudiante Agregado");
 						
-						if (result.matricula != '' || result.matricula != undefined)
+						if (result.matricula != '' || result.matricula != undefined){
 							if (result.matricula != $("#txtMatricula").val()){
 								alert("La matrícula asignada al estudiante fue la " + $("#txtMatricula").val())
 								$("#txtMatricula").val(result.matricula);
 							}
+						}
+						
+						obj.setResponsable(result.identificador, 1, $("#frmAdd #txtPapa").attr("identificador"), {
+							after: function(resp){
+								if (resp.band != true){
+									alert("No se pudo establecer la relación con el papá");
+								}
+								
+							}
+						});
+						
+						obj.setResponsable(result.identificador, 2, $("#frmAdd #txtMama").attr("identificador"), {
+							after: function(resp){
+								if (resp.band != true){
+									alert("No se pudo establecer la relación con la mamá");
+								}
+								
+							}
+						});
+						
+						obj.setResponsable(result.identificador, 3, $("#frmAdd #txtTutor").attr("identificador"), {
+							after: function(resp){
+								if (resp.band != true){
+									alert("No se pudo establecer la relación con el tutor");
+								}
+								
+							}
+						});
 								
 						
-						$("#frmAdd").reset();
+						//$("#frmAdd").reset();
 					}else
 						alert("Upps ocurrió un error: " + result.mensaje);
 				}
@@ -147,15 +179,14 @@ $(document).ready(function(){
         }
     });
 
-    $("#btnResponsables").click(function(){
-    	if ($("#frmAdd #id").val() == ''){
-    		alert("Es necesario primero registrar al estudiante");
-    		$("#txtCURP").focus();
-    	}else
-	    	$("#winResponsables").modal();
+    $(".responsable").click(function(){
+    	var el = $(this);
+    	$("#winResponsables #tipoParentesco").val(el.attr('tipo'));
+    	$("#winResponsables").modal();
     });
     
     $("#frmAddParentesco input[type=reset]").click(function(){
+    	$("#winResponsables #id").val("");
     	$("#winResponsables").modal("hide");
     });
     
@@ -198,7 +229,15 @@ $(document).ready(function(){
 					$("#frmAddParentesco input, #frmAddParentesco select").prop("disabled", false);
 					
 					if (resp.band == true){
+						listaResponsablesEstudiante();
 						$('#tabResponsables a[href="#listaResponsables"]').tab('show');
+						
+						if ($("#frmAddParentesco #id").val() == '')
+							if (confirm("¿Deseas establecer el parentesco con el estudiante?")){
+								var nombre = $("#frmAddParentesco #txtNombre").val() + ' ' + el.$("#frmAddParentesco #txtApp").val() + ' ' + $("#frmAddParentesco #txtApm").val();
+								var identificador = resp.identificador;
+								setParentesco(identificador, nombre);
+							}
 					}else
 						alert("Ocurrió un error al registrar al responsable");
 				}
@@ -210,26 +249,48 @@ $(document).ready(function(){
 	    $.get("listaResponsablesEstudiante", function( data ) {
 			$("#listaResponsables").html(data);
 			
-			$("[action=eliminar]").click(function(){
+			$("[action=eliminarResponsable]").click(function(){
+				var el = $(this);
 				if(confirm("¿Seguro?")){
-					var obj = new TGrupo;
-					obj.del($(this).attr("grupo"), {
+					var obj = new TResponsable;
+					obj.del($(this).attr("responsable"), {
+						before: function(){
+							$(el).prop("disabled", true);
+						},
 						after: function(data){
-							getLista();
+							$(el).prop("disabled", false);
+							if (data.band == false)
+								alert("No se pudo eliminar al responsable");
+							listaResponsables();
 						}
 					});
 				}
 			});
 			
-			$("[action=modificar]").click(function(){
+			$("[action=modificarResponsable]").click(function(){
 				var el = jQuery.parseJSON($(this).attr("datos"));
 				
-				$("#id").val(el.idGrupo);
-				$("#txtNombre").val(el.nombre);
-				$("#selEstado").val(el.estado);
-				$("#selCiclo").val(el.idCiclo);
-				$("#selGrado").val(el.idGrado);
-				$('#panelTabs a[href="#add"]').tab('show');
+				$("#frmAddParentesco #id").val(el.idResponsable);
+				$("#frmAddParentesco #txtNombre").val(el.nombre);
+				$("#frmAddParentesco #txtApp").val(el.app);
+				$("#frmAddParentesco #txtApm").val(el.apm);
+				$("#frmAddParentesco #txtOcupacion").val(el.ocupacion);
+				$("#frmAddParentesco #txtEmpresa").val(el.empresa);
+				$("#frmAddParentesco #txtTelefono").val(el.telefono);
+				$("#frmAddParentesco #txtExtension").val(el.extension);
+				$("#frmAddParentesco #txtTelefonoContacto").val(el.telefonoContacto);
+				$("#frmAddParentesco #txtCelular").val(el.celular);
+				$("#frmAddParentesco #txtCorreo").val(el.correo);
+				
+				$('#tabResponsables a[href="#nuevoResponsable"]').tab('show');
+			});
+			
+			$("[action=seleccionar]").click(function(){
+				var el = jQuery.parseJSON($(this).attr("datos"));
+				
+				var nombre = el.nombre + ' ' + el.app + ' ' + el.apm;
+				var identificador = el.idResponsable;
+				setParentesco(identificador, nombre);
 			});
 			
 			$("#tblResponsables").DataTable({
@@ -242,6 +303,52 @@ $(document).ready(function(){
 				"autoWidth": false
 			});
 		});
-
     }
+    
+    function setParentesco(identificador, nombre){
+	    switch($("#winResponsables #tipoParentesco").val()){
+			case '1':
+				$("#frmAdd #txtPapa").val(nombre);
+				$("#frmAdd #txtPapa").attr("identificador", identificador);
+			break;
+			case '2':
+				$("#frmAdd #txtMama").val(nombre);
+				$("#frmAdd #txtMama").attr("identificador", identificador);
+			break;
+			case '3':
+				$("#frmAdd #txtTutor").val(nombre);
+				$("#frmAdd #txtTutor").attr("identificador", identificador);
+			break;
+		}
+		
+		$("#winResponsables").modal("hide");
+    }
+    
+    function listaEstudiantes(){
+	    $.get("listaEstudiantes", function( data ) {
+			$("#dvLista").html(data);
+			
+			$("[action=eliminar]").click(function(){
+				if(confirm("¿Seguro?")){
+					var obj = new TEstudiante;
+					obj.del($(this).attr("estudiante"), {
+						after: function(data){
+							listaEstudiantes();
+						}
+					});
+				}
+			});
+			
+			$("#tblEstudiantes").DataTable({
+				"responsive": true,
+				"language": espaniol,
+				"paging": false,
+				"lengthChange": false,
+				"ordering": true,
+				"info": true,
+				"autoWidth": false
+			});
+
+		});
+	}
 });

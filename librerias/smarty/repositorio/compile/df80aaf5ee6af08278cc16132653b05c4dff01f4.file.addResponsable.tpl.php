@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-03-17 11:26:37
+<?php /* Smarty version Smarty-3.1.11, created on 2016-03-17 22:30:23
          compiled from "templates/plantillas/modulos/estudiantes/addResponsable.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:197626187456e9a86d21c221-16909055%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'df80aaf5ee6af08278cc16132653b05c4dff01f4' => 
     array (
       0 => 'templates/plantillas/modulos/estudiantes/addResponsable.tpl',
-      1 => 1458235445,
+      1 => 1458275402,
       2 => 'file',
     ),
   ),
@@ -17,31 +17,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'version' => 'Smarty-3.1.11',
   'unifunc' => 'content_56e9a86d22c320_91624183',
-  'variables' => 
-  array (
-    'parentesco' => 0,
-    'row' => 0,
-  ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_56e9a86d22c320_91624183')) {function content_56e9a86d22c320_91624183($_smarty_tpl) {?><form role="form" id="frmAddParentesco" class="form-horizontal" onsubmit="javascript: return false;">
-	<div class="form-group">
-		<label for="selParentesco" class="col-lg-4">Parentesco</label>
-		<div class="col-lg-8">
-			<select class="form-control" id="selParentesco" name="selParentesco">
-				<option value="">Selecciona
-				<?php  $_smarty_tpl->tpl_vars["row"] = new Smarty_Variable; $_smarty_tpl->tpl_vars["row"]->_loop = false;
- $_from = $_smarty_tpl->tpl_vars['parentesco']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
-foreach ($_from as $_smarty_tpl->tpl_vars["row"]->key => $_smarty_tpl->tpl_vars["row"]->value){
-$_smarty_tpl->tpl_vars["row"]->_loop = true;
-?>
-					<option value="<?php echo $_smarty_tpl->tpl_vars['row']->value['idParentesco'];?>
-"><?php echo $_smarty_tpl->tpl_vars['row']->value['nombre'];?>
-</option>
-				<?php } ?>
-			</select>
-		</div>
-	</div>
 	<div class="form-group">
 		<label for="txtNombre" class="col-lg-4">Nombre</label>
 		<div class="col-lg-8">
@@ -103,5 +81,6 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 			<button type="reset" id="btnReset" class="btn btn-default">Cancelar</button>
 			<button type="submit" class="btn btn-info pull-right">Guardar</button>
 			<input type="hidden" id="id"/>
+			<input type="hidden" id="tipoParentesco"/>
 	</div>
 </form><?php }} ?>
