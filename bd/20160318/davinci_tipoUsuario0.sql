@@ -18,34 +18,27 @@ USE `davinci`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `usuario`
+-- Table structure for table `tipoUsuario`
 --
 
-DROP TABLE IF EXISTS `usuario`;
+DROP TABLE IF EXISTS `tipoUsuario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `usuario` (
-  `idUsuario` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `idTipo` tinyint(3) unsigned DEFAULT NULL,
-  `app` varchar(45) DEFAULT NULL,
-  `apm` varchar(45) DEFAULT NULL,
+CREATE TABLE `tipoUsuario` (
+  `idTipoUsuario` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL,
-  `pass` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`idUsuario`),
-  KEY `usuarioTipo` (`idTipo`),
-  CONSTRAINT `fk_usuarioTipo` FOREIGN KEY (`idTipo`) REFERENCES `tipoUsuario` (`idTipoUsuario`) ON DELETE CASCADE ON UPDATE CASCADE
+  PRIMARY KEY (`idTipoUsuario`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `usuario`
+-- Dumping data for table `tipoUsuario`
 --
 
-LOCK TABLES `usuario` WRITE;
-/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,1,'admin','admin','admin2','hugooluisss@gmail.com','k0rgk0rg');
-/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
+LOCK TABLES `tipoUsuario` WRITE;
+/*!40000 ALTER TABLE `tipoUsuario` DISABLE KEYS */;
+INSERT INTO `tipoUsuario` VALUES (1,'Administrador');
+/*!40000 ALTER TABLE `tipoUsuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -57,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-17 14:04:09
+-- Dump completed on 2016-03-18 13:57:16

@@ -57,6 +57,8 @@ switch($objModulo->getId()){
 				$obj = new TEstudiante();
 				
 				$obj->setId($_POST['id']);
+				$ultimoNivel = $obj->getUltimoNivel();
+				
 				$obj->setNombre($_POST['nombre']);
 				$obj->setApp($_POST['app']);
 				$obj->setApm($_POST['apm']);
@@ -75,13 +77,13 @@ switch($objModulo->getId()){
 				$obj->setSanguineo($_POST['sanguineo']);
 				
 				if ($obj->guardar()){
-					if ($_POST['id'] == ''){
+					if ($ultimoNivel != $_POST['nivel']){
 						$nivel = new TNivel($_POST['nivel']);
 						$nivel->generaMatricula($_POST['anio'], $obj->getId());
 						
 						echo json_encode(array("band" => true, "matricula" => $obj->getMatricula(), "identificador" => $obj->getId()));
 					}else
-						echo json_encode(array("band" => false));
+						echo json_encode(array("band" => true, "matricula" => $obj->getMatricula(), "identificador" => $obj->getId()));
 				}else
 					echo json_encode(array("band" => false, "mensaje" => "No se pudieron guardar los datos del estudiantes"));
 			break;
@@ -106,6 +108,23 @@ switch($objModulo->getId()){
 			case 'setParentesco':
 				$obj = new TEstudiante($_POST['estudiante']);
 				echo json_encode(array("band" => $obj->setParentesco($_POST['parentesco'], $_POST['responsable'])));
+			break;
+			case 'getData':
+				$db = TBase::conectaDB();
+				
+				$rs = $db->Execute("select a.*, b.* from estudiante a join estudiantenivel b using(idEstudiante) where idEstudiante = ".$_POST['estudiante']." and b.estado = 'A'");
+				$rs->fields['responsables'] = array();
+				
+				$aux = $db->Execute("select concat(nombre, ' ', app, ' ', apm) as nombre, idResponsable from responsableestudiante a join responsable b using(idResponsable) where idParentesco = 1 and idEstudiante = ".$_POST['estudiante']);
+				$rs->fields['responsables']['papa'] = $aux->fields;
+				
+				$aux = $db->Execute("select concat(nombre, ' ', app, ' ', apm) as nombre, idResponsable from responsableestudiante a join responsable b using(idResponsable) where idParentesco = 2 and idEstudiante = ".$_POST['estudiante']);
+				$rs->fields['responsables']['mama'] = $aux->fields;
+				
+				$aux = $db->Execute("select concat(nombre, ' ', app, ' ', apm) as nombre, idResponsable from responsableestudiante a join responsable b using(idResponsable) where idParentesco = 3 and idEstudiante = ".$_POST['estudiante']);
+				$rs->fields['responsables']['tutor'] = $aux->fields;
+				
+				echo json_encode($rs->fields);
 			break;
 		}
 	break;

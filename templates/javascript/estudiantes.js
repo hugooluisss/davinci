@@ -136,11 +136,9 @@ $(document).ready(function(){
 					if (result.band == true){
 						alert("Estudiante Agregado");
 						
-						if (result.matricula != '' || result.matricula != undefined){
-							if (result.matricula != $("#txtMatricula").val()){
-								alert("La matrícula asignada al estudiante fue la " + $("#txtMatricula").val())
-								$("#txtMatricula").val(result.matricula);
-							}
+						if ($("#frmAdd #txtMatricula").val() != result.matricula){
+							$("#txtMatricula").val(result.matricula);
+							alert("La matrícula asignada al estudiante fue la " + $("#txtMatricula").val());
 						}
 						
 						obj.setResponsable(result.identificador, 1, $("#frmAdd #txtPapa").attr("identificador"), {
@@ -171,7 +169,10 @@ $(document).ready(function(){
 						});
 								
 						
-						//$("#frmAdd").reset();
+						$("#frmAdd")[0].reset();
+						$("#frmAdd #txtPapa").attr("identificador", "");
+						$("#frmAdd #txtMama").attr("identificador", "");
+						$("#frmAdd #txtTutor").attr("identificador", "");
 					}else
 						alert("Upps ocurrió un error: " + result.mensaje);
 				}
@@ -238,6 +239,8 @@ $(document).ready(function(){
 								var identificador = resp.identificador;
 								setParentesco(identificador, nombre);
 							}
+							
+						$("#frmAddParentesco")[0].reset();
 					}else
 						alert("Ocurrió un error al registrar al responsable");
 				}
@@ -337,6 +340,53 @@ $(document).ready(function(){
 						}
 					});
 				}
+			});
+			
+			$("#dvInfo").hide();
+			
+			$("[action=modificar]").click(function(){
+				var obj = new TEstudiante;
+				var el = $(this);
+				obj.getData(el.attr("estudiante"), {
+					before: function(){
+						$("#dvInfo").show(600);
+					},
+					after: function(el){
+						$("#frmAdd #id").val(el.idEstudiante);
+						$("#frmAdd #txtNombre").val(el.nombre);
+						$("#frmAdd #txtApp").val(el.app);
+						$("#frmAdd #txtApm").val(el.apm);
+						$("#frmAdd #txtNombre").val(el.nombre);
+						$("#frmAdd #txtMatricula").val(el.matricula);
+						$("#frmAdd #selNivel").val(el.idNivel);
+						$("#frmAdd #selIngreso").val(el.anio);
+						$("#frmAdd #txtCURP").val(el.curp);
+						$("#frmAdd #selSexo").val(el.sexo);
+						$("#frmAdd #txtNacimiento").val(el.nacimiento);
+						$("#frmAdd #selEstadoNacimiento").val(el.idEstadoNac);
+						$("#frmAdd #txtEstatura").val(el.estatura);
+						$("#frmAdd #txtPeso").val(el.peso);
+						$("#frmAdd #selSanguineo").val(el.idSanguineo);
+						
+						$("#frmAdd #txtDireccion").val(el.calle);
+						$("#frmAdd #txtNoInt").val(el.noInt);
+						$("#frmAdd #txtNoExt").val(el.noExt);
+						$("#frmAdd #txtCodigoPostal").val(el.codigoPostal);
+						$("#frmAdd #txtDelegacion").val(el.delegacion);
+						
+						$("#frmAdd #txtPapa").val(el.responsables.papa.nombre);
+						$("#frmAdd #txtMama").val(el.responsables.mama.nombre);
+						$("#frmAdd #txtTutor").val(el.responsables.tutor.nombre);
+						
+						$("#frmAdd #txtPapa").attr("identificador", el.responsables.papa.idResponsable);
+						$("#frmAdd #txtMama").attr("identificador", el.responsables.mama.idResponsable);
+						$("#frmAdd #txtTutor").attr("identificador", el.responsables.tutor.idResponsable);
+						
+						$("#dvInfo").hide(600);
+						
+						$('#panelTabs a[href="#add"]').tab('show');
+					}
+				});
 			});
 			
 			$("#tblEstudiantes").DataTable({

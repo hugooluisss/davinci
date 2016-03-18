@@ -18,28 +18,29 @@ USE `davinci`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `cuidado`
+-- Table structure for table `responsableestudiante`
 --
 
-DROP TABLE IF EXISTS `cuidado`;
+DROP TABLE IF EXISTS `responsableestudiante`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `cuidado` (
-  `idCuidado` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(45) DEFAULT NULL,
-  `descripcion` text,
-  PRIMARY KEY (`idCuidado`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+CREATE TABLE `responsableestudiante` (
+  `idResponsable` int(10) unsigned NOT NULL,
+  `idEstudiante` bigint(20) unsigned NOT NULL,
+  `idParentesco` smallint(5) unsigned NOT NULL,
+  PRIMARY KEY (`idResponsable`,`idEstudiante`,`idParentesco`),
+  UNIQUE KEY `unicoParentesco` (`idEstudiante`,`idParentesco`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `cuidado`
+-- Dumping data for table `responsableestudiante`
 --
 
-LOCK TABLES `cuidado` WRITE;
-/*!40000 ALTER TABLE `cuidado` DISABLE KEYS */;
-INSERT INTO `cuidado` VALUES (2,'Cuidado 1','Cuidados normales al estudiante');
-/*!40000 ALTER TABLE `cuidado` ENABLE KEYS */;
+LOCK TABLES `responsableestudiante` WRITE;
+/*!40000 ALTER TABLE `responsableestudiante` DISABLE KEYS */;
+INSERT INTO `responsableestudiante` VALUES (2,16,1),(2,16,2),(2,16,3),(2,20,1);
+/*!40000 ALTER TABLE `responsableestudiante` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-17 14:04:09
+-- Dump completed on 2016-03-18 13:57:15

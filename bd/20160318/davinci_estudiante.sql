@@ -47,7 +47,7 @@ CREATE TABLE `estudiante` (
   KEY `i_grupoSanguineo` (`idSanguineo`),
   CONSTRAINT `fk_estadoNac` FOREIGN KEY (`idEstadoNac`) REFERENCES `estado` (`idEstado`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `fk_grupoSanguineo` FOREIGN KEY (`idSanguineo`) REFERENCES `grupoSanguineo` (`idSanguineo`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -56,7 +56,7 @@ CREATE TABLE `estudiante` (
 
 LOCK TABLES `estudiante` WRITE;
 /*!40000 ALTER TABLE `estudiante` DISABLE KEYS */;
-INSERT INTO `estudiante` VALUES (16,7,'hugo luis','santiago','altamirano','1983-11-15',20,'av san antonio','12','6','71236','san antonio de la cal','SAAH831115HOCNLG04',1.79,85,'H','A'),(17,7,'hugo luis','santiago','altamirano','1983-11-15',20,'av san antonio','12','6','71236','san antonio de la cal','SAAH831115HOCNLG04',1.79,85,'H','A');
+INSERT INTO `estudiante` VALUES (16,7,'hugo luis','santiago','altamirano','1983-11-15',20,'av san antonio','12','6','71236','san antonio de la cal','SAAH831115HOCNLG04',1.78,85,'H','A'),(20,6,'perenganito','paterno','materno','1983-11-15',8,'Domi','','2','','Oaxaca','SAAH831115HOCNLGI8',1.09,75,'H','A');
 /*!40000 ALTER TABLE `estudiante` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -69,4 +69,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-17 14:04:09
+-- Dump completed on 2016-03-18 13:55:56

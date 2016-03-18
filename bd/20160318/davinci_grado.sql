@@ -18,27 +18,30 @@ USE `davinci`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `tipoUsuario`
+-- Table structure for table `grado`
 --
 
-DROP TABLE IF EXISTS `tipoUsuario`;
+DROP TABLE IF EXISTS `grado`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tipoUsuario` (
-  `idTipoUsuario` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `grado` (
+  `idGrado` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `idNivel` smallint(5) unsigned DEFAULT NULL,
   `nombre` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`idTipoUsuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`idGrado`),
+  KEY `i_gradoNivel` (`idNivel`),
+  CONSTRAINT `fk_gradoNivel` FOREIGN KEY (`idNivel`) REFERENCES `nivel` (`idNivel`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tipoUsuario`
+-- Dumping data for table `grado`
 --
 
-LOCK TABLES `tipoUsuario` WRITE;
-/*!40000 ALTER TABLE `tipoUsuario` DISABLE KEYS */;
-INSERT INTO `tipoUsuario` VALUES (1,'Administrador');
-/*!40000 ALTER TABLE `tipoUsuario` ENABLE KEYS */;
+LOCK TABLES `grado` WRITE;
+/*!40000 ALTER TABLE `grado` DISABLE KEYS */;
+INSERT INTO `grado` VALUES (1,1,'Primero'),(2,1,'Segundo'),(3,1,'Tercero'),(4,1,'Cuarto'),(5,1,'Quinto'),(6,1,'Sexto'),(7,2,'Primero'),(8,2,'Segundo'),(9,2,'Tercero');
+/*!40000 ALTER TABLE `grado` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-17 14:04:09
+-- Dump completed on 2016-03-18 13:55:56

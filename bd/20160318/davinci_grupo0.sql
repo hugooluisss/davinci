@@ -18,27 +18,34 @@ USE `davinci`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `grupoSanguineo`
+-- Table structure for table `grupo`
 --
 
-DROP TABLE IF EXISTS `grupoSanguineo`;
+DROP TABLE IF EXISTS `grupo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `grupoSanguineo` (
-  `idSanguineo` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
-  `abbr` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`idSanguineo`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+CREATE TABLE `grupo` (
+  `idGrupo` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `idGrado` smallint(5) unsigned DEFAULT NULL,
+  `idCiclo` smallint(5) unsigned DEFAULT NULL,
+  `nombre` varchar(45) DEFAULT NULL,
+  `estado` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`idGrupo`),
+  KEY `i_grupoCiclo` (`idCiclo`),
+  KEY `i_grupoGrado` (`idGrado`),
+  CONSTRAINT `fk_grupoCiclo` FOREIGN KEY (`idCiclo`) REFERENCES `ciclo` (`idCiclo`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_grupoGrado` FOREIGN KEY (`idGrado`) REFERENCES `grado` (`idGrado`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `grupoSanguineo`
+-- Dumping data for table `grupo`
 --
 
-LOCK TABLES `grupoSanguineo` WRITE;
-/*!40000 ALTER TABLE `grupoSanguineo` DISABLE KEYS */;
-INSERT INTO `grupoSanguineo` VALUES (1,'AB+'),(2,'AB-'),(3,'A+'),(4,'A-'),(5,'B+'),(6,'B-'),(7,'O+'),(8,'O-');
-/*!40000 ALTER TABLE `grupoSanguineo` ENABLE KEYS */;
+LOCK TABLES `grupo` WRITE;
+/*!40000 ALTER TABLE `grupo` DISABLE KEYS */;
+INSERT INTO `grupo` VALUES (2,1,2,'101','A'),(3,2,2,'201','A'),(4,7,2,'1001','A');
+/*!40000 ALTER TABLE `grupo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-17 14:04:09
+-- Dump completed on 2016-03-18 13:57:16

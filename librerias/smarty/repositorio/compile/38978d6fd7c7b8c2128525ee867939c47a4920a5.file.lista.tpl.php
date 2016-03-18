@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-03-17 23:57:33
+<?php /* Smarty version Smarty-3.1.11, created on 2016-03-18 09:28:04
          compiled from "templates/plantillas/modulos/estudiantes/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:113658614856eb97d41d7586-94246626%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '38978d6fd7c7b8c2128525ee867939c47a4920a5' => 
     array (
       0 => 'templates/plantillas/modulos/estudiantes/lista.tpl',
-      1 => 1458280651,
+      1 => 1458314540,
       2 => 'file',
     ),
   ),
@@ -26,6 +26,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_56eb97d4258726_91925253')) {function content_56eb97d4258726_91925253($_smarty_tpl) {?><div class="box">
 	<div class="box-body">
+		<div class="alert alert-info" id="dvInfo">
+			<strong>Obteniendo datos</strong> Estoy obteniendo los datos del estudiante, por favor espera un momento...
+		</div>
 		<table id="tblEstudiantes" class="table table-bordered table-hover">
 			<thead>
 				<tr>
@@ -48,7 +51,7 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
  <?php echo $_smarty_tpl->tpl_vars['row']->value['apm'];?>
 </td>
 						<td style="text-align: right">
-							<button type="button" class="btn btn-success btn-circle" action="modificar" title="Modificar" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
+							<button type="button" class="btn btn-success btn-circle" action="modificar" title="Modificar" estudiante='<?php echo $_smarty_tpl->tpl_vars['row']->value['idEstudiante'];?>
 '><i class="fa fa-pencil"></i></button>
 							<button type="button" class="btn btn-danger btn-circle" action="eliminar" title="Eliminar" estudiante="<?php echo $_smarty_tpl->tpl_vars['row']->value['idEstudiante'];?>
 "><i class="fa fa-times"></i></button>

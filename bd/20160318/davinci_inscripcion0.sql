@@ -18,37 +18,28 @@ USE `davinci`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `responsable`
+-- Table structure for table `inscripcion`
 --
 
-DROP TABLE IF EXISTS `responsable`;
+DROP TABLE IF EXISTS `inscripcion`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `responsable` (
-  `idResponsable` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `idParentesco` smallint(6) NOT NULL,
-  `nombre` varchar(45) DEFAULT NULL,
-  `app` varchar(45) DEFAULT NULL,
-  `apm` varchar(45) DEFAULT NULL,
-  `ocupacion` varchar(45) DEFAULT NULL,
-  `empresa` varchar(45) DEFAULT NULL,
-  `telefono` varchar(12) DEFAULT NULL,
-  `extension` varchar(6) DEFAULT NULL,
-  `telefonoContacto` varchar(12) DEFAULT NULL,
-  `celular` varchar(12) DEFAULT NULL,
-  `correo` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`idResponsable`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+CREATE TABLE `inscripcion` (
+  `idInscripcion` bigint(20) unsigned NOT NULL,
+  `idEstudiante` bigint(20) unsigned NOT NULL,
+  `idGrupo` int(10) unsigned NOT NULL,
+  `fecha` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`idInscripcion`,`idGrupo`,`idEstudiante`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `responsable`
+-- Dumping data for table `inscripcion`
 --
 
-LOCK TABLES `responsable` WRITE;
-/*!40000 ALTER TABLE `responsable` DISABLE KEYS */;
-INSERT INTO `responsable` VALUES (1,1,'Papa de hugo','Santiago','Sin apellido','Ocupacion','Empresa','1234567889','12','1234567898','9515705278','');
-/*!40000 ALTER TABLE `responsable` ENABLE KEYS */;
+LOCK TABLES `inscripcion` WRITE;
+/*!40000 ALTER TABLE `inscripcion` DISABLE KEYS */;
+/*!40000 ALTER TABLE `inscripcion` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -60,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-17 14:04:09
+-- Dump completed on 2016-03-18 13:57:15

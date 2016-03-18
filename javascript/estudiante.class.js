@@ -79,4 +79,19 @@ TEstudiante = function(){
 			}
 		}, "json");
 	};
+	
+	this.getData = function(id, fn){
+		if (fn.before !== undefined)
+			fn.before();
+			
+		$.post('index.php?mod=cestudiantes&action=getData', {
+				"estudiante": id
+			}, function(data){
+				if (data.band == 'false')
+					console.log(data.mensaje);
+					
+				if (fn.after !== undefined)
+					fn.after(data);
+			}, "json");
+	}
 }

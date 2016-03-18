@@ -208,5 +208,27 @@ $conf['cresponsables'] = array(
 	'controlador' => 'responsables.php',
 	'descripcion' => 'Controlador de responsables',
 	'seguridad' => true,
-	'capa' => LAYOUT_AJAX)
+	'capa' => LAYOUT_AJAX);
+	
+$conf['inscripciones'] = array(
+	'controlador' => 'inscripciones.php',
+	'vista' => 'inscripciones/panel.tpl',
+	'descripcion' => 'Inscripciones',
+	'seguridad' => true,
+	#'js' => array('nivel.class.js'),
+	'jsTemplate' => array('inscripciones.js'),
+	'capa' => LAYOUT_DEFECTO);
+	
+$conf['listaInscripciones'] = array(
+	'controlador' => 'inscripciones.php',
+	'vista' => 'inscripciones/lista.tpl',
+	'descripcion' => 'Lista de de inscripciones',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['cinscripciones'] = array(
+	'controlador' => 'inscripciones.php',
+	'descripcion' => 'Controlador de inscripciones',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
 ?>

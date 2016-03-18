@@ -101,7 +101,7 @@
 						</a>
 						<ul class="treeview-menu">
 							<li {if $PAGE.modulo eq 'estudiantes'}class="active"{/if}><a href="estudiantes"><i class="fa fa-graduation-cap"></i> Registro</a></li>
-							
+							<li {if $PAGE.modulo eq 'inscripciones'}class="active"{/if}><a href="inscripciones"><i class="fa fa-book"></i> Inscripciones</a></li>
 						</ul>
 						<a href="#">
 							<span>Administración</span> <i class="fa fa-angle-left pull-right"></i>

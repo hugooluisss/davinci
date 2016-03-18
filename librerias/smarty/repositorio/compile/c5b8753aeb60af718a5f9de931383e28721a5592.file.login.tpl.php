@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-03-15 09:02:07
+<?php /* Smarty version Smarty-3.1.11, created on 2016-03-18 08:56:42
          compiled from "templates/plantillas/layout/login.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:44077714855e5a55ba527b5-54558036%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c5b8753aeb60af718a5f9de931383e28721a5592' => 
     array (
       0 => 'templates/plantillas/layout/login.tpl',
-      1 => 1457984103,
+      1 => 1458230353,
       2 => 'file',
     ),
   ),
@@ -128,7 +128,8 @@ plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
     <script src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
 plugins/knob/jquery.knob.js"></script>
     <!-- daterangepicker -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+    <script src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
+moment.min.js"></script>
     <script src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
 plugins/daterangepicker/daterangepicker.js"></script>
     <!-- datepicker -->
@@ -159,7 +160,8 @@ $_smarty_tpl->tpl_vars['script']->_loop = true;
 	<?php } ?>
     
     <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['debug']){?>
-    	<script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.3.1/less.min.js" type="text/javascript"></script>
+    	<script src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
+plugins/less.min.js"></script>
     <?php }else{ ?>
     
     

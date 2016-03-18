@@ -648,4 +648,20 @@ class TEstudiante{
 		
 		return $rs?true:false;
 	}
+	
+	/**
+	* Retorna el id del último nivel
+	*
+	* @autor Hugo
+	* @access public
+	* @return int Último nivel educativo
+	*/
+	
+	public function getUltimoNivel(){
+		$db = TBase::conectaDB();
+		
+		$rs = $db->Execute("select idNivel from estudiantenivel where idEstudiante = ".$this->getId()." and estado = 'A' order by idNivel desc, anio desc");
+		
+		return $rs->fields['idNivel'];
+	}
 }

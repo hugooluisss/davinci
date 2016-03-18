@@ -18,34 +18,29 @@ USE `davinci`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `estudiantenivel`
+-- Table structure for table `responsableestudiante`
 --
 
-DROP TABLE IF EXISTS `estudiantenivel`;
+DROP TABLE IF EXISTS `responsableestudiante`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `estudiantenivel` (
-  `matricula` varchar(11) NOT NULL,
+CREATE TABLE `responsableestudiante` (
+  `idResponsable` int(10) unsigned NOT NULL,
   `idEstudiante` bigint(20) unsigned NOT NULL,
-  `idNivel` smallint(5) unsigned NOT NULL,
-  `anio` year(4) NOT NULL,
-  `estado` char(1) DEFAULT 'A',
-  PRIMARY KEY (`matricula`),
-  KEY `key_nivelEstudiante` (`idEstudiante`,`idNivel`),
-  KEY `fk_nivel_idx` (`idNivel`),
-  CONSTRAINT `fk_estudiante` FOREIGN KEY (`idEstudiante`) REFERENCES `estudiante` (`idEstudiante`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_nivelnivel` FOREIGN KEY (`idNivel`) REFERENCES `nivel` (`idNivel`) ON DELETE CASCADE ON UPDATE CASCADE
+  `idParentesco` smallint(5) unsigned NOT NULL,
+  PRIMARY KEY (`idResponsable`,`idEstudiante`,`idParentesco`),
+  UNIQUE KEY `unicoParentesco` (`idEstudiante`,`idParentesco`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `estudiantenivel`
+-- Dumping data for table `responsableestudiante`
 --
 
-LOCK TABLES `estudiantenivel` WRITE;
-/*!40000 ALTER TABLE `estudiantenivel` DISABLE KEYS */;
-INSERT INTO `estudiantenivel` VALUES ('P2016H00009',16,1,2016,'A'),('P2016H00010',17,1,2016,'A');
-/*!40000 ALTER TABLE `estudiantenivel` ENABLE KEYS */;
+LOCK TABLES `responsableestudiante` WRITE;
+/*!40000 ALTER TABLE `responsableestudiante` DISABLE KEYS */;
+INSERT INTO `responsableestudiante` VALUES (2,16,1),(2,16,2),(2,16,3),(2,20,1);
+/*!40000 ALTER TABLE `responsableestudiante` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -57,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-17 14:04:09
+-- Dump completed on 2016-03-18 13:55:56
