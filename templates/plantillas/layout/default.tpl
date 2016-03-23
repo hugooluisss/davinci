@@ -10,7 +10,7 @@
 		<link rel="stylesheet/less" type="text/css" href="{$PAGE.ruta}build/less/AdminLTE.less" />
 		<link rel="stylesheet/less" type="text/css" href="{$PAGE.ruta}build/less/skins/_all-skins.less" />
 		{else}
-		<link rel="stylesheet" href="{$PAGE.ruta}dist/css/AdminLTE.css">
+		<link rel="stylesheet" href="{$PAGE.ruta}dist/css/AdminLTE.min.css">
 		<link rel="stylesheet" type="text/css" href="{$PAGE.ruta}dist/css/skins/_all-skins.css" />
 		{/if}
 
@@ -103,6 +103,17 @@
 							<li {if $PAGE.modulo eq 'estudiantes'}class="active"{/if}><a href="estudiantes"><i class="fa fa-graduation-cap"></i> Registro</a></li>
 							<li {if $PAGE.modulo eq 'inscripciones'}class="active"{/if}><a href="inscripciones"><i class="fa fa-book"></i> Inscripciones</a></li>
 						</ul>
+					</li>
+					<li class="active treeview">
+						<a href="#">
+							<span>Servicios Especiales</span> <i class="fa fa-angle-left pull-right"></i>
+						</a>
+						<ul class="treeview-menu">
+							<li {if $PAGE.modulo eq 'optativas'}class="active"{/if}><a href="optativas"><i class="fa fa-bookmark"></i> Clases optativas</a></li>
+							<li {if $PAGE.modulo eq 'rutas'}class="active"{/if}><a href="rutas"><i class="fa fa-bus"></i> Transporte</a></li>
+						</ul>
+					</li>
+					<li class="active treeview">
 						<a href="#">
 							<span>Administración</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-03-18 09:28:04
+<?php /* Smarty version Smarty-3.1.11, created on 2016-03-20 23:08:54
          compiled from "templates/plantillas/modulos/estudiantes/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:113658614856eb97d41d7586-94246626%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '38978d6fd7c7b8c2128525ee867939c47a4920a5' => 
     array (
       0 => 'templates/plantillas/modulos/estudiantes/lista.tpl',
-      1 => 1458314540,
+      1 => 1458331542,
       2 => 'file',
     ),
   ),

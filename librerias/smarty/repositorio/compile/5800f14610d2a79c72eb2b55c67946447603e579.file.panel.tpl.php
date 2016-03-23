@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-03-18 12:49:14
+<?php /* Smarty version Smarty-3.1.11, created on 2016-03-21 01:23:19
          compiled from "templates/plantillas/modulos/inscripciones/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:168411904556ec46c130bb74-73858816%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5800f14610d2a79c72eb2b55c67946447603e579' => 
     array (
       0 => 'templates/plantillas/modulos/inscripciones/panel.tpl',
-      1 => 1458326953,
+      1 => 1458544997,
       2 => 'file',
     ),
   ),
@@ -52,10 +52,6 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 			</div>
 		</div>
 	</div>
-	<div class="box-footer">
-		<button class="btn btn-info pull-right">Buscar</button>
-		<input type="hidden" id="id"/>
-	</div>
 </div>
 
 <div class="box">
@@ -68,7 +64,7 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 		</div>
 		<br /><br /><br />
 		<div class="row">
-			<div id="lista" class="col-xs-12">asdf</div>
+			<div id="lista" class="col-xs-12"></div>
 		</div>
 	</div>
 </div>

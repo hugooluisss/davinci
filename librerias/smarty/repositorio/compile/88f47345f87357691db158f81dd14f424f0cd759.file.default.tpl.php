@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-03-18 12:16:20
+<?php /* Smarty version Smarty-3.1.11, created on 2016-03-23 01:26:49
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:200058433755e4995bd4c484-25432014%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1458324979,
+      1 => 1458718008,
       2 => 'file',
     ),
   ),
@@ -40,7 +40,7 @@ build/less/AdminLTE.less" />
 build/less/skins/_all-skins.less" />
 		<?php }else{ ?>
 		<link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
-dist/css/AdminLTE.css">
+dist/css/AdminLTE.min.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
 dist/css/skins/_all-skins.css" />
 		<?php }?>
@@ -149,6 +149,17 @@ plugins/upload/css/jquery.fileupload.css">
 							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='estudiantes'){?>class="active"<?php }?>><a href="estudiantes"><i class="fa fa-graduation-cap"></i> Registro</a></li>
 							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='inscripciones'){?>class="active"<?php }?>><a href="inscripciones"><i class="fa fa-book"></i> Inscripciones</a></li>
 						</ul>
+					</li>
+					<li class="active treeview">
+						<a href="#">
+							<span>Servicios Especiales</span> <i class="fa fa-angle-left pull-right"></i>
+						</a>
+						<ul class="treeview-menu">
+							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='optativas'){?>class="active"<?php }?>><a href="optativas"><i class="fa fa-bookmark"></i> Clases optativas</a></li>
+							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='rutas'){?>class="active"<?php }?>><a href="rutas"><i class="fa fa-bus"></i> Transporte</a></li>
+						</ul>
+					</li>
+					<li class="active treeview">
 						<a href="#">
 							<span>Administración</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>

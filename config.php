@@ -215,7 +215,7 @@ $conf['inscripciones'] = array(
 	'vista' => 'inscripciones/panel.tpl',
 	'descripcion' => 'Inscripciones',
 	'seguridad' => true,
-	#'js' => array('nivel.class.js'),
+	'js' => array('estudiante.class.js'),
 	'jsTemplate' => array('inscripciones.js'),
 	'capa' => LAYOUT_DEFECTO);
 	
@@ -229,6 +229,66 @@ $conf['listaInscripciones'] = array(
 $conf['cinscripciones'] = array(
 	'controlador' => 'inscripciones.php',
 	'descripcion' => 'Controlador de inscripciones',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+/*Optativas*/
+$conf['optativas'] = array(
+	'controlador' => 'optativas.php',
+	'vista' => 'optativas/panel.tpl',
+	'descripcion' => 'Administración de clases optativas',
+	'seguridad' => true,
+	'js' => array('optativa.class.js'),
+	'jsTemplate' => array('optativas.js'),
+	'capa' => LAYOUT_DEFECTO);
+
+$conf['listaOptativas'] = array(
+	'controlador' => 'optativas.php',
+	'vista' => 'optativas/lista.tpl',
+	'descripcion' => 'Lista de clases optativas',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['coptativas'] = array(
+	'controlador' => 'optativas.php',
+	'descripcion' => 'Controlador de clases optativas',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['listaEstudiantesOptativa'] = array(
+	'controlador' => 'optativas.php',
+	'vista' => 'optativas/listaEstudiantes.tpl',
+	'descripcion' => 'Lista de estudiantes inscritos en el curso optativo',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+/*Rutas*/
+$conf['rutas'] = array(
+	'controlador' => 'rutas.php',
+	'vista' => 'rutas/panel.tpl',
+	'descripcion' => 'Administración de rutas',
+	'seguridad' => true,
+	'js' => array('ruta.class.js'),
+	'jsTemplate' => array('rutas.js'),
+	'capa' => LAYOUT_DEFECTO);
+
+$conf['listaRutas'] = array(
+	'controlador' => 'rutas.php',
+	'vista' => 'rutas/lista.tpl',
+	'descripcion' => 'Lista de rutas',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['crutas'] = array(
+	'controlador' => 'rutas.php',
+	'descripcion' => 'Controlador de rutas',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['listaEstudiantesRutas'] = array(
+	'controlador' => 'rutas.php',
+	'vista' => 'rutas/listaEstudiantes.tpl',
+	'descripcion' => 'Lista de estudiantes registrados para la ruta',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
 ?>

@@ -94,4 +94,35 @@ TEstudiante = function(){
 					fn.after(data);
 			}, "json");
 	}
+	
+	this.inscribe = function(id, grupo, fn){
+		if (fn.before !== undefined)
+			fn.before();
+			
+		$.post('index.php?mod=cinscripciones&action=inscribir', {
+				"estudiante": id,
+				"grupo": grupo
+			}, function(data){
+				if (data.band == 'false')
+					console.log(data.mensaje);
+					
+				if (fn.after !== undefined)
+					fn.after(data);
+			}, "json");
+	}
+	
+	this.quitarInscripcion = function(inscripcion, fn){
+		if (fn.before !== undefined)
+			fn.before();
+			
+		$.post('index.php?mod=cinscripciones&action=delInscribir', {
+				"inscripcion": inscripcion
+			}, function(data){
+				if (data.band == 'false')
+					console.log(data.mensaje);
+					
+				if (fn.after !== undefined)
+					fn.after(data);
+			}, "json");
+	}
 }

@@ -16,26 +16,28 @@ switch($objModulo->getId()){
 	case 'listaInscripciones':
 		$db = TBase::conectaDB();
 		
-		$rs = $db->Execute("select * from inscripcion where idGrupo = ".$_GET['grupo']);
+		$rs = $db->Execute("select * from inscripcion a join estudiante b using(idEstudiante) where idGrupo = ".$_GET['grupo']);
 		$datos = array();
 		while(!$rs->EOF){
 			array_push($datos, $rs->fields);
 			$rs->moveNext();
 		}
 		
-		$smarty->assign("grupos", $datos);
+		$smarty->assign("lista", $datos);
 	break;
 	case 'cinscripciones':
 		switch($objModulo->getAction()){
 			case 'estudiantes':
 				$db = TBase::conectaDB();
-				$rs = $db->Execute("select * from estudiante a where a.nombre like '%".$_GET['term']."%'");
+				$rsGrupo = $db->Execute("select idNivel from grupo a join grado b using(idGrado) where idGrupo = ".$_GET['grupo']);
+				
+				$rs = $db->Execute("select * from estudiante a join estudiantenivel b using(idEstudiante) where (a.nombre like '%".$_GET['term']."%' or a.app like '%".$_GET['term']."%' or a.apm like '%".$_GET['term']."%' or concat(a.nombre, ' ', a.apm, ' ', a.apm) like '%".$_GET['term']."%' or concat(app, ' ', apm, ' ', a.nombre) like '%".$_GET['term']."%') and b.estado = 'A' and idEstudiante not in (select idEstudiante from inscripcion where idGrupo = ".$_GET['grupo'].") and b.idNivel = ".$rsGrupo->fields['idNivel']);
 				
 				$datos = array();
 				while(!$rs->EOF){
 					$el = array();
 					$el['id'] = $rs->fields['idEstudiante'];
-					$el['label'] = $rs->fields['nombre'].' '.$rs->fields['app'].' '.$rs->fields['apm'];
+					$el['label'] = $rs->fields['matricula'].' - '.$rs->fields['nombre'].' '.$rs->fields['app'].' '.$rs->fields['apm'];
 					$el['identificador'] = $rs->fields['idEstudiante'];
 					foreach($rs->fields as $key => $val)
 						$el[$key] = $val;
@@ -45,6 +47,15 @@ switch($objModulo->getId()){
 				}
 				
 				echo json_encode($datos);
+			break;
+			case 'inscribir':
+				$estudiante = new TEstudiante($_POST['estudiante']);
+				echo json_encode(array("band" => $estudiante->inscribe($_POST['grupo'])));
+			break;
+			
+			case 'delInscribir':
+				$estudiante = new TEstudiante();
+				echo json_encode(array("band" => $estudiante->desInscribe($_POST['inscripcion'])));
 			break;
 		}
 	break;

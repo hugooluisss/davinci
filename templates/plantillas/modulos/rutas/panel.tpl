@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-lg-12">
-		<h1 class="page-header">Administración de grupos</h1>
+		<h1 class="page-header">Administración de rutas</h1>
 	</div>
 </div>
 
@@ -23,7 +23,7 @@
 					<div class="form-group">
 						<label for="selCiclo" class="col-lg-2">Ciclo</label>
 						<div class="col-lg-3">
-							<select id="selCiclo" name="selCiclo">
+							<select id="selCiclo" name="selCiclo" class="form-control">
 								{foreach from=$ciclos item="row"}
 								<option value="{$row.idCiclo}">{$row.nombre}
 								{/foreach}
@@ -31,28 +31,15 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="selGrado" class="col-lg-2">Nivel</label>
-						<div class="col-lg-3">
-							<select id="selGrado" name="selGrado">
-								{foreach from=$grados item="row"}
-								<option value="{$row.idGrado}">{$row.nivel} - {$row.nombre}
-								{/foreach}
-							</select>
-						</div>
-					</div>
-					<div class="form-group">
 						<label for="txtNombre" class="col-lg-2">Nombre</label>
 						<div class="col-lg-8">
-							<input class="form-control" id="txtNombre" name="txtNombre">
+							<input class="form-control" id="txtNombre" name="txtNombre" autocomplete="off">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="selEstado" class="col-lg-2">Estado</label>
-						<div class="col-lg-3">
-							<select id="selEstado" name="selEstado">
-								<option value="A">Activo
-								<option value="C">Cerrado
-							</select>
+						<label for="txtDescripcion" class="col-lg-2">Descripcion</label>
+						<div class="col-lg-8">
+							<textarea id="txtDescripcion" name="txtDescripcion" class="form-control"></textarea>
 						</div>
 					</div>
 				</div>
@@ -65,3 +52,6 @@
 		</form>
 	</div>
 </div>
+
+
+{include file=$PAGE.rutaModulos|cat:'/modulos/rutas/modal.tpl'}

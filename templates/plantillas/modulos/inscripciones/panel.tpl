@@ -17,10 +17,6 @@
 			</div>
 		</div>
 	</div>
-	<div class="box-footer">
-		<button class="btn btn-info pull-right">Buscar</button>
-		<input type="hidden" id="id"/>
-	</div>
 </div>
 
 <div class="box">
@@ -33,7 +29,7 @@
 		</div>
 		<br /><br /><br />
 		<div class="row">
-			<div id="lista" class="col-xs-12">asdf</div>
+			<div id="lista" class="col-xs-12"></div>
 		</div>
 	</div>
 </div>

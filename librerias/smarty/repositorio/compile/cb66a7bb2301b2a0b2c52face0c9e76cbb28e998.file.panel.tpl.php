@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-03-17 22:20:44
+<?php /* Smarty version Smarty-3.1.11, created on 2016-03-23 01:18:59
          compiled from "templates/plantillas/modulos/estudiantes/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3892532656e3a0834c3184-47778352%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cb66a7bb2301b2a0b2c52face0c9e76cbb28e998' => 
     array (
       0 => 'templates/plantillas/modulos/estudiantes/panel.tpl',
-      1 => 1458245327,
+      1 => 1458659445,
       2 => 'file',
     ),
   ),
@@ -63,7 +63,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					<div id="listaResponsables" class="tab-pane fade in active">
 						<div class="box">
 							<div class="box-body">
-								asdf2
+								
 							</div>
 						</div>
 					</div>

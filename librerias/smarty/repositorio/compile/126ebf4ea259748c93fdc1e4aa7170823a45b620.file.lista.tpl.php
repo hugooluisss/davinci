@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-03-18 12:48:29
+<?php /* Smarty version Smarty-3.1.11, created on 2016-03-21 01:28:47
          compiled from "templates/plantillas/modulos/inscripciones/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:80539154356ec4d7d56f6a2-68468404%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '126ebf4ea259748c93fdc1e4aa7170823a45b620' => 
     array (
       0 => 'templates/plantillas/modulos/inscripciones/lista.tpl',
-      1 => 1458326413,
+      1 => 1458545324,
       2 => 'file',
     ),
   ),
@@ -15,14 +15,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.11',
+  'unifunc' => 'content_56ec4d7d59bc20_61683221',
   'variables' => 
   array (
     'lista' => 0,
     'row' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.11',
-  'unifunc' => 'content_56ec4d7d59bc20_61683221',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_56ec4d7d59bc20_61683221')) {function content_56ec4d7d59bc20_61683221($_smarty_tpl) {?><table id="tblEstudiantes" class="table table-bordered table-hover">
 	<thead>
@@ -46,9 +46,7 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
  <?php echo $_smarty_tpl->tpl_vars['row']->value['apm'];?>
 </td>
 				<td style="text-align: right">
-					<button type="button" class="btn btn-success btn-circle" action="modificar" title="Modificar" estudiante='<?php echo $_smarty_tpl->tpl_vars['row']->value['idEstudiante'];?>
-'><i class="fa fa-pencil"></i></button>
-					<button type="button" class="btn btn-danger btn-circle" action="eliminar" title="Eliminar" estudiante="<?php echo $_smarty_tpl->tpl_vars['row']->value['idEstudiante'];?>
+					<button type="button" class="btn btn-danger btn-circle" action="eliminar" title="Eliminar" inscripcion="<?php echo $_smarty_tpl->tpl_vars['row']->value['idInscripcion'];?>
 "><i class="fa fa-times"></i></button>
 				</td>
 			</tr>

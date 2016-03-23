@@ -37,7 +37,7 @@
 					<div id="listaResponsables" class="tab-pane fade in active">
 						<div class="box">
 							<div class="box-body">
-								asdf2
+								
 							</div>
 						</div>
 					</div>

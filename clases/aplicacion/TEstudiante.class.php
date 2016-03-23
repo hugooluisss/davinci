@@ -658,10 +658,49 @@ class TEstudiante{
 	*/
 	
 	public function getUltimoNivel(){
+		if ($this->getId() == '') return false;
+		
 		$db = TBase::conectaDB();
 		
 		$rs = $db->Execute("select idNivel from estudiantenivel where idEstudiante = ".$this->getId()." and estado = 'A' order by idNivel desc, anio desc");
 		
 		return $rs->fields['idNivel'];
+	}
+	
+	/**
+	* Inscribe a un estudiante
+	*
+	* @autor Hugo
+	* @access public
+	* @return boolean True si lo hizo
+	*/
+	
+	public function inscribe($grupo = ''){
+		if ($this->getId() == '') return false;
+		if ($grupo == '') return false;
+		
+		$db = TBase::conectaDB();
+		
+		$rs = $db->Execute("insert into inscripcion(idEstudiante, idGrupo) values (".$this->getId().", ".$grupo.")");
+		
+		return $rs?true:false;
+	}
+	
+	/**
+	* Quita la inscripcion
+	*
+	* @autor Hugo
+	* @access public
+	* @return boolean True si lo hizo
+	*/
+	
+	public function desInscribe($inscripcion = ''){
+		if ($inscripcion == '') return false;
+		
+		$db = TBase::conectaDB();
+		
+		$rs = $db->Execute("delete from inscripcion where idInscripcion = ".$inscripcion);
+		
+		return $rs?true:false;
 	}
 }
