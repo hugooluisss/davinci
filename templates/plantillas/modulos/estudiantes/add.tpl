@@ -86,10 +86,9 @@
 				<label for="selSanguineo" class="col-lg-2">Grupo sanguineo</label>
 				<div class="col-lg-2">
 					<select id="selSanguineo" name="selSanguineo" class="form-control">
-						<option value=""></option>
-					{foreach from=$gruposSanguineos item="row"}
-						<option value="{$row.idSanguineo}">{$row.abbr}
-					{/foreach}
+						{foreach from=$gruposSanguineos item="row"}
+							<option value="{$row.idSanguineo}">{$row.abbr}
+						{/foreach}
 					</select>
 				</div>
 			</div>
@@ -131,13 +130,13 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="txtNoInt" class="col-lg-2">Número interior</label>
-				<div class="col-lg-2">
-					<input class="form-control" id="txtNoInt" name="txtNoInt">
-				</div>
-				<label for="txtNoExt" class="col-lg-2 col-lg-offset-2">Número exterior</label>
+				<label for="txtNoExt" class="col-lg-2">Número exterior</label>
 				<div class="col-lg-2">
 					<input class="form-control" id="txtNoExt" name="txtNoExt">
+				</div>
+				<label for="txtNoInt" class="col-lg-2 col-lg-offset-2">Número interior</label>
+				<div class="col-lg-2">
+					<input class="form-control" id="txtNoInt" name="txtNoInt">
 				</div>
 			</div>
 			<div class="form-group">
@@ -149,6 +148,17 @@
 				<div class="col-lg-4">
 					<input class="form-control" id="txtDelegacion" name="txtDelegacion">
 				</div>
+			</div>
+			<hr />
+			<h2>Cuidados</h2>
+			<div class="row">
+				{foreach from=$cuidados item="row"}
+				<div class="col-xs-12 col-sm-4 col-md-3">
+					<div class="checkbox">
+							<label><input type="checkbox" value="{$row.idCuidado}" class="cuidados">{$row.nombre}</label>
+					</div>
+				</div>
+				{/foreach}
 			</div>
 		</div>
 		<div class="box-footer">

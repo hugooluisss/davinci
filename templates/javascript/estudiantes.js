@@ -67,21 +67,9 @@ $(document).ready(function(){
 				date: true
 			},
 			selEstadoNacimiento: "required",
-			txtEstatura:{
-				required: true,
-				number: true
-			},
-			txtPeso:{
-				required: true,
-				number: true
-			},
 			txtDireccion: "required",
 			txtNoInt: {
-				required: true,
-				digits: true
-			},
-			txtNoExt: {
-				digits: true
+				required: true
 			},
 			txtCodigoPostal: {
 				digits: true
@@ -102,21 +90,9 @@ $(document).ready(function(){
 				date: "Esta fecha no es válida"
 			},
 			selEstadoNacimiento: "Selecciona un estado de la lista",
-			txtEstatura:{
-				required: "Indica la estatura",
-				number: "Solo se aceptan números"
-			},
-			txtPeso:{
-				required: "Indica el peso",
-				number: "Solo se aceptan números"
-			},
 			txtDireccion: "Escribe la dirección",
 			txtNoInt: {
-				required: "Es requerido",
-				digits: "Solo se aceptan números"
-			},
-			txtNoExt: {
-				digits: "Solo se aceptan números"
+				required: "Es requerido"
 			},
 			txtCodigoPostal: "Solo se aceptan números",
 			txtDelegacion: "Escribe la delegación o municipio donde viven",
@@ -125,7 +101,15 @@ $(document).ready(function(){
 		submitHandler: function(form){
 			var obj = new TEstudiante;
 			
-			obj.guardar($("#frmAdd #id").val(), $("#frmAdd #selNivel").val(), $("#frmAdd #txtNombre").val(), $("#frmAdd #txtApp").val(), $("#frmAdd #txtApm").val(), $("#frmAdd #txtCURP").val(), $("#frmAdd #selSexo").val(), $("#frmAdd #txtNacimiento").val(), $("#frmAdd #selEstadoNacimiento").val(), $("#frmAdd #txtDireccion").val(), $("#frmAdd #txtNoExt").val(), $("#frmAdd #txtNoInt").val(), $("#frmAdd #txtColonia").val(), $("#frmAdd #txtCodigoPostal").val(), $("#frmAdd #txtDelegacion").val(), $("#frmAdd #txtEstatura").val(), $("#frmAdd #txtPeso").val(), $("#frmAdd #selIngreso").val(), $("#frmAdd #selSanguineo").val(), {
+			var cuidados = new Array();
+			$(".cuidados:checked").each(function(){
+				var cuidado = new Object();
+				
+				cuidado.id = $(this).val();
+				cuidados.push(cuidado);
+			});
+			
+			obj.guardar($("#frmAdd #id").val(), $("#frmAdd #selNivel").val(), $("#frmAdd #txtNombre").val(), $("#frmAdd #txtApp").val(), $("#frmAdd #txtApm").val(), $("#frmAdd #txtCURP").val(), $("#frmAdd #selSexo").val(), $("#frmAdd #txtNacimiento").val(), $("#frmAdd #selEstadoNacimiento").val(), $("#frmAdd #txtDireccion").val(), $("#frmAdd #txtNoExt").val(), $("#frmAdd #txtNoInt").val(), $("#frmAdd #txtColonia").val(), $("#frmAdd #txtCodigoPostal").val(), $("#frmAdd #txtDelegacion").val(), $("#frmAdd #txtEstatura").val(), $("#frmAdd #txtPeso").val(), $("#frmAdd #selIngreso").val(), $("#frmAdd #selSanguineo").val(), JSON.stringify(cuidados), {
 				before: function(){
 					$("#frmAdd input, #frmAdd select").prop("disabled", true);
 				},
@@ -170,6 +154,7 @@ $(document).ready(function(){
 								
 						
 						$("#frmAdd")[0].reset();
+						$(".cuidados").prop("checked", false);
 						$("#frmAdd #txtPapa").attr("identificador", "");
 						$("#frmAdd #txtMama").attr("identificador", "");
 						$("#frmAdd #txtTutor").attr("identificador", "");
@@ -197,6 +182,14 @@ $(document).ready(function(){
 			selParentesco: "required",
 			txtNombre: "required",
 			txtApp: "required",
+			txtTelefono: {
+				number: true,
+				phoneMX: true
+			},
+			txtTelefonoContacto: {
+				number: true,
+				phoneMX: true
+			},
 			txtCelular: {
 				required: true,
 				number: true,
@@ -210,6 +203,14 @@ $(document).ready(function(){
 			selEstadoNacimiento: "Selecciona el parentesco con el estudiante",
 			txtNombre: "Es necesario este campo",
 			txtApp: "Es necesario este campo",
+			txtTelefono: {
+				number: "Solo se aceptan números",
+				phoneMX: "El número telefónico no está correcto"
+			},
+			txtTelefonoContacto: {
+				number: "Solo se aceptan números",
+				phoneMX: "El número telefónico no está correcto"
+			},
 			txtCelular: {
 				required: "Es necesario este campo",
 				number: "Solo acepta números",
@@ -222,6 +223,7 @@ $(document).ready(function(){
 		submitHandler: function(form){
 			var obj = new TResponsable;
 			
+			
 			obj.add($("#frmAddParentesco #id").val(), $("#frmAddParentesco #selParentesco").val(), $("#frmAddParentesco #txtNombre").val(), $("#frmAddParentesco #txtApp").val(), $("#frmAddParentesco #txtApm").val(), $("#frmAddParentesco #txtOcupacion").val(), $("#frmAddParentesco #txtEmpresa").val(), $("#frmAddParentesco #txtTelefono").val(), $("#frmAddParentesco #txtTelefonoContacto").val(), $("#frmAddParentesco #txtExtension").val(), $("#frmAddParentesco #txtCelular").val(), $("#frmAddParentesco #txtCorreo").val(), {
 				before: function(){
 					$("#frmAddParentesco input, #frmAddParentesco select").prop("disabled", true);
@@ -230,12 +232,12 @@ $(document).ready(function(){
 					$("#frmAddParentesco input, #frmAddParentesco select").prop("disabled", false);
 					
 					if (resp.band == true){
-						listaResponsablesEstudiante();
+						listaResponsables();
 						$('#tabResponsables a[href="#listaResponsables"]').tab('show');
 						
 						if ($("#frmAddParentesco #id").val() == '')
 							if (confirm("¿Deseas establecer el parentesco con el estudiante?")){
-								var nombre = $("#frmAddParentesco #txtNombre").val() + ' ' + el.$("#frmAddParentesco #txtApp").val() + ' ' + $("#frmAddParentesco #txtApm").val();
+								var nombre = $("#frmAddParentesco #txtNombre").val() + ' ' + $("#frmAddParentesco #txtApp").val() + ' ' + $("#frmAddParentesco #txtApm").val();
 								var identificador = resp.identificador;
 								setParentesco(identificador, nombre);
 							}
@@ -385,8 +387,46 @@ $(document).ready(function(){
 						$("#dvInfo").hide(600);
 						
 						$('#panelTabs a[href="#add"]').tab('show');
+						el.cuidados.forEach(function(el){
+							$(".cuidados[value=" + el.idCuidado + "]").prop("checked", true);
+						});
+						
 					}
 				});
+			});
+			
+			$("[action=matricula]").click(function(){
+				var el = $(this);
+				
+				var matricula = prompt("Matricula nueva", el.attr("matricula"));
+				
+				if (matricula == '')
+					alert("Es necesario especificar una matrícula para hacer el cambio");
+				else if(matricula == el.attr("matricula"))
+					alert("No se realizará el cambio por que la nueva matrícula es la misma que la actual");
+				else{
+					var obj = new TEstudiante;
+					
+					obj.setMatricula(el.attr("estudiante"), matricula, {
+						before: function(){
+							
+						},
+						after: function(resp){
+							if (resp.band == true)
+								listaEstudiantes();
+							else
+								alert("Ocurrió un error al realizar el cambio de matrícula, verifique que no esté ocupada por otro estudiante");
+						}
+					});
+				}
+				
+			});
+			
+			$("[action=fotografia]").click(function(){
+				var el = $(this);
+				$("#fotoEstudiante").val(el.attr("estudiante"));
+				$("#winFotografia .elementos").empty();
+				$("#winFotografia").modal();
 			});
 			
 			$("#tblEstudiantes").DataTable({
@@ -400,5 +440,79 @@ $(document).ready(function(){
 			});
 
 		});
+	}
+});
+
+
+$(document).ready(function(){
+	$('#upload').fileupload({
+		// This function is called when a file is added to the queue
+		add: function (e, data) {
+		    var tpl = $('<li class="working list-group-item">'+
+			            '<input type="text" value="0" data-width="48" data-height="48" data-fgColor="#0788a5" data-readOnly="1" data-bgColor="#3e4043" />'+'<p></p><span></span></li>' );
+			            
+		     // Append the file name and file size
+		    tpl.find('p').text("img_" + $("#fotoEstudiante").val() + ".JPG").append('<i>' + formatFileSize(data.files[0].size) + '</i>');
+		
+		     // Add the HTML to the UL element
+			data.context = tpl.appendTo($('#upload .elementos'));
+			
+			// Initialize the knob plugin. This part can be ignored, if you are showing progress in some other way.
+			tpl.find('input').knob();
+			
+			// Listen for clicks on the cancel icon
+			tpl.find('span').click(function(){
+				if(tpl.hasClass('working')){
+					jqXHR.abort();
+				}
+				tpl.fadeOut(function(){
+					tpl.remove();
+				});
+			});
+		
+			// Automatically upload the file once it is added to the queue
+			var jqXHR = data.submit();
+		},
+		progress: function(e, data){
+		    // Calculate the completion percentage of the upload
+		    var progress = parseInt(data.loaded / data.total * 100, 10);
+		
+		    // Update the hidden input field and trigger a change
+		    // so that the jQuery knob plugin knows to update the dial
+		    data.context.find('input').val(progress).change();
+		
+		    if(progress == 100){
+		        data.context.removeClass('working');
+		        data.context.find('canvas').remove();
+		        data.context.find('input').remove();
+		        data.context.prepend($("<img />",{
+		        	src: 'repositorio/estudiantes/img_' + $("#fotoEstudiante").val() + ".JPG"
+		        }));
+		        
+		        alert("La imagen se subió con éxito, la página será recargada");
+		        location.reload(true);
+		    }
+		},
+		fail: function(){
+			alert("Ocurrió un problema en el servidor, contacta al administrador del sistema");
+			
+			console.log("Error en el servidor al subir el archivo, checa permisos de la carpeta repositorio");
+		}
+	});
+	
+	//Helper function for calculation of progress
+	function formatFileSize(bytes) {
+		if (typeof bytes !== 'number') {
+		    return '';
+		}
+		
+		if (bytes >= 1000000000) {
+		    return (bytes / 1000000000).toFixed(2) + ' GB';
+		}
+		
+		if (bytes >= 1000000) {
+		    return (bytes / 1000000).toFixed(2) + ' MB';
+		}
+		return (bytes / 1000).toFixed(2) + ' KB';
 	}
 });

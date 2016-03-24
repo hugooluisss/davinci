@@ -27,7 +27,7 @@ switch($objModulo->getId()){
 		
 		$smarty->assign("nivel", $datos);
 		
-		$rs = $db->Execute("select * from grupoSanguineo order by abbr");
+		$rs = $db->Execute("select * from grupoSanguineo");
 		
 		$datos = array();
 		while(!$rs->EOF){
@@ -37,11 +37,22 @@ switch($objModulo->getId()){
 		}
 		
 		$smarty->assign("gruposSanguineos", $datos);
+		
+		$rs = $db->Execute("select * from cuidado");
+		
+		$datos = array();
+		while(!$rs->EOF){
+			array_push($datos, $rs->fields);
+			
+			$rs->moveNext();
+		}
+		
+		$smarty->assign("cuidados", $datos);
 	break;
 	case 'listaEstudiantes':
 		$db = TBase::conectaDB();
 		
-		$rs = $db->Execute("select * from estudiante where estado = 'A'");
+		$rs = $db->Execute("select * from estudiante a left join estudiantenivel b using(idEstudiante) where a.estado = 'A' and b.estado = 'A'");
 		$datos = array();
 		while(!$rs->EOF){
 			$rs->fields['json'] = json_encode($rs->fields);
@@ -77,6 +88,8 @@ switch($objModulo->getId()){
 				$obj->setSanguineo($_POST['sanguineo']);
 				
 				if ($obj->guardar()){
+					$obj->setCuidados(json_decode($_POST['cuidados']));
+					
 					if ($ultimoNivel != $_POST['nivel']){
 						$nivel = new TNivel($_POST['nivel']);
 						$nivel->generaMatricula($_POST['anio'], $obj->getId());
@@ -124,7 +137,40 @@ switch($objModulo->getId()){
 				$aux = $db->Execute("select concat(nombre, ' ', app, ' ', apm) as nombre, idResponsable from responsableestudiante a join responsable b using(idResponsable) where idParentesco = 3 and idEstudiante = ".$_POST['estudiante']);
 				$rs->fields['responsables']['tutor'] = $aux->fields;
 				
+				$aux = $db->Execute("select idCuidado from estudiantecuidados where idEstudiante = ".$_POST['estudiante']);
+				$rs->fields['cuidados'] = array();
+				
+				while(!$aux->EOF){
+					array_push($rs->fields['cuidados'], $aux->fields);
+					$aux->moveNext();
+				}
+				
 				echo json_encode($rs->fields);
+			break;
+			case 'changeMatricula':
+				$obj = new TEstudiante($_POST['estudiante']);
+				$db = TBase::conectaDB();
+				
+				echo json_encode(array("band" => $obj->setMatricula($_POST['matricula'])));
+			break;
+			case 'uploadfile':
+				$extension = explode(".", $_FILES['upl']['name']);
+				$extension = strtoupper($extension[count($extension) - 1]);
+				
+				if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0 && $_POST['fotoEstudiante'] <> '' and $extension == 'JPG'){
+					if (file_exists("repositorio/estudiantes/img_".$_POST['fotoEstudiante'].".".$extension)){
+						if(!unlink("repositorio/estudiantes/img_".$_POST['fotoEstudiante'].".".$extension))
+							echo '{"status":"error"}';
+					}
+					
+					if(move_uploaded_file($_FILES['upl']['tmp_name'], "repositorio/estudiantes/img_".$_POST['fotoEstudiante'].".".$extension)){
+						chmod("repositorio/estudiantes/img_".$_POST['fotoEstudiante'].".".$extension, 0777);
+						echo '{"status":"success"}';
+						exit;
+					}
+				}
+				
+				echo '{"status":"error"}';
 			break;
 		}
 	break;

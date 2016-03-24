@@ -178,6 +178,7 @@ $conf['cestudiantes'] = array(
 	'controlador' => 'estudiantes.php',
 	'descripcion' => 'Controlador de estudiantes',
 	'seguridad' => true,
+	'debugSeg' => false,
 	'capa' => LAYOUT_AJAX);
 
 /*Niveles*/

@@ -18,7 +18,23 @@ TEstudiante = function(){
 			}, "json");
 	}
 	
-	this.guardar = function(id, nivel, nombre, app, apm, curp, sexo, nacimiento, estadoNac, calle, noExt, noInt, colonia, codigoPostal, delegacion, estatura, peso, anio, sanguineo, fn){
+	this.setMatricula = function(estudiante, matricula, fn){
+		if (fn.before !== undefined)
+			fn.before();
+			
+		$.post('index.php?mod=cestudiantes&action=changeMatricula', {
+				"estudiante": estudiante,
+				"matricula": matricula
+			}, function(data){
+				if (data.band == 'false')
+					console.log(data.mensaje);
+					
+				if (fn.after !== undefined)
+					fn.after(data);
+			}, "json");
+	}
+	
+	this.guardar = function(id, nivel, nombre, app, apm, curp, sexo, nacimiento, estadoNac, calle, noExt, noInt, colonia, codigoPostal, delegacion, estatura, peso, anio, sanguineo, cuidados, fn){
 		if (fn.before !== undefined)
 			fn.before();
 			
@@ -41,7 +57,8 @@ TEstudiante = function(){
 				"estatura": estatura, 
 				"peso": peso, 
 				"anio": anio,
-				"sanguineo": sanguineo
+				"sanguineo": sanguineo,
+				"cuidados": cuidados
 			}, function(data){
 				if (data.band == 'false')
 					console.log(data.mensaje);

@@ -625,6 +625,29 @@ class TEstudiante{
 	}
 	
 	/**
+	* Establece la matricula
+	*
+	* @autor Hugo
+	* @access public
+	* @return string matricula
+	*/
+	
+	public function setMatricula($matricula = ''){
+		if ($this->getId() == '') return false;
+		if ($matricula == '') return false;
+		
+		$db = TBase::conectaDB();
+		
+		$rs = $db->Execute("select idNivel from estudiantenivel where matricula = '".$matricula."' and not idEstudiante = ".$this->getId());
+		
+		if (!$rs->EOF) return false;
+		
+		$rs = $db->Execute("update estudiantenivel set matricula = '".$matricula."' where idEstudiante = ".$this->getId());
+		
+		return $rs?true:false;
+	}
+	
+	/**
 	* Establece el parentesco con el estudiante
 	*
 	* @autor Hugo
@@ -702,5 +725,26 @@ class TEstudiante{
 		$rs = $db->Execute("delete from inscripcion where idInscripcion = ".$inscripcion);
 		
 		return $rs?true:false;
+	}
+	
+	/**
+	* Establece los cuidados del estudiante
+	*
+	* @autor Hugo
+	* @access public
+	* @return boolean True si lo hizo
+	*/
+	
+	public function setCuidados($cuidados){
+		if ($this->getId() == '') return false;
+		
+		$db = TBase::conectaDB();
+		$db->Execute("delete from estudiantecuidados where idEstudiante = ".$this->getId());
+		
+		foreach($cuidados as $cuidado){
+			$rs = $db->Execute("insert into estudiantecuidados (idEstudiante, idCuidado) values (".$this->getId().", ".$cuidado->id.")");
+		}
+		
+		return true;
 	}
 }

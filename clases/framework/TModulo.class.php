@@ -117,4 +117,8 @@ class TModulo{
 	public function getAction(){
 		return $_GET['action'];
 	}
+	
+	public function getDebugSeguridad(){
+		return $this->debugSeg == false?false:true;
+	}
 }

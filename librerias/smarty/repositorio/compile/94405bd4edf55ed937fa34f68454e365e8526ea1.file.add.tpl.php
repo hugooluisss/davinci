@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-03-18 08:57:20
+<?php /* Smarty version Smarty-3.1.11, created on 2016-03-24 16:55:00
          compiled from "templates/plantillas/modulos/estudiantes/add.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:108640278856e3a3b81f0cf5-28355239%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '94405bd4edf55ed937fa34f68454e365e8526ea1' => 
     array (
       0 => 'templates/plantillas/modulos/estudiantes/add.tpl',
-      1 => 1458312864,
+      1 => 1458860097,
       2 => 'file',
     ),
   ),
@@ -25,6 +25,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'anio2' => 0,
     'estados' => 0,
     'gruposSanguineos' => 0,
+    'cuidados' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -131,16 +132,15 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 				<label for="selSanguineo" class="col-lg-2">Grupo sanguineo</label>
 				<div class="col-lg-2">
 					<select id="selSanguineo" name="selSanguineo" class="form-control">
-						<option value=""></option>
-					<?php  $_smarty_tpl->tpl_vars["row"] = new Smarty_Variable; $_smarty_tpl->tpl_vars["row"]->_loop = false;
+						<?php  $_smarty_tpl->tpl_vars["row"] = new Smarty_Variable; $_smarty_tpl->tpl_vars["row"]->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['gruposSanguineos']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars["row"]->key => $_smarty_tpl->tpl_vars["row"]->value){
 $_smarty_tpl->tpl_vars["row"]->_loop = true;
 ?>
-						<option value="<?php echo $_smarty_tpl->tpl_vars['row']->value['idSanguineo'];?>
+							<option value="<?php echo $_smarty_tpl->tpl_vars['row']->value['idSanguineo'];?>
 "><?php echo $_smarty_tpl->tpl_vars['row']->value['abbr'];?>
 
-					<?php } ?>
+						<?php } ?>
 					</select>
 				</div>
 			</div>
@@ -182,13 +182,13 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="txtNoInt" class="col-lg-2">Número interior</label>
-				<div class="col-lg-2">
-					<input class="form-control" id="txtNoInt" name="txtNoInt">
-				</div>
-				<label for="txtNoExt" class="col-lg-2 col-lg-offset-2">Número exterior</label>
+				<label for="txtNoExt" class="col-lg-2">Número exterior</label>
 				<div class="col-lg-2">
 					<input class="form-control" id="txtNoExt" name="txtNoExt">
+				</div>
+				<label for="txtNoInt" class="col-lg-2 col-lg-offset-2">Número interior</label>
+				<div class="col-lg-2">
+					<input class="form-control" id="txtNoInt" name="txtNoInt">
 				</div>
 			</div>
 			<div class="form-group">
@@ -200,6 +200,23 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 				<div class="col-lg-4">
 					<input class="form-control" id="txtDelegacion" name="txtDelegacion">
 				</div>
+			</div>
+			<hr />
+			<h2>Cuidados</h2>
+			<div class="row">
+				<?php  $_smarty_tpl->tpl_vars["row"] = new Smarty_Variable; $_smarty_tpl->tpl_vars["row"]->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['cuidados']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars["row"]->key => $_smarty_tpl->tpl_vars["row"]->value){
+$_smarty_tpl->tpl_vars["row"]->_loop = true;
+?>
+				<div class="col-xs-12 col-sm-4 col-md-3">
+					<div class="checkbox">
+							<label><input type="checkbox" value="<?php echo $_smarty_tpl->tpl_vars['row']->value['idCuidado'];?>
+" class="cuidados"><?php echo $_smarty_tpl->tpl_vars['row']->value['nombre'];?>
+</label>
+					</div>
+				</div>
+				<?php } ?>
 			</div>
 		</div>
 		<div class="box-footer">
