@@ -163,8 +163,8 @@ $conf['estudiantes'] = array(
 	'vista' => 'estudiantes/panel.tpl',
 	'descripcion' => 'Administración de estudiantes',
 	'seguridad' => true,
-	'js' => array('estudiante.class.js', 'responsable.class.js'),
-	'jsTemplate' => array('estudiantes.js'),
+	'js' => array('estudiante.class.js', 'responsable.class.js', 'permiso.class.js'),
+	'jsTemplate' => array('permisos.js', 'estudiantes.js'),
 	'capa' => LAYOUT_DEFECTO);
 
 $conf['listaEstudiantes'] = array(
@@ -292,4 +292,19 @@ $conf['listaEstudiantesRutas'] = array(
 	'descripcion' => 'Lista de estudiantes registrados para la ruta',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
+
+/*Permisos*/
+$conf['listaPermisos'] = array(
+	'controlador' => 'permisos.php',
+	'vista' => 'permisos/lista.tpl',
+	'descripcion' => 'Lista de permisos',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['cpermisos'] = array(
+	'controlador' => 'permisos.php',
+	'descripcion' => 'Controlador de permisos',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+
 ?>

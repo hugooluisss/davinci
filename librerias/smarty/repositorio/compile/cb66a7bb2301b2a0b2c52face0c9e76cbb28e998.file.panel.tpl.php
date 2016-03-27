@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-03-24 15:41:26
+<?php /* Smarty version Smarty-3.1.11, created on 2016-03-25 12:03:41
          compiled from "templates/plantillas/modulos/estudiantes/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3892532656e3a0834c3184-47778352%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cb66a7bb2301b2a0b2c52face0c9e76cbb28e998' => 
     array (
       0 => 'templates/plantillas/modulos/estudiantes/panel.tpl',
-      1 => 1458855685,
+      1 => 1458929018,
       2 => 'file',
     ),
   ),
@@ -82,4 +82,19 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </div>
 
 <?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/estudiantes/winUpload.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
-<?php }} ?>
+
+
+<div id="winPermisos" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" data-toogle="modal">
+    <div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h1>Permisos</h1>
+			</div>
+			<div class="modal-body">
+				<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/permisos/panel.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
+			</div>
+		</div>
+    </div>
+</div><?php }} ?>

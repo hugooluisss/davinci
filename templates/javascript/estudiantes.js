@@ -429,6 +429,13 @@ $(document).ready(function(){
 				$("#winFotografia").modal();
 			});
 			
+			$("[action=permisos]").click(function(){
+				var el = $(this);
+				getListaPermisos(el.attr("estudiante"));
+				$("#permisos #estudiante").val(el.attr("estudiante"));
+				$("#winPermisos").modal();
+			});
+			
 			$("#tblEstudiantes").DataTable({
 				"responsive": true,
 				"language": espaniol,
