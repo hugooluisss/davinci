@@ -9,6 +9,7 @@
 class TOptativa{
 	private $idOptativa;
 	public $ciclo;
+	public $nivel;
 	private $nombre;
 	private $responsable;
 	
@@ -44,6 +45,9 @@ class TOptativa{
 			switch($field){
 				case 'idCiclo':
 					$this->ciclo = new TCiclo($val);
+				break;
+				case 'idNivel':
+					$this->nivel = new TNivel($val);
 				break;
 				default:
 					$this->$field = $val;
@@ -106,6 +110,20 @@ class TOptativa{
 	}
 	
 	/**
+	* Establece el nivel de educacion
+	*
+	* @autor Hugo
+	* @access public
+	* @param char $val Estado
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setNivel($val = ''){
+		$this->nivel = new TNivel($val);
+		return true;
+	}
+	
+	/**
 	* Establece el responsable
 	*
 	* @autor Hugo
@@ -141,10 +159,11 @@ class TOptativa{
 	
 	public function guardar(){
 		if ($this->ciclo->getId() == '') return false;
+		if ($this->nivel->getId() == '') return false;
 		$db = TBase::conectaDB();
 		
 		if ($this->getId() == ''){
-			$rs = $db->Execute("INSERT INTO optativa(idCiclo) VALUES(".$this->ciclo->getId().");");
+			$rs = $db->Execute("INSERT INTO optativa(idCiclo, idNivel) VALUES(".$this->ciclo->getId().", ".$this->nivel->getId().");");
 			if (!$rs) return false;
 				
 			$this->idOptativa = $db->Insert_ID();
@@ -157,6 +176,7 @@ class TOptativa{
 			SET
 				nombre = '".$this->getNombre()."',
 				responsable = '".$this->getResponsable()."',
+				idNivel = ".$this->nivel->getId().",
 				idCiclo = '".$this->ciclo->getId()."'
 			WHERE idOptativa = ".$this->getId());
 			

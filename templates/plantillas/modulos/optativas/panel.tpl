@@ -31,6 +31,16 @@
 						</div>
 					</div>
 					<div class="form-group">
+						<label for="selNivel" class="col-lg-2">Nivel</label>
+						<div class="col-lg-3">
+							<select id="selNivel" name="selNivel" class="form-control">
+								{foreach from=$niveles item="row"}
+								<option value="{$row.idNivel}">{$row.nombre}
+								{/foreach}
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
 						<label for="txtNombre" class="col-lg-2">Nombre</label>
 						<div class="col-lg-8">
 							<input class="form-control" id="txtNombre" name="txtNombre" autocomplete="off">

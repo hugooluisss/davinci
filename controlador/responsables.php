@@ -32,6 +32,7 @@ switch($objModulo->getId()){
 				$obj->setTelefonoContacto($_POST['telefonoContacto']);
 				$obj->setCelular($_POST['celular']);
 				$obj->setCorreo($_POST['correo']);
+				$obj->setPuesto($_POST['puesto']);
 				
 				echo json_encode(array("band" => $obj->guardar(), "identificador" => $obj->getId()));
 			break;

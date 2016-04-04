@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-03-21 01:28:47
+<?php /* Smarty version Smarty-3.1.11, created on 2016-04-02 09:06:55
          compiled from "templates/plantillas/modulos/inscripciones/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:80539154356ec4d7d56f6a2-68468404%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '126ebf4ea259748c93fdc1e4aa7170823a45b620' => 
     array (
       0 => 'templates/plantillas/modulos/inscripciones/lista.tpl',
-      1 => 1458545324,
+      1 => 1459609612,
       2 => 'file',
     ),
   ),
@@ -29,6 +29,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		<tr>
 			<th>#</th>
 			<th>Nombre</th>
+			<th>Folio</th>
 			<th>&nbsp;</th>
 		</tr>
 	</thead>
@@ -45,8 +46,15 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
  <?php echo $_smarty_tpl->tpl_vars['row']->value['app'];?>
  <?php echo $_smarty_tpl->tpl_vars['row']->value['apm'];?>
 </td>
+				<td class="text-right">
+					<input class="form-control folio text-right" value="<?php echo $_smarty_tpl->tpl_vars['row']->value['folio'];?>
+" inscripcion="<?php echo $_smarty_tpl->tpl_vars['row']->value['idInscripcion'];?>
+"/>
+				</td>
 				<td style="text-align: right">
-					<button type="button" class="btn btn-danger btn-circle" action="eliminar" title="Eliminar" inscripcion="<?php echo $_smarty_tpl->tpl_vars['row']->value['idInscripcion'];?>
+					<button type="button" class="btn btn-primary" action="constancia" title="Constancia de inscripcion" inscripcion="<?php echo $_smarty_tpl->tpl_vars['row']->value['idInscripcion'];?>
+"><i class="fa fa-file-pdf-o"></i></button>
+					<button type="button" class="btn btn-danger" action="eliminar" title="Eliminar" inscripcion="<?php echo $_smarty_tpl->tpl_vars['row']->value['idInscripcion'];?>
 "><i class="fa fa-times"></i></button>
 				</td>
 			</tr>

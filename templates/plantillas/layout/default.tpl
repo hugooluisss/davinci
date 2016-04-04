@@ -39,11 +39,11 @@
 	<div class="wrapper">
 		<header class="main-header">
 			<!-- Logo -->
-			<a href="#" class="logo">
+			<a href="panelPrincipal" class="logo">
 				<!-- mini logo for sidebar mini 50x50 pixels -->
 				<span class="logo-mini"><b>D</b>avinci</span>
 				<!-- logo for regular state and mobile devices -->
-				<span class="logo-lg">Colegio <b>Davinci</b></span>
+				<span class="logo-lg">Colegio <b>D</b>a <b>V</b>inci</span>
 			</a>
 			<!-- Header Navbar: style can be found in header.less -->
 			<nav class="navbar navbar-static-top" role="navigation">
@@ -104,15 +104,21 @@
 							<li {if $PAGE.modulo eq 'inscripciones'}class="active"{/if}><a href="inscripciones"><i class="fa fa-book"></i> Inscripciones</a></li>
 						</ul>
 					</li>
+					{if $PAGE.usuario->getIdTipo() neq 3}
 					<li class="active treeview">
 						<a href="#">
 							<span>Servicios Especiales</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
 						<ul class="treeview-menu">
+							
 							<li {if $PAGE.modulo eq 'optativas'}class="active"{/if}><a href="optativas"><i class="fa fa-bookmark"></i> Clases optativas</a></li>
+							{if $PAGE.usuario->getIdTipo() neq 2}
 							<li {if $PAGE.modulo eq 'rutas'}class="active"{/if}><a href="rutas"><i class="fa fa-bus"></i> Transporte</a></li>
+							{/if}
 						</ul>
 					</li>
+					{/if}
+					{if $PAGE.usuario->getIdTipo() eq 1}
 					<li class="active treeview">
 						<a href="#">
 							<span>Administración</span> <i class="fa fa-angle-left pull-right"></i>
@@ -122,17 +128,24 @@
 							
 						</ul>
 					</li>
+					{/if}
+					{if $PAGE.usuario->getIdTipo() neq 3}
 					<li class="active treeview">
 						<a href="#">
 							<span>Catálogos</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
 						<ul class="treeview-menu">
+							{if $PAGE.usuario->getIdTipo() neq 2}
 							<li {if $PAGE.modulo eq 'cicloescolar'}class="active"{/if}><a href="cicloescolar"><i class="fa fa-flag"></i> Ciclos escolares</a></li>
+							{/if}
 							<li {if $PAGE.modulo eq 'grupos'}class="active"{/if}><a href="grupos"><i class="fa fa-users"></i> Grupos</a></li>
 							<li {if $PAGE.modulo eq 'cuidados'}class="active"{/if}><a href="cuidados"><i class="fa fa-heartbeat"></i> Cuidados</a></li>
+							{if $PAGE.usuario->getIdTipo() neq 2}
 							<li {if $PAGE.modulo eq 'niveles'}class="active"{/if}><a href="niveles"><i class="fa fa-university"></i> Niveles educativos</a></li>
+							{/if}
 						</ul>
 					</li>
+					{/if}
 				</ul>
 			</section>
 			<!-- /.sidebar -->

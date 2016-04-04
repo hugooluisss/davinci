@@ -1,13 +1,14 @@
 TRuta = function(){
 	var self = this;
 	
-	this.add = function(id,	ciclo, nombre, descripcion, fn){
+	this.add = function(id,	ciclo, nombre, costo, descripcion, fn){
 		if (fn.before !== undefined) fn.before();
 		
 		$.post('index.php?mod=crutas&action=add', {
 				"id": id,
 				"nombre": nombre,
 				"descripcion": descripcion,
+				"costo": costo,
 				"ciclo": ciclo
 			}, function(data){
 				if (data.band == 'false')

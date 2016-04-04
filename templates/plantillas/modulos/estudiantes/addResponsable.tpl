@@ -39,6 +39,12 @@
 		</div>
 	</div>
 	<div class="form-group">
+		<label for="txtPuesto" class="col-lg-4">Puesto</label>
+		<div class="col-lg-8">
+			<input class="form-control" id="txtPuesto" name="txtPuesto" placeholder="Puesto">
+		</div>
+	</div>
+	<div class="form-group">
 		<label for="txtTelefonoContacto" class="col-lg-4">Teléfono</label>
 		<div class="col-lg-8">
 			<input class="form-control" id="txtTelefonoContacto" name="txtTelefonoContacto" placeholder="Teléfono de contacto">

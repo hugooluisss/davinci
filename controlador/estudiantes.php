@@ -86,6 +86,7 @@ switch($objModulo->getId()){
 				$obj->setEstatura($_POST['estatura']);
 				$obj->setPeso($_POST['peso']);
 				$obj->setSanguineo($_POST['sanguineo']);
+				$obj->setColonia($_POST['colonia']);
 				
 				if ($obj->guardar()){
 					$obj->setCuidados(json_decode($_POST['cuidados']));
@@ -171,6 +172,21 @@ switch($objModulo->getId()){
 				}
 				
 				echo '{"status":"error"}';
+			break;
+			case 'fichaPDF':
+				require_once(getcwd()."/repositorio/pdf/fichaEstudiante.php");
+				
+				$obj = new RFichaEstudiante();
+				$obj->generar($_GET['id']);
+				$documento = $obj->Output();
+				
+				
+				if ($documento == '')
+					$result = array("doc" => "", "band" => false);
+				else
+					$result = array("doc" => $documento, "band" => true);
+
+				print json_encode($result);
 			break;
 		}
 	break;

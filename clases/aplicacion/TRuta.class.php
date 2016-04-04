@@ -10,6 +10,7 @@ class TRuta{
 	private $idRuta;
 	public $ciclo;
 	private $nombre;
+	private $costo;
 	private $descripcion;
 	
 	/**
@@ -132,6 +133,32 @@ class TRuta{
 	}
 	
 	/**
+	* Establece el costo
+	*
+	* @autor Hugo
+	* @access public
+	* @param decimal $val Valor a asignar
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setCosto($val = 0){
+		$this->costo = $val;
+		return true;
+	}
+	
+	/**
+	* Retorna el costo
+	*
+	* @autor Hugo
+	* @access public
+	* @return decimal costo
+	*/
+	
+	public function getCosto(){
+		return $this->costo;
+	}
+	
+	/**
 	* Guarda los datos en la base de datos, si no existe un identificador entonces crea el objeto
 	*
 	* @autor Hugo
@@ -157,6 +184,7 @@ class TRuta{
 			SET
 				nombre = '".$this->getNombre()."',
 				descripcion = '".$this->getDescripcion()."',
+				costo = ".$this->getCosto().",
 				idCiclo = '".$this->ciclo->getId()."'
 			WHERE idRuta = ".$this->getId());
 			

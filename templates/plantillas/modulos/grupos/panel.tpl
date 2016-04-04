@@ -65,3 +65,6 @@
 		</form>
 	</div>
 </div>
+
+{include file=$PAGE.rutaModulos|cat:'/modulos/grupos/winAsistencia.tpl'}
+{include file=$PAGE.rutaModulos|cat:'/modulos/grupos/winImpresion.tpl'}

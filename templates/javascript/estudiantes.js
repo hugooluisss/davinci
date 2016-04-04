@@ -1,6 +1,7 @@
 $(document).ready(function(){
 	listaResponsables();
 	listaEstudiantes();
+	var ventana = undefined;
 	
 	$.each([$('#selSexo'), $('#selNivel'), $("#selIngreso")], function(index, obj) {
 		obj.change(function(){
@@ -224,7 +225,7 @@ $(document).ready(function(){
 			var obj = new TResponsable;
 			
 			
-			obj.add($("#frmAddParentesco #id").val(), $("#frmAddParentesco #selParentesco").val(), $("#frmAddParentesco #txtNombre").val(), $("#frmAddParentesco #txtApp").val(), $("#frmAddParentesco #txtApm").val(), $("#frmAddParentesco #txtOcupacion").val(), $("#frmAddParentesco #txtEmpresa").val(), $("#frmAddParentesco #txtTelefono").val(), $("#frmAddParentesco #txtTelefonoContacto").val(), $("#frmAddParentesco #txtExtension").val(), $("#frmAddParentesco #txtCelular").val(), $("#frmAddParentesco #txtCorreo").val(), {
+			obj.add($("#frmAddParentesco #id").val(), $("#frmAddParentesco #selParentesco").val(), $("#frmAddParentesco #txtNombre").val(), $("#frmAddParentesco #txtApp").val(), $("#frmAddParentesco #txtApm").val(), $("#frmAddParentesco #txtOcupacion").val(), $("#frmAddParentesco #txtEmpresa").val(), $("#frmAddParentesco #txtTelefono").val(), $("#frmAddParentesco #txtTelefonoContacto").val(), $("#frmAddParentesco #txtExtension").val(), $("#frmAddParentesco #txtCelular").val(), $("#frmAddParentesco #txtCorreo").val(), $("#frmAddParentesco #txtPuesto").val(), {
 				before: function(){
 					$("#frmAddParentesco input, #frmAddParentesco select").prop("disabled", true);
 				},
@@ -379,6 +380,7 @@ $(document).ready(function(){
 						$("#frmAdd #txtPapa").val(el.responsables.papa.nombre);
 						$("#frmAdd #txtMama").val(el.responsables.mama.nombre);
 						$("#frmAdd #txtTutor").val(el.responsables.tutor.nombre);
+						$("#frmAdd #txtColonia").val(el.colonia);
 						
 						$("#frmAdd #txtPapa").attr("identificador", el.responsables.papa.idResponsable);
 						$("#frmAdd #txtMama").attr("identificador", el.responsables.mama.idResponsable);
@@ -434,6 +436,36 @@ $(document).ready(function(){
 				getListaPermisos(el.attr("estudiante"));
 				$("#permisos #estudiante").val(el.attr("estudiante"));
 				$("#winPermisos").modal();
+			});
+			
+			$("[action=ficha]").click(function(){
+				var est = new TEstudiante;
+				var el = $(this);
+				est.generarFichaTecnica($(this).attr("estudiante"), {
+					before: function(){
+						el.prop("disabled", true);
+					},
+					after: function(data){
+						el.prop("disabled", false);
+						
+						if (data.band == true){
+							if (ventana == undefined || ventana == null)
+								ventana = window.open(data.doc,'_blank');
+							else{
+								try{
+									ventana.location.href = data.doc;
+								}catch(er){
+									ventana = window.open(data.doc,'_blank');
+								}
+								
+								
+							}
+							
+							ventana.focus();
+						}else
+							alert("No se pudo generar la ficha del estudiante");
+					}
+				});
 			});
 			
 			$("#tblEstudiantes").DataTable({

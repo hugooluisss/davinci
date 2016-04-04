@@ -21,6 +21,8 @@ $(document).ready(function(){
 		getLista();
 	});
 	
+	var ventana = undefined;
+	
 	function getLista(){
 		$.get("?mod=listaInscripciones&grupo=" + $("#selGrupo").val(), function( data ) {
 			$("#lista").html(data);
@@ -37,6 +39,49 @@ $(document).ready(function(){
 						}
 					});
 				}
+			});
+			
+			$("[action=constancia]").click(function(){
+				$.get('?mod=cinscripciones&action=pdf&id=' + $(this).attr("inscripcion"), function(data){
+					console.log(data);
+					
+					if (data.band){
+						if (ventana == undefined || ventana == null)
+							ventana = window.open(data.doc,'_blank');
+						else{
+							try{
+								ventana.location.href = data.doc;
+							}catch(er){
+								ventana = window.open(data.doc,'_blank');
+							}
+						}
+						
+						ventana.focus();	
+					}
+					
+				}, "json");
+			});
+			
+			$(".folio").change(function(){
+				var obj = new TEstudiante;
+				var el = $(this);
+				
+				el.attr("anterior", el.val());
+				
+				obj.setFolioInscripcion($(this).attr('inscripcion'), $(this).val(), {
+					before: function(){
+						el.prop("disabled", true);
+					},
+					after: function(resp){
+						el.prop("disabled", false);
+						if (resp.band == true)
+							el.attr("anterior", el.val());
+						else{
+							el.val(el.attr("anterior"));
+							alert("Ocurrió un error al actualizar el número de folio");
+						}
+					}
+				});
 			});
 			
 			$("#tblEstudiantes").DataTable({

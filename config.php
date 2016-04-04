@@ -81,7 +81,7 @@ $conf['admonUsuarios'] = array(
 	'capa' => LAYOUT_DEFECTO);
 	
 $conf['panelPrincipal'] = array(
-	#'controlador' => 'index.php',
+	'controlador' => 'index.php',
 	'vista' => 'inicio.tpl',
 	'descripcion' => 'Vista del panel',
 	'seguridad' => true,
@@ -117,7 +117,7 @@ $conf['grupos'] = array(
 	'vista' => 'grupos/panel.tpl',
 	'descripcion' => 'Administración de grupos',
 	'seguridad' => true,
-	'js' => array('grupo.class.js'),
+	'js' => array('grupo.class.js', "estudiante.class.js"),
 	'jsTemplate' => array('grupos.js'),
 	'capa' => LAYOUT_DEFECTO);
 
@@ -307,4 +307,17 @@ $conf['cpermisos'] = array(
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
 
+/*Permisos*/
+$conf['asistencias'] = array(
+	'controlador' => 'asistencias.php',
+	'vista' => 'grupos/listaAsistencia.tpl',
+	'descripcion' => 'Registro de asistencias',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['casistencias'] = array(
+	'controlador' => 'asistencias.php',
+	'descripcion' => 'Controlador de asistencias',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
 ?>

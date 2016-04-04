@@ -1,13 +1,14 @@
 TOptativa = function(){
 	var self = this;
 	
-	this.add = function(id,	ciclo, nombre, responsable, fn){
+	this.add = function(id,	nivel, ciclo, nombre, responsable, fn){
 		if (fn.before !== undefined) fn.before();
 		
 		$.post('index.php?mod=coptativas&action=add', {
 				"id": id,
 				"nombre": nombre,
 				"responsable": responsable,
+				"nivel": nivel,
 				"ciclo": ciclo
 			}, function(data){
 				if (data.band == 'false')

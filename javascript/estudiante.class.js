@@ -142,4 +142,62 @@ TEstudiante = function(){
 					fn.after(data);
 			}, "json");
 	}
+	
+	this.setFolioInscripcion = function(inscripcion, folio, fn){
+		if (fn.before !== undefined)
+			fn.before();
+			
+		$.post('index.php?mod=cinscripciones&action=setFolio', {
+				"inscripcion": inscripcion,
+				"folio": folio
+			}, function(data){
+				if (data.band == 'false')
+					console.log(data.mensaje);
+					
+				if (fn.after !== undefined)
+					fn.after(data);
+			}, "json");
+	}
+	
+	this.generarFichaTecnica = function(estudiante, fn){
+		if (fn.before != undefined) fn.before();
+		
+		$.get('?mod=cestudiantes&action=fichaPDF&id=' + estudiante, function(data){
+			if (fn.after != undefined) fn.after(data);
+			
+			if (data.band == false)
+				console.log("Ocurrió un error al generar la ficha técnica del estudiante");
+			
+		}, "json");
+	}
+	
+	this.addAsistencia = function(inscripcion, fecha, fn){
+		if (fn.before != undefined) fn.before();
+		
+		$.post('?mod=casistencias&action=add', {
+			"inscripcion": inscripcion,
+			"fecha": fecha
+		}, function(data){
+			if (fn.after != undefined) fn.after(data);
+			
+			if (data.band == false)
+				console.log("Ocurrió un error al registrar la asistencia");
+			
+		}, "json");
+	}
+	
+	this.dropAsistencia = function(inscripcion, fecha, fn){
+		if (fn.before != undefined) fn.before();
+		
+		$.post('?mod=casistencias&action=del', {
+			"inscripcion": inscripcion,
+			"fecha": fecha
+		}, function(data){
+			if (fn.after != undefined) fn.after(data);
+			
+			if (data.band == false)
+				console.log("Ocurrió un error al eliminar la asistencia");
+			
+		}, "json");
+	}
 }

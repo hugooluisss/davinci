@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-03-18 08:57:20
+<?php /* Smarty version Smarty-3.1.11, created on 2016-04-01 23:50:53
          compiled from "templates/plantillas/modulos/estudiantes/addResponsable.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:197626187456e9a86d21c221-16909055%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'df80aaf5ee6af08278cc16132653b05c4dff01f4' => 
     array (
       0 => 'templates/plantillas/modulos/estudiantes/addResponsable.tpl',
-      1 => 1458312864,
+      1 => 1459576116,
       2 => 'file',
     ),
   ),
@@ -57,6 +57,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		</div>
 		<div class="col-lg-3">
 			<input class="form-control" id="txtExtension" name="txtExtension" placeholder="Extensión">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="txtPuesto" class="col-lg-4">Puesto</label>
+		<div class="col-lg-8">
+			<input class="form-control" id="txtPuesto" name="txtPuesto" placeholder="Puesto">
 		</div>
 	</div>
 	<div class="form-group">

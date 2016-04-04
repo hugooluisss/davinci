@@ -5,6 +5,7 @@
 				<tr>
 					<th>#</th>
 					<th>Nombre</th>
+					<th>Costo</th>
 					<th>&nbsp;</th>
 				</tr>
 			</thead>
@@ -13,6 +14,7 @@
 					<tr>
 						<td>{$row.idRuta}</td>
 						<td>{$row.nombre}</td>
+						<td>{$row.costo}</td>
 						<td style="text-align: right">
 							<button type="button" class="btn btn-primary btn-circle" action="inscritos" title="Inscritos" ruta='{$row.idRuta}'><i class="fa fa-users"></i></button>
 							<button type="button" class="btn btn-success btn-circle" action="modificar" title="Modificar" datos='{$row.json}'><i class="fa fa-pencil"></i></button>

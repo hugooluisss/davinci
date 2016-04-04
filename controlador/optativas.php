@@ -12,6 +12,15 @@ switch($objModulo->getId()){
 		}
 		
 		$smarty->assign("ciclos", $datos);
+		
+		$rs = $db->Execute("select * from nivel");
+		$datos = array();
+		while(!$rs->EOF){
+			array_push($datos, $rs->fields);
+			$rs->moveNext();
+		}
+		
+		$smarty->assign("niveles", $datos);
 	break;
 	case 'listaOptativas':
 		$db = TBase::conectaDB();
@@ -45,6 +54,7 @@ switch($objModulo->getId()){
 			case 'add':
 				$obj = new TOptativa();
 				$obj->setId($_POST['id']);
+				$obj->setNivel($_POST['nivel']);
 				$obj->setCiclo($_POST['ciclo']);
 				$obj->setNombre($_POST['nombre']);
 				$obj->setResponsable($_POST['responsable']);
@@ -59,8 +69,9 @@ switch($objModulo->getId()){
 			break;
 			case 'estudiantes':
 				$db = TBase::conectaDB();
+				$optativa = new TOptativa($_GET['id']);
 				
-				$rs = $db->Execute("select * from estudiante a join estudiantenivel b using(idEstudiante) where (a.nombre like '%".$_GET['term']."%' or a.app like '%".$_GET['term']."%' or a.apm like '%".$_GET['term']."%' or concat(a.nombre, ' ', a.apm, ' ', a.apm) like '%".$_GET['term']."%' or concat(app, ' ', apm, ' ', a.nombre) like '%".$_GET['term']."%') and a.estado = 'A' and idEstudiante not in (select idEstudiante from estudianteoptativa where idOptativa = ".$_GET['id'].")");
+				$rs = $db->Execute("select * from estudiante a join estudiantenivel b using(idEstudiante) where (a.nombre like '%".$_GET['term']."%' or a.app like '%".$_GET['term']."%' or a.apm like '%".$_GET['term']."%' or concat(a.nombre, ' ', a.apm, ' ', a.apm) like '%".$_GET['term']."%' or concat(app, ' ', apm, ' ', a.nombre) like '%".$_GET['term']."%') and a.estado = 'A' and b.idNivel = ".$optativa->nivel->getId()." and idEstudiante not in (select idEstudiante from estudianteoptativa where idOptativa = ".$_GET['id'].")");
 				
 				$datos = array();
 				while(!$rs->EOF){

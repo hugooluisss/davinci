@@ -140,6 +140,12 @@
 				</div>
 			</div>
 			<div class="form-group">
+				<label for="txtColonia" class="col-lg-2">Colonia</label>
+				<div class="col-lg-10">
+					<input class="form-control" id="txtColonia" name="txtColonia" placeholder="Colonia">
+				</div>
+			</div>
+			<div class="form-group">
 				<label for="txtCodigoPostal" class="col-lg-2">Código postal</label>
 				<div class="col-lg-3">
 					<input class="form-control" id="txtCodigoPostal" name="txtCodigoPostal">
@@ -155,7 +161,7 @@
 				{foreach from=$cuidados item="row"}
 				<div class="col-xs-12 col-sm-4 col-md-3">
 					<div class="checkbox">
-							<label><input type="checkbox" value="{$row.idCuidado}" class="cuidados">{$row.nombre}</label>
+							<label><input type="checkbox" value="{$row.idCuidado}" class="cuidados" name="cuidados">{$row.nombre}</label>
 					</div>
 				</div>
 				{/foreach}

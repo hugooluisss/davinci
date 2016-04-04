@@ -106,11 +106,11 @@ class TEstudiante{
 	*/
 	
 	public function getNombreSanguineo(){
-		if ($rs->getSanguineo() == '') return false;
+		if ($this->getSanguineo() == '') return false;
 		$db = TBase::conectaDB();
 		$rs = $db->Execute("select abbr from gruposanguineo where idSanguineo = ".$this->getSanguineo());
 		
-		return $this->abbr;
+		return $rs->fields['abbr'];
 	}
 	
 	/**
@@ -218,6 +218,22 @@ class TEstudiante{
 	}
 	
 	/**
+	* Retorna la edad en años
+	*
+	* @autor Hugo
+	* @access public
+	* @return int edad
+	*/
+	
+	public function getEdad(){
+		if ($this->nacimiento == '') return 0;
+		
+		$db = TBase::conectaDB();
+		$rs = $db->Execute("select TIMESTAMPDIFF(YEAR, '".$this->nacimiento."', CURDATE()) as edad;");
+		return $rs->fields['edad'];
+	}
+	
+	/**
 	* Establece el estado de nacimiento
 	*
 	* @autor Hugo
@@ -252,11 +268,11 @@ class TEstudiante{
 	*/
 	
 	public function getNombreEstadoNacimiento(){
-		if ($rs->getSanguineo() == '') return false;
+		if ($this->getEstadoNacimiento() == '') return false;
 		$db = TBase::conectaDB();
 		$rs = $db->Execute("select nombre from estado where idEstado = ".$this->getEstadoNacimiento());
 		
-		return $this->nombre;
+		return $rs->fields['nombre'];
 	}
 	
 	/**
@@ -585,7 +601,8 @@ class TEstudiante{
 				curp = '".$this->getCURP()."',
 				estatura = ".$this->getEstatura().",
 				peso = ".$this->getPeso().",
-				sexo = '".$this->getSexo()."'
+				sexo = '".$this->getSexo()."',
+				colonia = '".$this->getColonia()."'
 			WHERE idEstudiante = ".$this->getId());
 			
 		return $rs?true:false;
@@ -744,6 +761,43 @@ class TEstudiante{
 		foreach($cuidados as $cuidado){
 			$rs = $db->Execute("insert into estudiantecuidados (idEstudiante, idCuidado) values (".$this->getId().", ".$cuidado->id.")");
 		}
+		
+		return true;
+	}
+	
+	
+	/**
+	* Registra la asistencia de un dia
+	*
+	* @autor Hugo
+	* @access public
+	* @return boolean True si lo hizo
+	*/
+	
+	public function addAsistencia($inscripcion = '', $fecha = ''){
+		if ($inscripcion == '') return false;
+		if ($fecha == '') return false;
+		
+		$db = TBase::conectaDB();
+		$db->Execute("insert into asistencia(idInscripcion, fecha) values (".$inscripcion.", '".$fecha."')");
+		
+		return true;
+	}
+	
+	/**
+	* Borra la asistencia de un dia
+	*
+	* @autor Hugo
+	* @access public
+	* @return boolean True si lo hizo
+	*/
+	
+	public function dropAsistencia($inscripcion = '', $fecha = ''){
+		if ($inscripcion == '') return false;
+		if ($fecha == '') return false;
+		
+		$db = TBase::conectaDB();
+		$db->Execute("delete from asistencia where idInscripcion = ".$inscripcion." and fecha = '".$fecha."'");
 		
 		return true;
 	}

@@ -1,7 +1,7 @@
 TResponsable = function(){
 	var self = this;
 	
-	this.add = function(id, parentesco, nombre, app, apm, ocupacion, empresa, telefono, telefonoContacto, extension, celular, email, fn){
+	this.add = function(id, parentesco, nombre, app, apm, ocupacion, empresa, telefono, telefonoContacto, extension, celular, email, puesto, fn){
 		if (fn.before !== undefined) fn.before();
 		
 		$.post('index.php?mod=cresponsables&action=add', {
@@ -16,7 +16,8 @@ TResponsable = function(){
 				"extension": extension,
 				"telefonoContacto": telefonoContacto,
 				"celular": celular,
-				"correo": email
+				"correo": email,
+				"puesto": puesto
 			}, function(data){
 				if (data.band == 'false')
 					console.log(data.mensaje);

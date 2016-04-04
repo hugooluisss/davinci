@@ -16,11 +16,16 @@ $(document).ready(function(){
 		rules: {
 			txtNombre: "required",
 			selCiclo: "required",
+			txtCosto: {
+				required: true,
+				number: true
+			}
 		},
 		wrapper: 'span', 
 		messages: {
 			txtNombre: "Es necesario un nombre",
 			selCiclo: "Es necesario definir un ciclo",
+			txtCosto: "Indica el costo de la ruta",
 		},
 		submitHandler: function(form){
 			var obj = new TRuta;
@@ -28,6 +33,7 @@ $(document).ready(function(){
 				$("#id").val(), 
 				$("#selCiclo").val(),
 				$("#txtNombre").val(),
+				$("#txtCosto").val(),
 				$("#txtDescripcion").val(),
 				{
 					after: function(datos){
@@ -66,6 +72,7 @@ $(document).ready(function(){
 				$("#id").val(el.idRuta);
 				$("#txtNombre").val(el.nombre);
 				$("#txtDescripcion").val(el.descripcion);
+				$("#txtCosto").val(el.costo);
 				$("#selCiclo").val(el.idCiclo);
 				$('#panelTabs a[href="#add"]').tab('show');
 			});

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-03-24 16:55:00
+<?php /* Smarty version Smarty-3.1.11, created on 2016-04-02 14:40:37
          compiled from "templates/plantillas/modulos/estudiantes/add.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:108640278856e3a3b81f0cf5-28355239%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '94405bd4edf55ed937fa34f68454e365e8526ea1' => 
     array (
       0 => 'templates/plantillas/modulos/estudiantes/add.tpl',
-      1 => 1458860097,
+      1 => 1459607304,
       2 => 'file',
     ),
   ),
@@ -192,6 +192,12 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 				</div>
 			</div>
 			<div class="form-group">
+				<label for="txtColonia" class="col-lg-2">Colonia</label>
+				<div class="col-lg-10">
+					<input class="form-control" id="txtColonia" name="txtColonia" placeholder="Colonia">
+				</div>
+			</div>
+			<div class="form-group">
 				<label for="txtCodigoPostal" class="col-lg-2">Código postal</label>
 				<div class="col-lg-3">
 					<input class="form-control" id="txtCodigoPostal" name="txtCodigoPostal">
@@ -212,7 +218,7 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 				<div class="col-xs-12 col-sm-4 col-md-3">
 					<div class="checkbox">
 							<label><input type="checkbox" value="<?php echo $_smarty_tpl->tpl_vars['row']->value['idCuidado'];?>
-" class="cuidados"><?php echo $_smarty_tpl->tpl_vars['row']->value['nombre'];?>
+" class="cuidados" name="cuidados"><?php echo $_smarty_tpl->tpl_vars['row']->value['nombre'];?>
 </label>
 					</div>
 				</div>

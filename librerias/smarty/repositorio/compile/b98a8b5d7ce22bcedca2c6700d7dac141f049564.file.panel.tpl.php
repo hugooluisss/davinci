@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-03-18 12:16:40
+<?php /* Smarty version Smarty-3.1.11, created on 2016-04-02 16:34:20
          compiled from "templates/plantillas/modulos/grupos/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:113890747556e25416c7d318-43556806%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b98a8b5d7ce22bcedca2c6700d7dac141f049564' => 
     array (
       0 => 'templates/plantillas/modulos/grupos/panel.tpl',
-      1 => 1457984103,
+      1 => 1459635968,
       2 => 'file',
     ),
   ),
@@ -22,6 +22,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ciclos' => 0,
     'row' => 0,
     'grados' => 0,
+    'PAGE' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -64,7 +65,7 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="selGrado" class="col-lg-2">Ciclo</label>
+						<label for="selGrado" class="col-lg-2">Nivel</label>
 						<div class="col-lg-3">
 							<select id="selGrado" name="selGrado">
 								<?php  $_smarty_tpl->tpl_vars["row"] = new Smarty_Variable; $_smarty_tpl->tpl_vars["row"]->_loop = false;
@@ -104,4 +105,9 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 			</div>
 		</form>
 	</div>
-</div><?php }} ?>
+</div>
+
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).('/modulos/grupos/winAsistencia.tpl'), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).('/modulos/grupos/winImpresion.tpl'), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+<?php }} ?>

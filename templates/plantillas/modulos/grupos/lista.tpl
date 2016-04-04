@@ -20,8 +20,10 @@
 						<td>{$row.grado}</td>
 						<td>{$row.nivel}</td>
 						<td style="text-align: right">
-							<button type="button" class="btn btn-success btn-circle" action="modificar" title="Modificar" datos='{$row.json}'><i class="fa fa-pencil"></i></button>
-							<button type="button" class="btn btn-danger btn-circle" action="eliminar" title="Eliminar" grupo="{$row.idGrupo}"><i class="fa fa-times"></i></button>
+							<button type="button" class="btn btn-primary" action="imprimirAsistencias" title="Imprimir reporte de asistencias" grupo="{$row.idGrupo}"><i class="fa fa-print"></i></button>
+							<button type="button" class="btn btn-primary" action="asistencias" title="Registro de asistencias" grupo="{$row.idGrupo}"><i class="fa fa-thumbs-o-up"></i></button>
+							<button type="button" class="btn btn-success" action="modificar" title="Modificar" datos='{$row.json}'><i class="fa fa-pencil"></i></button>
+							<button type="button" class="btn btn-danger" action="eliminar" title="Eliminar" grupo="{$row.idGrupo}"><i class="fa fa-times"></i></button>
 						</td>
 					</tr>
 				{/foreach}

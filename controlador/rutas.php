@@ -47,6 +47,7 @@ switch($objModulo->getId()){
 				$obj->setId($_POST['id']);
 				$obj->setCiclo($_POST['ciclo']);
 				$obj->setNombre($_POST['nombre']);
+				$obj->setCosto($_POST['costo']);
 				$obj->setDescripcion($_POST['descripcion']);
 				
 				echo json_encode(array("band" => $obj->guardar()));

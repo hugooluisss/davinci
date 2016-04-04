@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-03-22 09:42:59
+<?php /* Smarty version Smarty-3.1.11, created on 2016-04-01 15:28:47
          compiled from "templates/plantillas/modulos/optativas/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:35042480856f03f8a499061-94374841%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd3d7bb68cd62e4cfd58d03664e0f97afdfd0f0d4' => 
     array (
       0 => 'templates/plantillas/modulos/optativas/panel.tpl',
-      1 => 1458661034,
+      1 => 1459546069,
       2 => 'file',
     ),
   ),
@@ -21,6 +21,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
     'ciclos' => 0,
     'row' => 0,
+    'niveles' => 0,
     'PAGE' => 0,
   ),
   'has_nocache_code' => false,
@@ -57,6 +58,22 @@ foreach ($_from as $_smarty_tpl->tpl_vars["row"]->key => $_smarty_tpl->tpl_vars[
 $_smarty_tpl->tpl_vars["row"]->_loop = true;
 ?>
 								<option value="<?php echo $_smarty_tpl->tpl_vars['row']->value['idCiclo'];?>
+"><?php echo $_smarty_tpl->tpl_vars['row']->value['nombre'];?>
+
+								<?php } ?>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="selNivel" class="col-lg-2">Nivel</label>
+						<div class="col-lg-3">
+							<select id="selNivel" name="selNivel" class="form-control">
+								<?php  $_smarty_tpl->tpl_vars["row"] = new Smarty_Variable; $_smarty_tpl->tpl_vars["row"]->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['niveles']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars["row"]->key => $_smarty_tpl->tpl_vars["row"]->value){
+$_smarty_tpl->tpl_vars["row"]->_loop = true;
+?>
+								<option value="<?php echo $_smarty_tpl->tpl_vars['row']->value['idNivel'];?>
 "><?php echo $_smarty_tpl->tpl_vars['row']->value['nombre'];?>
 
 								<?php } ?>

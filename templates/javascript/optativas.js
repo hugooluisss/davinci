@@ -26,6 +26,7 @@ $(document).ready(function(){
 			var obj = new TOptativa;
 			obj.add(
 				$("#id").val(), 
+				$("#selNivel").val(),
 				$("#selCiclo").val(),
 				$("#txtNombre").val(),
 				$("#txtResponsable").val(),
@@ -66,6 +67,7 @@ $(document).ready(function(){
 				$("#id").val(el.idOptativa);
 				$("#txtNombre").val(el.nombre);
 				$("#txtResponsable").val(el.responsable);
+				$("#selNivel").val(el.idNivel);
 				$("#selCiclo").val(el.idCiclo);
 				$('#panelTabs a[href="#add"]').tab('show');
 			});

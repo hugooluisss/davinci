@@ -18,6 +18,7 @@ class TResponsable{
 	private $telefonoContacto;
 	private $celular;
 	private $correo;
+	private $puesto;
 	
 	/**
 	* Constructor de la clase
@@ -325,6 +326,32 @@ class TResponsable{
 	}
 	
 	/**
+	* Establece el puesto
+	*
+	* @autor Hugo
+	* @access public
+	* @param string $val valor
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setPuesto($val = ''){
+		$this->puesto = $val;
+		return true;
+	}
+	
+	/**
+	* Retorna el puesto
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getPuesto(){
+		return $this->puesto;
+	}
+	
+	/**
 	* Guarda los datos en la base de datos, si no existe un identificador entonces crea el objeto
 	*
 	* @autor Hugo
@@ -356,7 +383,8 @@ class TResponsable{
 				extension = '".$this->getExtension()."',
 				telefonoContacto = '".$this->getTelefonoContacto()."',
 				celular = '".$this->getCelular()."',
-				correo = '".$this->getCorreo()."'
+				correo = '".$this->getCorreo()."',
+				puesto = '".$this->getPuesto()."'
 			WHERE idResponsable = ".$this->getId());
 			
 		return $rs?true:false;

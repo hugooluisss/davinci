@@ -30,4 +30,20 @@ TGrupo = function(){
 			}
 		}, "json");
 	};
+	
+	this.generarListaAsistencia = function(grupo, mes, anio, fn){
+		if (fn.before != undefined) fn.before();
+		
+		$.post('?mod=cgrupos&action=listaAsistenciaPDF', {
+			"grupo": grupo,
+			"mes": mes,
+			"anio": anio
+		}, function(data){
+			if (fn.after != undefined) fn.after(data);
+			
+			if (data.band == false)
+				console.log("Ocurrió un error al generar la lista de asistencia");
+			
+		}, "json");
+	}
 };

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-03-23 09:33:01
+<?php /* Smarty version Smarty-3.1.11, created on 2016-04-01 15:16:12
          compiled from "templates/plantillas/modulos/rutas/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:60130078556f2b72d342187-84414828%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '40135b368c88d03ada75601960fecf639188fee4' => 
     array (
       0 => 'templates/plantillas/modulos/rutas/panel.tpl',
-      1 => 1458747163,
+      1 => 1459545371,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.11',
+  'unifunc' => 'content_56f2b72d3dbda3_18157396',
   'variables' => 
   array (
     'ciclos' => 0,
@@ -22,8 +24,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'PAGE' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.11',
-  'unifunc' => 'content_56f2b72d3dbda3_18157396',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_56f2b72d3dbda3_18157396')) {function content_56f2b72d3dbda3_18157396($_smarty_tpl) {?><div class="row">
 	<div class="col-lg-12">
@@ -67,6 +67,12 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 						<label for="txtNombre" class="col-lg-2">Nombre</label>
 						<div class="col-lg-8">
 							<input class="form-control" id="txtNombre" name="txtNombre" autocomplete="off">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="txtCosto" class="col-lg-2">Costo</label>
+						<div class="col-lg-3">
+							<input class="form-control" id="txtCosto" name="txtCosto" autocomplete="off">
 						</div>
 					</div>
 					<div class="form-group">

@@ -52,10 +52,30 @@ switch($objModulo->getId()){
 				$estudiante = new TEstudiante($_POST['estudiante']);
 				echo json_encode(array("band" => $estudiante->inscribe($_POST['grupo'])));
 			break;
-			
+			case 'setFolio':
+				$db = TBase::conectaDB();
+				
+				$rs = $db->Execute("update inscripcion set folio = '".$_POST['folio']."' where idInscripcion = ".$_POST['inscripcion']);
+				echo json_encode(array("band" => $rs?true:false));
+			break;
 			case 'delInscribir':
 				$estudiante = new TEstudiante();
 				echo json_encode(array("band" => $estudiante->desInscribe($_POST['inscripcion'])));
+			break;
+			case 'pdf':
+				require_once(getcwd()."/repositorio/pdf/constancia.php");
+				
+				$obj = new RConstancia();
+				$obj->generar($_GET['id']);
+				$documento = $obj->Output();
+				
+				
+				if ($documento == '')
+					$result = array("doc" => "", "band" => false);
+				else
+					$result = array("doc" => $documento, "band" => true);
+
+				print json_encode($result);
 			break;
 		}
 	break;

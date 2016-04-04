@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-03-24 18:12:57
+<?php /* Smarty version Smarty-3.1.11, created on 2016-04-02 14:44:28
          compiled from "templates/plantillas/modulos/estudiantes/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:113658614856eb97d41d7586-94246626%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '38978d6fd7c7b8c2128525ee867939c47a4920a5' => 
     array (
       0 => 'templates/plantillas/modulos/estudiantes/lista.tpl',
-      1 => 1458864774,
+      1 => 1459629862,
       2 => 'file',
     ),
   ),
@@ -54,6 +54,8 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
  <?php echo $_smarty_tpl->tpl_vars['row']->value['apm'];?>
 </td>
 						<td style="text-align: right">
+							<button type="button" class="btn btn-primary" action="ficha" title="Ficha técnica" estudiante='<?php echo $_smarty_tpl->tpl_vars['row']->value['idEstudiante'];?>
+'><i class="fa fa-sticky-note"></i></button>
 							<button type="button" class="btn btn-primary" action="permisos" title="Registro de permisos" estudiante='<?php echo $_smarty_tpl->tpl_vars['row']->value['idEstudiante'];?>
 '><i class="fa fa-suitcase"></i></button>
 							<button type="button" class="btn btn-primary" action="fotografia" title="Fotografía" estudiante='<?php echo $_smarty_tpl->tpl_vars['row']->value['idEstudiante'];?>

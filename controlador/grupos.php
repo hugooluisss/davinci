@@ -21,6 +21,9 @@ switch($objModulo->getId()){
 		}
 		
 		$smarty->assign("grados", $datos);
+		$smarty->assign("anio", date("Y"));
+		$smarty->assign("anio2", date("Y") - 10);
+		$smarty->assign("mes", date("m"));
 	break;
 	case 'listaGrupos':
 		$db = TBase::conectaDB();
@@ -53,6 +56,21 @@ switch($objModulo->getId()){
 			case 'del':
 				$obj = new TGrupo($_POST['id']);
 				echo json_encode(array("band" => $obj->eliminar()));
+			break;
+			case 'listaAsistenciaPDF':
+				require_once(getcwd()."/repositorio/pdf/asistencias.php");
+				
+				$obj = new RListaAsistencias($_POST['anio'], $_POST['mes'], $_POST['grupo']);
+				$obj->generar();
+				$documento = $obj->Output();
+				
+				
+				if ($documento == '')
+					$result = array("doc" => "", "band" => false);
+				else
+					$result = array("doc" => $documento, "band" => true);
+
+				print json_encode($result);
 			break;
 		}
 	break;

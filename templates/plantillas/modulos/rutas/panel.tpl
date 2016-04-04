@@ -37,6 +37,12 @@
 						</div>
 					</div>
 					<div class="form-group">
+						<label for="txtCosto" class="col-lg-2">Costo</label>
+						<div class="col-lg-3">
+							<input class="form-control" id="txtCosto" name="txtCosto" autocomplete="off">
+						</div>
+					</div>
+					<div class="form-group">
 						<label for="txtDescripcion" class="col-lg-2">Descripcion</label>
 						<div class="col-lg-8">
 							<textarea id="txtDescripcion" name="txtDescripcion" class="form-control"></textarea>

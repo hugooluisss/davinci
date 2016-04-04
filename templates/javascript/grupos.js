@@ -1,5 +1,7 @@
 $(document).ready(function(){
 	getLista();
+	var ventana = undefined;
+	$("[data-mask]").inputmask();
 	
 	$("#panelTabs li a[href=#add]").click(function(){
 		$("#frmAdd").get(0).reset();
@@ -76,6 +78,26 @@ $(document).ready(function(){
 				$('#panelTabs a[href="#add"]').tab('show');
 			});
 			
+			$("[action=asistencias]").click(function(){
+				$("#winAsistencias").modal();
+				$("#winAsistencias #dvLista").html("Actualizando lista...");
+				
+				var f = new Date();
+				dia = f.getDate();
+				if (dia < 10)
+					dia = '0' + dia;
+				$("#winAsistencias #txtFecha").val(f.getFullYear() + "-" + (f.getMonth() +1) + "-" + dia);
+				$("#winAsistencias #txtFecha").focus();
+				$("#grupo").val($(this).attr("grupo"));
+				getListaAsistencia();
+			});
+			
+			$("[action=imprimirAsistencias]").click(function(){
+				var el = $(this);
+				$("#btnImprimir").attr("grupo", el.attr("grupo"));
+				$("#winImpresion").modal();
+			});
+			
 			$("#tblGrupos").DataTable({
 				"responsive": true,
 				"language": espaniol,
@@ -86,5 +108,94 @@ $(document).ready(function(){
 				"autoWidth": false
 			});
 		});
+		
+		$("#winAsistencias #txtFecha").change(function(){
+			getListaAsistencia();
+		});
+		
+		$("#btnImprimir").click(function(){
+			var grupo = new TGrupo;
+			grupo.generarListaAsistencia($("#btnImprimir").attr("grupo"), $("#selMes").val(), $("#selAnio").val(), {
+				before: function(){
+					$("#btnImprimir").prop("disable", true); 
+					$("#selAnio").prop("disable", true); 
+					$("#selMes").prop("disable", true);
+				},
+				after: function(data){
+					$("#btnImprimir").prop("disable", false); 
+					$("#selAnio").prop("disable", false); 
+					$("#selMes").prop("disable", false);
+					
+					if (data.band == true){
+						if (ventana == undefined || ventana == null)
+							ventana = window.open(data.doc,'_blank');
+						else{
+							try{
+								ventana.location.href = data.doc;
+							}catch(er){
+								ventana = window.open(data.doc,'_blank');
+							}
+							
+							
+						}
+						
+						ventana.focus();
+					}else
+						alert("No se pudo generar la ficha del estudiante");
+				}
+			});
+		});
 	};
+	
+	function getListaAsistencia(){
+		$.post("asistencias", {
+			"fecha": $("#winAsistencias #txtFecha").val(),
+			"grupo": $("#grupo").val()
+		}, function(data) {
+			$("#winAsistencias #dvLista").html(data);
+			
+			$("[action=setAsistencia]").change(function(){
+				var el = $(this);
+				var estudiante = new TEstudiante;
+				
+				if (el.is(":checked")){
+					estudiante.addAsistencia(el.attr("inscripcion"), $("#winAsistencias #txtFecha").val(), {
+						before: function(){
+							el.prop("disabled", true);
+						},
+						after: function(data){
+							el.prop("disabled", false);
+							if (data.band == false){
+								alert("Ocurrió un error al establecer la asistencia del estudiante");
+								el.prop("checked", false);
+							}
+						}
+					});
+				}else{
+					estudiante.dropAsistencia(el.attr("inscripcion"), $("#winAsistencias #txtFecha").val(), {
+						before: function(){
+							el.prop("disabled", true);
+						},
+						after: function(data){
+							el.prop("disabled", false);
+							if (data.band == false){
+								alert("Ocurrió un error al eliminar la asistencia del estudiante");
+								el.prop("checked", true);
+							}
+						}
+					});
+				}
+			});
+			
+			$("#tblEstudiantes").DataTable({
+				"responsive": true,
+				"language": espaniol,
+				"paging": false,
+				"lengthChange": false,
+				"ordering": true,
+				"info": true,
+				"autoWidth": false
+			});
+		});
+	}
 });
