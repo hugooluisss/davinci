@@ -108,7 +108,7 @@ class TEstudiante{
 	public function getNombreSanguineo(){
 		if ($this->getSanguineo() == '') return false;
 		$db = TBase::conectaDB();
-		$rs = $db->Execute("select abbr from gruposanguineo where idSanguineo = ".$this->getSanguineo());
+		$rs = $db->Execute("select abbr from grupoSanguineo where idSanguineo = ".$this->getSanguineo());
 		
 		return $rs->fields['abbr'];
 	}

@@ -57,7 +57,7 @@ $(document).ready(function(){
 			
 			$("[action=eliminar]").click(function(){
 				if(confirm("¿Seguro?")){
-					var obj = new TRyta;
+					var obj = new TRuta;
 					obj.del($(this).attr("ruta"), {
 						after: function(data){
 							getLista();

@@ -137,9 +137,9 @@ class RConstancia extends tFPDF{
 		
 		$this->setXY(75, 245); $this->Cell(0, 5, $cuidados);
 		if ($cuidados == '')
-			$this->setXY(147.5, 236.4); 
-		else
 			$this->setXY(158, 236.4); 
+		else
+			$this->setXY(147.5, 236.4); 
 			
 		$this->Cell(0, 5, "X");
 	}
