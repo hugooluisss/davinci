@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-04-03 01:03:58
+<?php /* Smarty version Smarty-3.1.11, created on 2016-05-13 00:16:50
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:200058433755e4995bd4c484-25432014%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1459667036,
+      1 => 1463116609,
       2 => 'file',
     ),
   ),
@@ -141,7 +141,8 @@ plugins/upload/css/jquery.fileupload.css">
 			<!-- sidebar menu: : style can be found in sidebar.less -->
 				<ul class="sidebar-menu">
 					<li class="header">MENÚ PRINCIPAL</li>
-					<li class="active treeview">
+					<!--<li class="<?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='estudiantes'||$_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='inscripciones'){?>active<?php }?> treeview">-->
+					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('estudiantes','inscripciones'))){?>active<?php }?> treeview">
 						<a href="#">
 							<span>Gestión escolar</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
@@ -151,7 +152,7 @@ plugins/upload/css/jquery.fileupload.css">
 						</ul>
 					</li>
 					<?php if ($_smarty_tpl->tpl_vars['PAGE']->value['usuario']->getIdTipo()!=3){?>
-					<li class="active treeview">
+					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('optativas','rutas'))){?>active<?php }?> treeview">
 						<a href="#">
 							<span>Servicios Especiales</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
@@ -165,7 +166,7 @@ plugins/upload/css/jquery.fileupload.css">
 					</li>
 					<?php }?>
 					<?php if ($_smarty_tpl->tpl_vars['PAGE']->value['usuario']->getIdTipo()==1){?>
-					<li class="active treeview">
+					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('admonUsuarios'))){?>active<?php }?> treeview">
 						<a href="#">
 							<span>Administración</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
@@ -176,7 +177,7 @@ plugins/upload/css/jquery.fileupload.css">
 					</li>
 					<?php }?>
 					<?php if ($_smarty_tpl->tpl_vars['PAGE']->value['usuario']->getIdTipo()!=3){?>
-					<li class="active treeview">
+					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('cicloescolar','grupos','cuidados','niveles'))){?>active<?php }?> treeview">
 						<a href="#">
 							<span>Catálogos</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
@@ -189,6 +190,8 @@ plugins/upload/css/jquery.fileupload.css">
 							<?php if ($_smarty_tpl->tpl_vars['PAGE']->value['usuario']->getIdTipo()!=2){?>
 							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='niveles'){?>class="active"<?php }?>><a href="niveles"><i class="fa fa-university"></i> Niveles educativos</a></li>
 							<?php }?>
+							
+							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='tipoPrendas'){?>class="active"<?php }?>><a href="tipoPrendas"><i class="fa fa-university"></i> Tipo de prendas</a></li>
 						</ul>
 					</li>
 					<?php }?>

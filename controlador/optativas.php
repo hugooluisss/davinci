@@ -19,7 +19,6 @@ switch($objModulo->getId()){
 			array_push($datos, $rs->fields);
 			$rs->moveNext();
 		}
-		
 		$smarty->assign("niveles", $datos);
 	break;
 	case 'listaOptativas':

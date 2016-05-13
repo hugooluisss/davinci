@@ -1,0 +1,62 @@
+1.- Botón para poder imprimir el Reporte de Asistencia Vacío (esto con la finalidad de que se puedan imprimir formatos vacíos para el personal, porque lo que ya tenemos en el sistema pasan lista control escolar y estas listas vacías normalmente se ocupan para otras actividades.
+2.- Reporte de Alumnos con cuidados por nivel y grupo.
+3.- Reporte de Rutas de Transporte por nivel y grupo
+Se necesita un módulo donde llevemos el inventario de libros y uniformes porque se tiene el problema de las existencias y después no saben cuánto se ha vendido de libros y uniformes.
+
+Necesitamos los siguientes datos de los uniformes:
+•	Nivel
+•	Tipo de Prenda
+•	Tallas
+•	Fecha
+•	Entradas (compra o devolución)
+•	Salidas (venta)
+•	Existencia
+•	Proveedor
+•	Precio de Lista
+•	Precio de Venta
+Es importante que se tenga las existencias al momento de una entrada, salida o venta. Y los reportes serán lista de precio, inventario actual y reporte de ventas.
+
+En cuanto al inventario de libros es similar al anterior:
+•	Nivel
+•	Grado
+•	Asignatura
+•	Nombre del libro
+•	Editorial
+•	Serie
+•	Precio de lista (incluir descuento)
+•	Precio de Venta 
+•	Proveedor
+•	Fecha
+•	Entradas (compra o devolución)
+•	Salidas (venta)
+•	Existencia
+
+Los reportes serán Lista de libros por nivel y grado (como lista de Útiles para los padres de familia), lista de precio, inventario actual y reporte de ventas
+La verdad no se donde se podria asignar a los docentes con su materia. En ocasiones dos maestros dan una misma asignatura en grupo diferente.
+Se aceptan propuestas o comentarios para el mejoramiento del sistema
+
+
+
+
+
+Ok para realizar esta segunda etapa considero lo siguiente:
+
+1. Catálogo de tipo de prendas: lo que corresponde a playeras, sueteres, pantalon, calcetas, etc.
+1.1. Catálogo de tallas: de igual forma, se tendrá sobre el tipo las tallas correspondientes.
+2. Catálogo de proveedores: nombre, teléfono, email del proveedor
+3. Catálogo de uniformes: clave, nombre, precio de lista, precio de venta y proveedor. Las existencias pueden ser modificadas de forma manual o por entradas.
+4. Ordenes de uniformes: este es para llevar el control de entradas y salidas, como en este caso es necesario ligarlo hacia un padre de familia, se ligará con el catálogo de familiares (papá, mamá o tutor)
+
+---
+
+Me es necesario hacer aquí un paréntesis, ya que los libros están ligados a una asignatura es necesario que se cree el catálogo de asignaturas, es por esto que agrego lo siguiente:
+
+5. Plan de estudios: donde se definirá la lista de planes de estudio vigentes
+5.1. Asignaturas: donde estas se ligarán también al grado y nivel
+6. Catálogo de editoriales: para tener el registro de editoriales (nombre y clave)
+7. Catálogo de libros: clave, nombre, serie, precio de lista, precio de venta, existencias.
+8. Ordenes de libros: para entradas y salidas de libros, este de igual forma será ligado a los padres de familia.
+9. Reportes: los 7 reportes que indicas en formato PDF, o los necesitas en excel?
+
+
+Como te darás cuenta si son varios módulos los que hay que crear, espero tus comentarios a mi propuesta. Saludos

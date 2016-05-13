@@ -95,7 +95,8 @@
 			<!-- sidebar menu: : style can be found in sidebar.less -->
 				<ul class="sidebar-menu">
 					<li class="header">MENÚ PRINCIPAL</li>
-					<li class="active treeview">
+					<!--<li class="{if $PAGE.modulo eq 'estudiantes' or $PAGE.modulo eq 'inscripciones'}active{/if} treeview">-->
+					<li class="{if in_array($PAGE.modulo, array('estudiantes', 'inscripciones'))}active{/if} treeview">
 						<a href="#">
 							<span>Gestión escolar</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
@@ -105,7 +106,7 @@
 						</ul>
 					</li>
 					{if $PAGE.usuario->getIdTipo() neq 3}
-					<li class="active treeview">
+					<li class="{if in_array($PAGE.modulo, array('optativas', 'rutas'))}active{/if} treeview">
 						<a href="#">
 							<span>Servicios Especiales</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
@@ -119,7 +120,7 @@
 					</li>
 					{/if}
 					{if $PAGE.usuario->getIdTipo() eq 1}
-					<li class="active treeview">
+					<li class="{if in_array($PAGE.modulo, array('admonUsuarios'))}active{/if} treeview">
 						<a href="#">
 							<span>Administración</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
@@ -130,7 +131,7 @@
 					</li>
 					{/if}
 					{if $PAGE.usuario->getIdTipo() neq 3}
-					<li class="active treeview">
+					<li class="{if in_array($PAGE.modulo, array('cicloescolar', 'grupos', 'cuidados', 'niveles'))}active{/if} treeview">
 						<a href="#">
 							<span>Catálogos</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
@@ -143,6 +144,8 @@
 							{if $PAGE.usuario->getIdTipo() neq 2}
 							<li {if $PAGE.modulo eq 'niveles'}class="active"{/if}><a href="niveles"><i class="fa fa-university"></i> Niveles educativos</a></li>
 							{/if}
+							
+							<li {if $PAGE.modulo eq 'tipoPrendas'}class="active"{/if}><a href="tipoPrendas"><i class="fa fa-university"></i> Tipo de prendas</a></li>
 						</ul>
 					</li>
 					{/if}

@@ -115,7 +115,7 @@ class TModulo{
 	}
 	
 	public function getAction(){
-		return $_GET['action'];
+		return $_POST['action'] == ''?$_GET['action']:$_POST['action'];
 	}
 	
 	public function getDebugSeguridad(){

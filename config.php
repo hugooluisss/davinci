@@ -320,4 +320,29 @@ $conf['casistencias'] = array(
 	'descripcion' => 'Controlador de asistencias',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
+	
+/*Inventarios*/
+/*Ciclos escolares*/
+$conf['tipoPrendas'] = array(
+	'controlador' => 'tipoprendas.php',
+	'vista' => 'tipoprendas/panel.tpl',
+	'descripcion' => 'Administración de Tipo de prendas',
+	'seguridad' => true,
+	'js' => array('tipoPrenda.class.js'),
+	'jsTemplate' => array('tipoPrendas.js'),
+	'capa' => LAYOUT_DEFECTO);
+
+$conf['listaTipoPrendas'] = array(
+	'controlador' => 'tipoprendas.php',
+	'vista' => 'tipoprendas/lista.tpl',
+	'descripcion' => 'Lista de tipo de prendas',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['cTipoPrendas'] = array(
+	'controlador' => 'tipoprendas.php',
+	'descripcion' => 'Controlador de tipo de prendas',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+
 ?>
