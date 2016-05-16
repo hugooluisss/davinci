@@ -368,7 +368,7 @@ $conf['ctallas'] = array(
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
 	
-/*Tallas*/
+/*Proveedores*/
 $conf['proveedores'] = array(
 	'controlador' => 'proveedores.php',
 	'vista' => 'proveedores/panel.tpl',
@@ -388,6 +388,29 @@ $conf['listaProveedores'] = array(
 $conf['cproveedores'] = array(
 	'controlador' => 'proveedores.php',
 	'descripcion' => 'Controlador de proveedores',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+/*Uniformes*/
+$conf['uniformes'] = array(
+	'controlador' => 'uniformes.php',
+	'vista' => 'uniformes/panel.tpl',
+	'descripcion' => 'Administración de uniformes',
+	'seguridad' => true,
+	'js' => array('uniforme.class.js'),
+	'jsTemplate' => array('uniformes.js'),
+	'capa' => LAYOUT_DEFECTO);
+
+$conf['listaUniformes'] = array(
+	'controlador' => 'uniformes.php',
+	'vista' => 'uniformes/lista.tpl',
+	'descripcion' => 'Lista de uniformes',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['cuniformes'] = array(
+	'controlador' => 'uniformes.php',
+	'descripcion' => 'Controlador de uniformes',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
 ?>
