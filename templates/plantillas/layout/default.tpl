@@ -144,8 +144,18 @@
 							{if $PAGE.usuario->getIdTipo() neq 2}
 							<li {if $PAGE.modulo eq 'niveles'}class="active"{/if}><a href="niveles"><i class="fa fa-university"></i> Niveles educativos</a></li>
 							{/if}
-							
-							<li {if $PAGE.modulo eq 'tipoPrendas'}class="active"{/if}><a href="tipoPrendas"><i class="fa fa-university"></i> Tipo de prendas</a></li>
+						</ul>
+					</li>
+					{/if}
+					{if $PAGE.usuario->getIdTipo() neq 3}
+					<li class="{if in_array($PAGE.modulo, array('tipoPrendas', 'tallas', 'proveedores'))}active{/if} treeview">
+						<a href="#">
+							<span>Almacén</span> <i class="fa fa-angle-left pull-right"></i>
+						</a>
+						<ul class="treeview-menu">
+							<li {if $PAGE.modulo eq 'tipoPrendas' or $PAGE.modulo eq 'tallas'}class="active"{/if}><a href="tipoPrendas"><i class="fa fa-pencil-square-o"></i> Tipo de prendas</a></li>
+							<li {if $PAGE.modulo eq 'proveedores'}class="active"{/if}><a href="proveedores"><i class="fa fa-truck"></i> Proveedores</a></li>
+							<li {if $PAGE.modulo eq 'uniformes'}class="active"{/if}><a href="uniformes"><i class="fa fa-male"></i> Uniformes</a></li>
 						</ul>
 					</li>
 					{/if}
@@ -209,6 +219,7 @@
     <script src="{$PAGE.ruta}plugins/slimScroll/jquery.slimscroll.min.js"></script>
     <!-- FastClick -->
     <script src="{$PAGE.ruta}plugins/fastclick/fastclick.min.js"></script>
+    <script type="text/javascript" src="{$PAGE.ruta}plugins/validate/validate.es.js"></script>
     <script type="text/javascript" src="{$PAGE.ruta}plugins/validate/validate.js"></script>
     
     <link rel="stylesheet" href="{$PAGE.ruta}plugins/datatables/dataTables.bootstrap.css">

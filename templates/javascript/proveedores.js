@@ -14,17 +14,25 @@ $(document).ready(function(){
 	$("#frmAdd").validate({
 		debug: true,
 		rules: {
-			txtNombre: "required"
+			txtNombre: "required",
+			txtTelefono: {
+				digits: true,
+				minlength: 5,
+				maxlength: 12
+			},
+			txtEmail: {
+				required: true,
+				email: true
+			}
 		},
 		wrapper: 'span', 
-		messages: {
-			txtNombre: "Es necesario un nombre"
-		},
 		submitHandler: function(form){
-			var obj = new TTipoPrenda;
+			var obj = new TProveedor;
 			obj.add(
 				$("#id").val(), 
 				$("#txtNombre").val(),
+				$("#txtTelefono").val(),
+				$("#txtEmail").val(),
 				{
 					after: function(datos){
 						if (datos.band){
@@ -42,13 +50,13 @@ $(document).ready(function(){
     });
 		
 	function getLista(){
-		$.get("listaTipoPrendas", function( data ) {
+		$.get("listaProveedores", function( data ) {
 			$("#dvLista").html(data);
 			
 			$("[action=eliminar]").click(function(){
 				if(confirm("¿Seguro?")){
-					var obj = new TTipoPrenda;
-					obj.del($(this).attr("tipo"), {
+					var obj = new TProveedor;
+					obj.del($(this).attr("proveedor"), {
 						after: function(data){
 							getLista();
 						}
@@ -59,15 +67,11 @@ $(document).ready(function(){
 			$("[action=modificar]").click(function(){
 				var el = jQuery.parseJSON($(this).attr("datos"));
 				
-				$("#id").val(el.idTipo);
+				$("#id").val(el.idProveedor);
 				$("#txtNombre").val(el.nombre);
+				$("#txtTelefono").val(el.telefono);
+				$("#txtEmail").val(el.email);
 				$('#panelTabs a[href="#add"]').tab('show');
-			});
-			
-			$("[action=tallas]").click(function(){
-				var el = jQuery.parseJSON($(this).attr("datos"));
-				location.href = "index.php?mod=tallas&id=" + el.idTipo;
-
 			});
 			
 			$("#tblTipos").DataTable({

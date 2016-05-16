@@ -14,17 +14,24 @@ $(document).ready(function(){
 	$("#frmAdd").validate({
 		debug: true,
 		rules: {
-			txtNombre: "required"
+			txtNombre: "required",
+			txtAdicional: {
+				required: true,
+				number: true
+			}
 		},
 		wrapper: 'span', 
 		messages: {
-			txtNombre: "Es necesario un nombre"
+			txtNombre: "Este campo es necesario",
+			txtAdicional: "Este campo es necesario y solo debe de ser numérico"
 		},
 		submitHandler: function(form){
-			var obj = new TTipoPrenda;
+			var obj = new TTalla;
 			obj.add(
 				$("#id").val(), 
-				$("#txtNombre").val(),
+				$("#tipo").val(), 
+				$("#txtNombre").val(), 
+				$("#txtAdicional").val(),
 				{
 					after: function(datos){
 						if (datos.band){
@@ -42,13 +49,13 @@ $(document).ready(function(){
     });
 		
 	function getLista(){
-		$.get("listaTipoPrendas", function( data ) {
+		$.post("listaTallas", {"tipo": $("#tipo").val()}, function( data ) {
 			$("#dvLista").html(data);
 			
 			$("[action=eliminar]").click(function(){
 				if(confirm("¿Seguro?")){
-					var obj = new TTipoPrenda;
-					obj.del($(this).attr("tipo"), {
+					var obj = new TTalla;
+					obj.del($(this).attr("talla"), {
 						after: function(data){
 							getLista();
 						}
@@ -59,18 +66,13 @@ $(document).ready(function(){
 			$("[action=modificar]").click(function(){
 				var el = jQuery.parseJSON($(this).attr("datos"));
 				
-				$("#id").val(el.idTipo);
+				$("#id").val(el.idTalla);
 				$("#txtNombre").val(el.nombre);
+				$("#txtAdicional").val(el.adicional);
 				$('#panelTabs a[href="#add"]').tab('show');
 			});
 			
-			$("[action=tallas]").click(function(){
-				var el = jQuery.parseJSON($(this).attr("datos"));
-				location.href = "index.php?mod=tallas&id=" + el.idTipo;
-
-			});
-			
-			$("#tblTipos").DataTable({
+			$("#tblTallas").DataTable({
 				"responsive": true,
 				"language": espaniol,
 				"paging": false,

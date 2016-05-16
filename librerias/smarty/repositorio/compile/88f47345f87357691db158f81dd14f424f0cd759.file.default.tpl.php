@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-05-13 00:16:50
+<?php /* Smarty version Smarty-3.1.11, created on 2016-05-15 22:17:50
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:200058433755e4995bd4c484-25432014%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1463116609,
+      1 => 1463368668,
       2 => 'file',
     ),
   ),
@@ -190,8 +190,18 @@ plugins/upload/css/jquery.fileupload.css">
 							<?php if ($_smarty_tpl->tpl_vars['PAGE']->value['usuario']->getIdTipo()!=2){?>
 							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='niveles'){?>class="active"<?php }?>><a href="niveles"><i class="fa fa-university"></i> Niveles educativos</a></li>
 							<?php }?>
-							
-							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='tipoPrendas'){?>class="active"<?php }?>><a href="tipoPrendas"><i class="fa fa-university"></i> Tipo de prendas</a></li>
+						</ul>
+					</li>
+					<?php }?>
+					<?php if ($_smarty_tpl->tpl_vars['PAGE']->value['usuario']->getIdTipo()!=3){?>
+					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('tipoPrendas','tallas','proveedores'))){?>active<?php }?> treeview">
+						<a href="#">
+							<span>Almacén</span> <i class="fa fa-angle-left pull-right"></i>
+						</a>
+						<ul class="treeview-menu">
+							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='tipoPrendas'||$_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='tallas'){?>class="active"<?php }?>><a href="tipoPrendas"><i class="fa fa-pencil-square-o"></i> Tipo de prendas</a></li>
+							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='proveedores'){?>class="active"<?php }?>><a href="proveedores"><i class="fa fa-truck"></i> Proveedores</a></li>
+							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='uniformes'){?>class="active"<?php }?>><a href="uniformes"><i class="fa fa-male"></i> Uniformes</a></li>
 						</ul>
 					</li>
 					<?php }?>
@@ -274,6 +284,8 @@ plugins/slimScroll/jquery.slimscroll.min.js"></script>
     <!-- FastClick -->
     <script src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
 plugins/fastclick/fastclick.min.js"></script>
+    <script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
+plugins/validate/validate.es.js"></script>
     <script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
 plugins/validate/validate.js"></script>
     

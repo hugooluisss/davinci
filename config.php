@@ -345,4 +345,49 @@ $conf['cTipoPrendas'] = array(
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
 
+/*Tallas*/
+$conf['tallas'] = array(
+	'controlador' => 'tallas.php',
+	'vista' => 'tipoprendas/tallas/panel.tpl',
+	'descripcion' => 'Administración de tallas',
+	'seguridad' => true,
+	'js' => array('talla.class.js'),
+	'jsTemplate' => array('tallas.js'),
+	'capa' => LAYOUT_DEFECTO);
+
+$conf['listaTallas'] = array(
+	'controlador' => 'tallas.php',
+	'vista' => 'tipoprendas/tallas/lista.tpl',
+	'descripcion' => 'Lista de tallas',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['ctallas'] = array(
+	'controlador' => 'tallas.php',
+	'descripcion' => 'Controlador de tallas',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+/*Tallas*/
+$conf['proveedores'] = array(
+	'controlador' => 'proveedores.php',
+	'vista' => 'proveedores/panel.tpl',
+	'descripcion' => 'Administración de proveedores',
+	'seguridad' => true,
+	'js' => array('proveedor.class.js'),
+	'jsTemplate' => array('proveedores.js'),
+	'capa' => LAYOUT_DEFECTO);
+
+$conf['listaProveedores'] = array(
+	'controlador' => 'proveedores.php',
+	'vista' => 'proveedores/lista.tpl',
+	'descripcion' => 'Lista de proveedores',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['cproveedores'] = array(
+	'controlador' => 'proveedores.php',
+	'descripcion' => 'Controlador de proveedores',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
 ?>
