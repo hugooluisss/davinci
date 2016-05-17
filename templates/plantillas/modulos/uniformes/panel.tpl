@@ -22,7 +22,7 @@
 				<div class="box-body">
 					<div class="form-group">
 						<label for="txtClave" class="col-lg-2">Clave</label>
-						<div class="col-lg-8">
+						<div class="col-lg-3">
 							<input class="form-control" id="txtClave" name="txtClave" />
 						</div>
 					</div>
@@ -53,11 +53,14 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="txtLista" class="col-lg-2">Precio</label>
-						<div class="col-lg-4">
+						<label for="txtLista" class="col-lg-2">Precio de lista</label>
+						<div class="col-lg-2">
 							<input class="form-control text-right" id="txtLista" name="txtLista" placeholder="De lista" value="0.00"/>
 						</div>
-						<div class="col-lg-4">
+					</div>
+					<div class="form-group">
+						<label for="txtVenta" class="col-lg-2">Precio de venta</label>
+						<div class="col-lg-2">
 							<input class="form-control text-right" id="txtVenta" name="txtVenta" placeholder="De venta" value="0.00"/>
 						</div>
 					</div>

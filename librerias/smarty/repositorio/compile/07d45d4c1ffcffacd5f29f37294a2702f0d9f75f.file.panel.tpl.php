@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-05-16 12:57:56
+<?php /* Smarty version Smarty-3.1.11, created on 2016-05-16 22:42:51
          compiled from "templates/plantillas/modulos/uniformes/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:480841182573a08ce704831-77642580%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '07d45d4c1ffcffacd5f29f37294a2702f0d9f75f' => 
     array (
       0 => 'templates/plantillas/modulos/uniformes/panel.tpl',
-      1 => 1463421475,
+      1 => 1463456570,
       2 => 'file',
     ),
   ),
@@ -49,7 +49,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				<div class="box-body">
 					<div class="form-group">
 						<label for="txtClave" class="col-lg-2">Clave</label>
-						<div class="col-lg-8">
+						<div class="col-lg-3">
 							<input class="form-control" id="txtClave" name="txtClave" />
 						</div>
 					</div>
@@ -92,11 +92,14 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="txtLista" class="col-lg-2">Precio</label>
-						<div class="col-lg-4">
+						<label for="txtLista" class="col-lg-2">Precio de lista</label>
+						<div class="col-lg-2">
 							<input class="form-control text-right" id="txtLista" name="txtLista" placeholder="De lista" value="0.00"/>
 						</div>
-						<div class="col-lg-4">
+					</div>
+					<div class="form-group">
+						<label for="txtVenta" class="col-lg-2">Precio de venta</label>
+						<div class="col-lg-2">
 							<input class="form-control text-right" id="txtVenta" name="txtVenta" placeholder="De venta" value="0.00"/>
 						</div>
 					</div>

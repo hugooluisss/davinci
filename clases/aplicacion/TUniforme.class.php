@@ -5,7 +5,8 @@
 * @package aplicacion
 * @autor Hugo Santiago hugooluisss@gmail.com
 **/
-
+include_once("clases/aplicacion/TProveedor.class.php");
+include_once("clases/aplicacion/TTipoPrenda.class.php");
 class TUniforme{
 	private $idUniformar;
 	public $proveedor;
@@ -83,7 +84,7 @@ class TUniforme{
 	*/
 	
 	public function setProveedor($val = ""){
-		$this->proveedor = TProveedor($val);
+		$this->proveedor = new TProveedor($val);
 		
 		return true;
 	}
@@ -98,7 +99,7 @@ class TUniforme{
 	*/
 	
 	public function setTipo($val = ""){
-		$this->tipo = TTipoPrenda($val);
+		$this->tipo = new TTipoPrenda($val);
 		
 		return true;
 	}
@@ -165,7 +166,7 @@ class TUniforme{
 	*/
 	
 	public function setPrecioLista($val = 0){
-		$this->precioLista = $val;
+		$this->preciolista = $val;
 		return true;
 	}
 	
@@ -191,7 +192,7 @@ class TUniforme{
 	*/
 	
 	public function setPrecioVenta($val = 0){
-		$this->precioVenta = $val;
+		$this->precioventa = $val;
 		
 		return true;
 	}
@@ -205,7 +206,7 @@ class TUniforme{
 	*/
 	
 	public function getPrecioVenta(){
-		return $this->precioVenta;
+		return $this->precioventa;
 	}
 	
 	/**

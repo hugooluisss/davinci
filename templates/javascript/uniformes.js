@@ -17,7 +17,7 @@ $(document).ready(function(){
 			txtClave: {
 				required: true,
 				remote: {
-					url: "cuniformes",
+					url: "./cuniformes",
 					type: "post",
 					data: {
 						action: "validaClave",
@@ -30,12 +30,12 @@ $(document).ready(function(){
 			txtNombre: "required",
 			selProveedor: "required",
 			selTipo: "required",
-			txtPrecioLista: {
+			txtLista: {
 				required: true,
 				number: "Solo se aceptan números",
 				min: 0
 			},
-			txtPrecioVenta: {
+			txtVenta: {
 				required: true,
 				number: "Solo se aceptan números",
 				min: 0
@@ -55,8 +55,8 @@ $(document).ready(function(){
 				$("#selTipo").val(),
 				$("#txtClave").val(),
 				$("#txtNombre").val(),
-				$("#txtPrecioLista").val(),
-				$("#txtPrecioVenta").val(),
+				$("#txtLista").val(),
+				$("#txtVenta").val(),
 				{
 					after: function(datos){
 						if (datos.band){
@@ -96,8 +96,8 @@ $(document).ready(function(){
 				$("#selTipo").val(el.idTipo);
 				$("#txtClave").val(el.clave);
 				$("#txtNombre").val(el.nombre);
-				$("#txtLista").val(el.lista);
-				$("#txtVenta").val(el.venta);
+				$("#txtLista").val(el.preciolista);
+				$("#txtVenta").val(el.precioventa);
 				
 				$('#panelTabs a[href="#add"]').tab('show');
 			});
