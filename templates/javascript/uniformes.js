@@ -108,7 +108,7 @@ $(document).ready(function(){
 				var el = jQuery.parseJSON($(this).attr("datos"));
 				
 				$("#winExistencias").modal();
-				listaTallas(el.idTipo);
+				listaTallas(el.idUniforme);
 			});
 			
 			$("#tblUniformes").DataTable({
@@ -123,12 +123,28 @@ $(document).ready(function(){
 		});
 	};
 	
-	function listaTallas(tipo){
+	function listaTallas(uniforme){
 		$.post("listaTallasUniformes", {
-			"tipo": tipo
+			"uniforme": uniforme
 		}, function(html) {
 			$("#winExistencias").find(".modal-body").html(html);
-			
+			$("#winExistencias").find(".cantidad").change(function(){
+				var data = jQuery.parseJSON($(this).attr("datos"));
+				var el = $(this);
+				var obj = new TUniforme;
+				
+				obj.setExistencias(data.idUniforme, data.idTalla, el.val(), {
+					before: function(){
+						el.prop("disabled", true);
+					},
+					after: function(resp){
+						el.prop("disabled", false);
+						
+						if (resp.band != true)
+							alert("Ocurrió un error al establecer las existencias");
+					}
+				});
+			});
 		});
 	}
 });

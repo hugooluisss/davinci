@@ -415,7 +415,7 @@ $conf['cuniformes'] = array(
 	'capa' => LAYOUT_AJAX);
 	
 $conf['listaTallasUniformes'] = array(
-	'controlador' => 'tallas.php',
+	'controlador' => 'uniformes.php',
 	'vista' => 'uniformes/listaTallas.tpl',
 	'descripcion' => 'Lista de tallas',
 	'seguridad' => true,

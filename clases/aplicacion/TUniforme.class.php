@@ -262,4 +262,25 @@ class TUniforme{
 		
 		return $rs?true:false;
 	}
+	
+	/**
+	* Establece las existencias
+	*
+	* @autor Hugo
+	* @param int $talla Valor a asignar
+	* @param int $existencias Valor a asignar
+	* @access public
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setExistencias($talla = '', $existencias = 0){
+		if ($this->getId() == '') return false;
+		if ($talla == '') return false;
+		
+		$db = TBase::conectaDB();
+		$db->Execute("delete from existencias where idUniforme = ".$this->getId()." and idTalla = ".$talla);
+		$rs = $db->Execute("insert into existencias(idUniforme, idTalla, existencia) values (".$this->getId().", ".$talla.", ".$existencias.")");
+		
+		return $rs?true:false;
+	}
 }

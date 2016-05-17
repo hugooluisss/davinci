@@ -4,7 +4,7 @@ switch($objModulo->getId()){
 	case 'tallas':
 		$smarty->assign("tipo", $_GET['id']);
 	break;
-	case 'listaTallas': case 'listaTallasUniformes':
+	case 'listaTallas':
 		$db = TBase::conectaDB();
 		$rs = $db->Execute("select * from talla where idTipo = ".$_POST['tipo']);
 		$datos = array();

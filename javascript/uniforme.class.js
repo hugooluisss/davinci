@@ -23,6 +23,8 @@ TUniforme = function(){
 	};
 	
 	this.del = function(id, fn){
+		if (fn.before !== undefined) fn.before();
+		
 		$.post('cuniformes', {
 			"id": id,
 			"action": "del"
@@ -34,4 +36,21 @@ TUniforme = function(){
 			}
 		}, "json");
 	};
+	
+	this.setExistencias = function(uniforme, talla, cantidad, fn){
+		if (fn.before !== undefined) fn.before();
+		
+		$.post('cuniformes', {
+			"uniforme": uniforme,
+			"talla": talla,
+			"cantidad": cantidad,
+			"action": "setExistencias"
+		}, function(data){
+			if (fn.after != undefined)
+				fn.after(data);
+			if (data.band == 'false'){
+				console.log("Ocurrió un error al actualizar las existencias de la talla");
+			}
+		}, "json");
+	}
 };

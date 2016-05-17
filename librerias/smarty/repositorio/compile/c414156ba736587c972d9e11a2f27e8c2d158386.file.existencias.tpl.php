@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-05-17 09:42:58
+<?php /* Smarty version Smarty-3.1.11, created on 2016-05-17 09:56:16
          compiled from "templates/plantillas/modulos/uniformes/existencias.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2113008537573b2df211f480-05051540%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c414156ba736587c972d9e11a2f27e8c2d158386' => 
     array (
       0 => 'templates/plantillas/modulos/uniformes/existencias.tpl',
-      1 => 1463496142,
+      1 => 1463496942,
       2 => 'file',
     ),
   ),
@@ -15,9 +15,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1.11',
   'unifunc' => 'content_573b2df21217e6_75533348',
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_573b2df21217e6_75533348')) {function content_573b2df21217e6_75533348($_smarty_tpl) {?><div class="modal fade" id="winExistencias" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
