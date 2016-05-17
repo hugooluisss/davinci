@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-05-16 23:58:28
+<?php /* Smarty version Smarty-3.1.11, created on 2016-05-17 09:38:04
          compiled from "templates/plantillas/modulos/uniformes/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:736727981573a08e7a7a1a3-11784688%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8ae4324dcee930ffac620ca37c6b12c25b16a39b' => 
     array (
       0 => 'templates/plantillas/modulos/uniformes/lista.tpl',
-      1 => 1463461106,
+      1 => 1463495881,
       2 => 'file',
     ),
   ),
@@ -47,7 +47,7 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 </td>
 						<td style="text-align: right">
 							<button type="button" class="btn btn-default" action="existencias" title="Existencias" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
-'><i class="fa fa-university"></i></button>
+'><i class="">E</i></button>
 							<button type="button" class="btn btn-success" action="modificar" title="Modificar" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
 '><i class="fa fa-pencil"></i></button>
 							<button type="button" class="btn btn-danger" action="eliminar" title="Eliminar" uniforme="<?php echo $_smarty_tpl->tpl_vars['row']->value['idUniforme'];?>

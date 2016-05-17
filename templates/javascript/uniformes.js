@@ -5,6 +5,7 @@ $(document).ready(function(){
 		$("#frmAdd").get(0).reset();
 		$("#id").val("");
 		$("form:not(.filter) :input:visible:enabled:first").focus();
+		$("#selTipo").prop("disabled", false);
 	});
 	
 	$("#btnReset").click(function(){
@@ -98,8 +99,16 @@ $(document).ready(function(){
 				$("#txtNombre").val(el.nombre);
 				$("#txtLista").val(el.preciolista);
 				$("#txtVenta").val(el.precioventa);
+				$("#selTipo").prop("disabled", true);
 				
 				$('#panelTabs a[href="#add"]').tab('show');
+			});
+			
+			$("[action=existencias]").click(function(){
+				var el = jQuery.parseJSON($(this).attr("datos"));
+				
+				$("#winExistencias").modal();
+				listaTallas(el.idTipo);
 			});
 			
 			$("#tblUniformes").DataTable({
@@ -113,4 +122,13 @@ $(document).ready(function(){
 			});
 		});
 	};
+	
+	function listaTallas(tipo){
+		$.post("listaTallasUniformes", {
+			"tipo": tipo
+		}, function(html) {
+			$("#winExistencias").find(".modal-body").html(html);
+			
+		});
+	}
 });

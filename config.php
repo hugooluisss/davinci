@@ -414,6 +414,13 @@ $conf['cuniformes'] = array(
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
 	
+$conf['listaTallasUniformes'] = array(
+	'controlador' => 'tallas.php',
+	'vista' => 'uniformes/listaTallas.tpl',
+	'descripcion' => 'Lista de tallas',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
 /*Uniformes*/
 $conf['ventaUniformes'] = array(
 	'controlador' => 'ventas.php',

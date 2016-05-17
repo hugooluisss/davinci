@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-05-16 22:42:51
+<?php /* Smarty version Smarty-3.1.11, created on 2016-05-17 09:42:58
          compiled from "templates/plantillas/modulos/uniformes/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:480841182573a08ce704831-77642580%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '07d45d4c1ffcffacd5f29f37294a2702f0d9f75f' => 
     array (
       0 => 'templates/plantillas/modulos/uniformes/panel.tpl',
-      1 => 1463456570,
+      1 => 1463496177,
       2 => 'file',
     ),
   ),
@@ -22,6 +22,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'proveedores' => 0,
     'row' => 0,
     'tipos' => 0,
+    'PAGE' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -112,4 +113,7 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 			</div>
 		</form>
 	</div>
-</div><?php }} ?>
+</div>
+
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/uniformes/existencias.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+<?php }} ?>
