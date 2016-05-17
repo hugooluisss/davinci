@@ -1,10 +1,10 @@
 <?php
 global $objModulo;
 switch($objModulo->getId()){
-	case 'listaResponsablesEstudiante':
+	case 'listaResponsablesEstudiante': case 'responsablesVenta':
 		$db = TBase::conectaDB();
 		
-		$rs = $db->Execute("select *from responsable");
+		$rs = $db->Execute("select distinct a.*, concat(c.nombre, ' ', c.app, ' ', c.apm) as estudiante from responsable a join responsableestudiante b using(idResponsable) join estudiante c using(idEstudiante)");
 		$datos = array();
 		while(!$rs->EOF){
 			$rs->fields['json'] = json_encode($rs->fields);

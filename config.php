@@ -413,4 +413,22 @@ $conf['cuniformes'] = array(
 	'descripcion' => 'Controlador de uniformes',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
+	
+/*Uniformes*/
+$conf['ventaUniformes'] = array(
+	'controlador' => 'ventas.php',
+	'vista' => 'ventaUniformes/panel.tpl',
+	'descripcion' => 'Administración de ventas',
+	'seguridad' => true,
+	#'js' => array('uniforme.class.js'),
+	'jsTemplate' => array('ventaUniformes.js'),
+	'capa' => LAYOUT_DEFECTO);
+	
+$conf['responsablesVenta'] = array(
+	'controlador' => 'responsables.php',
+	'vista' => 'ventaUniformes/listaResponsables.tpl',
+	'descripcion' => 'Lista de responsables',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+
 ?>

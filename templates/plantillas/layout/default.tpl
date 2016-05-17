@@ -148,7 +148,7 @@
 					</li>
 					{/if}
 					{if $PAGE.usuario->getIdTipo() neq 3}
-					<li class="{if in_array($PAGE.modulo, array('tipoPrendas', 'tallas', 'proveedores'))}active{/if} treeview">
+					<li class="{if in_array($PAGE.modulo, array('tipoPrendas', 'tallas', 'proveedores', 'uniformes', 'ventaUniformes'))}active{/if} treeview">
 						<a href="#">
 							<span>Almacén</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
@@ -156,6 +156,7 @@
 							<li {if $PAGE.modulo eq 'tipoPrendas' or $PAGE.modulo eq 'tallas'}class="active"{/if}><a href="tipoPrendas"><i class="fa fa-pencil-square-o"></i> Tipo de prendas</a></li>
 							<li {if $PAGE.modulo eq 'proveedores'}class="active"{/if}><a href="proveedores"><i class="fa fa-truck"></i> Proveedores</a></li>
 							<li {if $PAGE.modulo eq 'uniformes'}class="active"{/if}><a href="uniformes"><i class="fa fa-male"></i> Uniformes</a></li>
+							<li {if $PAGE.modulo eq 'ventaUniformes'}class="active"{/if}><a href="ventaUniformes"><i class="fa fa-shopping-cart"></i> Venta de Uniformes</a></li>
 						</ul>
 					</li>
 					{/if}
