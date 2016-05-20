@@ -438,4 +438,73 @@ $conf['responsablesVenta'] = array(
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
 
+
+/* Plan de estudios*/
+$conf['planestudios'] = array(
+	'controlador' => 'planesestudio.php',
+	'vista' => 'planEstudios/panel.tpl',
+	'descripcion' => 'Administración de plan de estudios',
+	'seguridad' => true,
+	'js' => array('planEstudios.class.js'),
+	'jsTemplate' => array('planestudios.js'),
+	'capa' => LAYOUT_DEFECTO);
+
+$conf['listaPlanes'] = array(
+	'controlador' => 'planesestudio.php',
+	'vista' => 'planEstudios/lista.tpl',
+	'descripcion' => 'Lista de planes',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['cplanesestudio'] = array(
+	'controlador' => 'planesestudio.php',
+	'descripcion' => 'Controlador de plan de estudios',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+/* Asignaturas*/
+$conf['asignaturas'] = array(
+	'controlador' => 'asignaturas.php',
+	'vista' => 'asignaturas/panel.tpl',
+	'descripcion' => 'Administración de asignaturas',
+	'seguridad' => true,
+	'js' => array('asignatura.class.js'),
+	'jsTemplate' => array('asignaturas.js'),
+	'capa' => LAYOUT_DEFECTO);
+
+$conf['listaAsignaturas'] = array(
+	'controlador' => 'asignaturas.php',
+	'vista' => 'asignaturas/lista.tpl',
+	'descripcion' => 'Lista de asignaturas',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['casignaturas'] = array(
+	'controlador' => 'asignaturas.php',
+	'descripcion' => 'Controlador de asignaturas',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+/* Asignaturas*/
+$conf['editoriales'] = array(
+	'controlador' => 'editoriales.php',
+	'vista' => 'editoriales/panel.tpl',
+	'descripcion' => 'Administración de editoriales',
+	'seguridad' => true,
+	'js' => array('editorial.class.js'),
+	'jsTemplate' => array('editoriales.js'),
+	'capa' => LAYOUT_DEFECTO);
+
+$conf['listaEditoriales'] = array(
+	'controlador' => 'editoriales.php',
+	'vista' => 'editoriales/lista.tpl',
+	'descripcion' => 'Lista de editoriales',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['ceditoriales'] = array(
+	'controlador' => 'editoriales.php',
+	'descripcion' => 'Controlador de editoriales',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
 ?>

@@ -131,7 +131,7 @@
 					</li>
 					{/if}
 					{if $PAGE.usuario->getIdTipo() neq 3}
-					<li class="{if in_array($PAGE.modulo, array('cicloescolar', 'grupos', 'cuidados', 'niveles'))}active{/if} treeview">
+					<li class="{if in_array($PAGE.modulo, array('cicloescolar', 'grupos', 'cuidados', 'niveles', 'planestudio', 'asignaturas'))}active{/if} treeview">
 						<a href="#">
 							<span>Catálogos</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
@@ -144,11 +144,12 @@
 							{if $PAGE.usuario->getIdTipo() neq 2}
 							<li {if $PAGE.modulo eq 'niveles'}class="active"{/if}><a href="niveles"><i class="fa fa-university"></i> Niveles educativos</a></li>
 							{/if}
+							<li {if $PAGE.modulo eq 'planestudio' or $PAGE.modulo eq 'asignaturas'}class="active"{/if}><a href="planestudios"><i class="fa fa-folder"></i> Plan de estudios</a></li>
 						</ul>
 					</li>
 					{/if}
 					{if $PAGE.usuario->getIdTipo() neq 3}
-					<li class="{if in_array($PAGE.modulo, array('tipoPrendas', 'tallas', 'proveedores', 'uniformes', 'ventaUniformes'))}active{/if} treeview">
+					<li class="{if in_array($PAGE.modulo, array('tipoPrendas', 'tallas', 'proveedores', 'uniformes', 'ventaUniformes', 'editoriales'))}active{/if} treeview">
 						<a href="#">
 							<span>Almacén</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
@@ -156,6 +157,7 @@
 							<li {if $PAGE.modulo eq 'tipoPrendas' or $PAGE.modulo eq 'tallas'}class="active"{/if}><a href="tipoPrendas"><i class="fa fa-pencil-square-o"></i> Tipo de prendas</a></li>
 							<li {if $PAGE.modulo eq 'proveedores'}class="active"{/if}><a href="proveedores"><i class="fa fa-truck"></i> Proveedores</a></li>
 							<li {if $PAGE.modulo eq 'uniformes'}class="active"{/if}><a href="uniformes"><i class="fa fa-male"></i> Uniformes</a></li>
+							<li {if $PAGE.modulo eq 'editoriales'}class="active"{/if}><a href="editoriales"><i class="fa fa-book"></i> Editoriales</a></li>
 							<li {if $PAGE.modulo eq 'ventaUniformes'}class="active"{/if}><a href="ventaUniformes"><i class="fa fa-shopping-cart"></i> Venta de Uniformes</a></li>
 						</ul>
 					</li>
