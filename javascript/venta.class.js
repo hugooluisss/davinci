@@ -81,4 +81,18 @@ TVenta = function(){
 			if (fn.after !== undefined) fn.after(data);
 		}, "json");
 	}
+	
+	this.aplicar = function(venta, fn){
+		if (fn.before !== undefined) fn.before();
+		
+		$.post('cventas', {
+			"action": "aplicar",
+			"venta": venta,
+		}, function(data){
+			if (data.band == 'false')
+				console.log("Ocurrio un error al aplicar la venta");
+			
+			if (fn.after !== undefined) fn.after(data);
+		}, "json");
+	}
 };

@@ -42,6 +42,7 @@
 				<br/><br/>
 				<hr />
 				<br/>
+				<br />
 				<form role="form" id="frmAddProductos" class="form-horizontal" onsubmit="javascript: return false;">
 					<div class="form-group">
 						<label for="txtClave" class="col-sm-2 control-label">Producto</label>
@@ -56,13 +57,13 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="txtCantidad" class="col-sm-2 control-label">Cantidad</label>
-						<div class="col-sm-2">
-							<input type="text" id="txtCantidad" name="txtCantidad" autofocus="true" class="form-control" autocomplete="false" placeholder="Cantidad"/>
-						</div>
 						<label for="txtCantidad" class="col-sm-offset-2 col-sm-2 control-label">Precio Unitario</label>
 						<div class="col-sm-2">
-							<input type="text" id="txtPrecio" name="txtPrecio" autofocus="true" class="form-control text-right" autocomplete="false" placeholder="Precio"/>
+							<input type="text" id="txtPrecio" name="txtPrecio" class="form-control text-right" autocomplete="false" placeholder="Precio" disabled="true" readonly="true"/>
+						</div>
+						<label for="txtCantidad" class="col-sm-2 control-label">Cantidad</label>
+						<div class="col-sm-2">
+							<input type="text" id="txtCantidad" name="txtCantidad" class="form-control" autocomplete="false" placeholder="Cantidad"/>
 						</div>
 						<div class="col-sm-1 text-right">
 							<button type="submit" id="btnReset" class="btn btn-default"><i class="fa fa-plus" aria-hidden="true"></i></button>

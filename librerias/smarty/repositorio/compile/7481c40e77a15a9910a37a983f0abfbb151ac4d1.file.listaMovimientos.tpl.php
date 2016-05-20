@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-05-20 00:17:18
+<?php /* Smarty version Smarty-3.1.11, created on 2016-05-20 12:15:38
          compiled from "templates/plantillas/modulos/ventaUniformes/listaMovimientos.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1683487241573c855d66eeb6-04736344%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '7481c40e77a15a9910a37a983f0abfbb151ac4d1' => 
     array (
       0 => 'templates/plantillas/modulos/ventaUniformes/listaMovimientos.tpl',
-      1 => 1463720497,
+      1 => 1463764429,
       2 => 'file',
     ),
   ),
@@ -19,17 +19,23 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_573c855d6c4647_64366934',
   'variables' => 
   array (
+    'bandExistencias' => 0,
     'lista' => 0,
     'row' => 0,
     'total' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_573c855d6c4647_64366934')) {function content_573c855d6c4647_64366934($_smarty_tpl) {?><table id="tblMovimientos" class="table table-bordered table-hover">
+<?php if ($_valid && !is_callable('content_573c855d6c4647_64366934')) {function content_573c855d6c4647_64366934($_smarty_tpl) {?><?php if ($_smarty_tpl->tpl_vars['bandExistencias']->value==true){?>
+<button type="button" class="btn btn-danger pull-left" id="btnAplicar">Aplicar venta</button>
+<?php }?>
+
+<table id="tblMovimientos" class="table table-bordered table-hover">
 	<thead>
 		<tr>
 			<th>Clave</th>
 			<th>Descripción</th>
+			<th>Exist</th>
 			<th>Cant</th>
 			<th>Precio</th>
 			<th>&nbsp;</th>
@@ -41,14 +47,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 foreach ($_from as $_smarty_tpl->tpl_vars['row']->key => $_smarty_tpl->tpl_vars['row']->value){
 $_smarty_tpl->tpl_vars['row']->_loop = true;
 ?>
-		<tr>
+		<tr <?php if ($_smarty_tpl->tpl_vars['row']->value['existencias']<$_smarty_tpl->tpl_vars['row']->value['cantidad']){?>class="error"<?php }?>>
 			<td><?php echo $_smarty_tpl->tpl_vars['row']->value['clave'];?>
 </td>
 			<td><?php echo $_smarty_tpl->tpl_vars['row']->value['descripcion'];?>
 </td>
-			<td><?php echo $_smarty_tpl->tpl_vars['row']->value['cantidad'];?>
+			<td class="text-right"><?php echo $_smarty_tpl->tpl_vars['row']->value['existencias'];?>
 </td>
-			<td><?php echo $_smarty_tpl->tpl_vars['row']->value['precio'];?>
+			<td class="text-right"><?php echo $_smarty_tpl->tpl_vars['row']->value['cantidad'];?>
+</td>
+			<td class="text-right"><?php echo $_smarty_tpl->tpl_vars['row']->value['precio'];?>
 </td>
 			<td class="text-right">
 				<button type="button" class="btn btn-danger" action="eliminar" title="Eliminar" movimiento="<?php echo $_smarty_tpl->tpl_vars['row']->value['idMovimiento'];?>

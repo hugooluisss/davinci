@@ -5,7 +5,7 @@ switch($objModulo->getId()){
 	case 'listaVentasUniformes':
 		$db = TBase::conectaDB();
 		global $userSesion;
-		$rs = $db->Execute("select a.*, b.* from venta a join responsable b using(idResponsable) group by idVenta");
+		$rs = $db->Execute("select a.*, b.* from venta a join responsable b using(idResponsable) where tipo = 1 and aplicada = 0 group by idVenta");
 		$datos = array();
 		while(!$rs->EOF){
 			
@@ -29,15 +29,25 @@ switch($objModulo->getId()){
 		$rs = $db->Execute("select * from movventa where idVenta = ".$_POST['venta']);
 		$datos = array();
 		$precio = 0;
+		$existencias = true;
 		while(!$rs->EOF){
+			$el = json_decode($rs->fields['adicional']);
+			$aux = $db->Execute("select existencia from uniforme a join existencias b using(idUniforme) where idUniforme = ".$el->idUniforme." and idTalla = ".$el->idTalla.";");
+			
+			$rs->fields['existencias'] = $aux->fields['existencia'] == ''?0:$aux->fields['existencia'];
+			if ($rs->fields['existencias'] < $rs->fields['cantidad'])
+				$existencias = false;
+			
 			$rs->fields['json']	= json_encode($rs->fields);
 			$precio +=  $rs->fields['precio'];
+			
 			array_push($datos, $rs->fields);
 			
 			$rs->moveNext();
 		}
 
 		$smarty->assign("lista", $datos);
+		$smarty->assign("bandExistencias", $existencias);
 		$smarty->assign("total", sprintf("%.2f", $precio));
 	break;
 	case 'listaUniformesTalla':
@@ -97,6 +107,14 @@ switch($objModulo->getId()){
 				$obj = new TMovimiento($_POST['id']);
 				
 				if ($obj->eliminar())
+					echo json_encode(array("band" => "true"));
+				else
+					echo json_encode(array("band" => "false"));
+			break;
+			case 'aplicar':
+				$obj = new TVenta($_POST['venta']);
+				
+				if ($obj->aplicar())
 					echo json_encode(array("band" => "true"));
 				else
 					echo json_encode(array("band" => "false"));

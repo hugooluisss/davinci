@@ -133,7 +133,7 @@ $(document).ready(function(){
 						$("#frmAddProductos #txtClave").val(el.clave);
 						$("#frmAddProductos #txtClave").attr("idUniforme", el.idUniforme);
 						$("#frmAddProductos #txtClave").attr("idTalla", el.idTalla);
-						$("#frmAddProductos #txtDescripcion").val(el.nombre);
+						$("#frmAddProductos #txtDescripcion").val(el.nombre + "(" + el.talla + ")");
 						$("#frmAddProductos #txtPrecio").val(el.precioventa);
 						$("#frmAddProductos #txtCantidad").val(1);
 						
@@ -193,6 +193,30 @@ $(document).ready(function(){
 				"info": true,
 				"autoWidth": true
 			});
+			
+			$("#btnAplicar").click(function(){
+		    	if(confirm("¿Seguro de querer aplicar la venta?")){
+			    	var objVenta = new TVenta;
+			    	objVenta.aplicar($("#id").val(), {
+			    		before: function(){
+				    		$("#btnAplicar").prop("disabled", true);
+			    		}, after: function(resp){
+				    		$("#btnAplicar").prop("disabled", false);
+				    		
+				    		if (resp.band == false)
+				    			alert("La venta no se aplicó, ocurrió un error");
+				    		else{
+					    		$("#frmAdd")[0].reset();
+								$("#frmAddProductos")[0].reset();
+								$("#frmAdd #id").val("");
+								showDetalle();
+								getLista();
+								alert("La venta se aplicó con éxito");
+				    		}
+			    		}
+			    	});
+		    	}
+		    });
 		});
 		
 		getLista();

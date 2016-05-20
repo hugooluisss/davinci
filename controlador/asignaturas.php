@@ -19,7 +19,7 @@ switch($objModulo->getId()){
 	case 'listaAsignaturas':
 		$db = TBase::conectaDB();
 		
-		$rs = $db->Execute("select a.*, b.nombre as grado, c.nombre as nivel from asignatura a join grado b using(idGrado) join nivel c using(idNivel)");
+		$rs = $db->Execute("select a.*, b.nombre as grado, c.nombre as nivel from asignatura a join grado b using(idGrado) join nivel c using(idNivel) where a.idPlan = ".$_POST['plan']);
 		$datos = array();
 		while(!$rs->EOF){
 			$rs->fields['json'] = json_encode($rs->fields);

@@ -239,5 +239,34 @@ class TVenta{
 		
 		return $rsCompra->fields['monto'];
 	}
+	
+	/**
+	* Aplica la venta
+	*
+	* @autor Hugo
+	* @access public
+	* @return decimal Saldo de la cuenta o venta
+	*/
+	public function aplicar(){
+		if ($this->getId() == '') return false;
+		
+		$db = TBase::conectaDB();
+		if ($this->getTipo() == 1){
+			$rs = $db->Execute("select * from movventa where idVenta = ".$this->getId());
+			
+			while(!$rs->EOF){
+				$el = json_decode($rs->fields['adicional']);
+
+				$db->Execute("update existencias set existencia = existencia - ".$rs->fields['cantidad']." where idTalla = ".$el->idTalla." and idUniforme = ".$el->idUniforme);
+				$rs->moveNext();
+			}
+			
+			$rs = $db->Execute("update venta set aplicada = 1 where idVenta = ".$this->getId());
+			
+			return $rs?true:false;
+		}
+		
+		return false;
+	}
 }
 ?>

@@ -149,7 +149,7 @@
 					</li>
 					{/if}
 					{if $PAGE.usuario->getIdTipo() neq 3}
-					<li class="{if in_array($PAGE.modulo, array('tipoPrendas', 'tallas', 'proveedores', 'uniformes', 'ventaUniformes', 'editoriales'))}active{/if} treeview">
+					<li class="{if in_array($PAGE.modulo, array('tipoPrendas', 'tallas', 'proveedores', 'uniformes', 'editoriales'))}active{/if} treeview">
 						<a href="#">
 							<span>Almacén</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
@@ -157,11 +157,19 @@
 							<li {if $PAGE.modulo eq 'proveedores'}class="active"{/if}><a href="proveedores"><i class="fa fa-truck"></i> Proveedores</a></li>
 							<li {if $PAGE.modulo eq 'tipoPrendas' or $PAGE.modulo eq 'tallas'}class="active"{/if}><a href="tipoPrendas"><i class="fa fa-pencil-square-o"></i> Tipo de prendas</a></li>
 							<li {if $PAGE.modulo eq 'uniformes'}class="active"{/if}><a href="uniformes"><i class="fa fa-male"></i> Uniformes</a></li>
-							<li {if $PAGE.modulo eq 'editoriales'}class="active"{/if}><a href="editoriales"><i class="fa fa-book"></i> Editoriales</a></li>
-							<li {if $PAGE.modulo eq 'ventaUniformes'}class="active"{/if}><a href="ventaUniformes"><i class="fa fa-shopping-cart"></i> Venta de Uniformes</a></li>
+							<li {if $PAGE.modulo eq 'editoriales'}class="active"{/if}><a href="editoriales"><i class="fa fa-briefcase"></i> Editoriales</a></li>
+							<li {if $PAGE.modulo eq 'libros'}class="active"{/if}><a href="libros"><i class="fa fa-book"></i> Libros</a></li>
 						</ul>
 					</li>
 					{/if}
+					<li class="{if in_array($PAGE.modulo, array('ventaUniformes'))}active{/if} treeview">
+						<a href="#">
+							<span>Ventas</span> <i class="fa fa-angle-left pull-right"></i>
+						</a>
+						<ul class="treeview-menu">
+							<li {if $PAGE.modulo eq 'ventaUniformes'}class="active"{/if}><a href="ventaUniformes"><i class="fa fa-shopping-cart"></i> Uniformes</a></li>
+						</ul>
+					</li>
 				</ul>
 			</section>
 			<!-- /.sidebar -->

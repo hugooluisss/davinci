@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-05-20 00:17:09
+<?php /* Smarty version Smarty-3.1.11, created on 2016-05-20 09:44:04
          compiled from "templates/plantillas/modulos/ventaUniformes/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1681384806573c8090e84bd4-12125000%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '85ddeb79d66728fc1b20146a033c96c36378549c' => 
     array (
       0 => 'templates/plantillas/modulos/ventaUniformes/lista.tpl',
-      1 => 1463720497,
+      1 => 1463755439,
       2 => 'file',
     ),
   ),
@@ -29,6 +29,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		<table id="tblVentas" class="table table-bordered table-hover">
 			<thead>
 				<tr>
+					<th>#</th>
 					<th>Fecha</th>
 					<th>Cliente</th>
 					<th>Monto</th>
@@ -42,6 +43,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars["row"]->key => $_smarty_tpl->tpl_vars[
 $_smarty_tpl->tpl_vars["row"]->_loop = true;
 ?>
 					<tr>
+						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['idVenta'];?>
+</td>
 						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['fecha'];?>
 </td>
 						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['nombre'];?>

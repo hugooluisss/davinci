@@ -3,6 +3,7 @@
 		<table id="tblVentas" class="table table-bordered table-hover">
 			<thead>
 				<tr>
+					<th>#</th>
 					<th>Fecha</th>
 					<th>Cliente</th>
 					<th>Monto</th>
@@ -12,6 +13,7 @@
 			<tbody>
 				{foreach from=$lista item="row"}
 					<tr>
+						<td>{$row.idVenta}</td>
 						<td>{$row.fecha}</td>
 						<td>{$row.nombre}</td>
 						<td class="text-right">{$row.monto}</td>

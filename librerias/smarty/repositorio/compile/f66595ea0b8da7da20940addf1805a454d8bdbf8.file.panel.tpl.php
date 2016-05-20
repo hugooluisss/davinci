@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-05-19 23:51:06
+<?php /* Smarty version Smarty-3.1.11, created on 2016-05-20 08:36:33
          compiled from "templates/plantillas/modulos/editoriales/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1751658836573e97ba0455f9-36547110%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f66595ea0b8da7da20940addf1805a454d8bdbf8' => 
     array (
       0 => 'templates/plantillas/modulos/editoriales/panel.tpl',
-      1 => 1463719864,
+      1 => 1463750456,
       2 => 'file',
     ),
   ),
@@ -15,9 +15,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1.11',
   'unifunc' => 'content_573e97ba08d4e7_40886829',
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_573e97ba08d4e7_40886829')) {function content_573e97ba08d4e7_40886829($_smarty_tpl) {?><div class="row">
 	<div class="col-lg-12">

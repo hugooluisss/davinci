@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-05-20 00:17:07
+<?php /* Smarty version Smarty-3.1.11, created on 2016-05-20 12:13:14
          compiled from "templates/plantillas/modulos/ventaUniformes/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:344724532573a9b3aba3b47-47916493%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '3b22680154cdb55667ba739b2bddb52825e10801' => 
     array (
       0 => 'templates/plantillas/modulos/ventaUniformes/panel.tpl',
-      1 => 1463720497,
+      1 => 1463764363,
       2 => 'file',
     ),
   ),
@@ -69,6 +69,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				<br/><br/>
 				<hr />
 				<br/>
+				<br />
 				<form role="form" id="frmAddProductos" class="form-horizontal" onsubmit="javascript: return false;">
 					<div class="form-group">
 						<label for="txtClave" class="col-sm-2 control-label">Producto</label>
@@ -83,13 +84,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="txtCantidad" class="col-sm-2 control-label">Cantidad</label>
-						<div class="col-sm-2">
-							<input type="text" id="txtCantidad" name="txtCantidad" autofocus="true" class="form-control" autocomplete="false" placeholder="Cantidad"/>
-						</div>
 						<label for="txtCantidad" class="col-sm-offset-2 col-sm-2 control-label">Precio Unitario</label>
 						<div class="col-sm-2">
-							<input type="text" id="txtPrecio" name="txtPrecio" autofocus="true" class="form-control text-right" autocomplete="false" placeholder="Precio"/>
+							<input type="text" id="txtPrecio" name="txtPrecio" class="form-control text-right" autocomplete="false" placeholder="Precio" disabled="true" readonly="true"/>
+						</div>
+						<label for="txtCantidad" class="col-sm-2 control-label">Cantidad</label>
+						<div class="col-sm-2">
+							<input type="text" id="txtCantidad" name="txtCantidad" class="form-control" autocomplete="false" placeholder="Cantidad"/>
 						</div>
 						<div class="col-sm-1 text-right">
 							<button type="submit" id="btnReset" class="btn btn-default"><i class="fa fa-plus" aria-hidden="true"></i></button>

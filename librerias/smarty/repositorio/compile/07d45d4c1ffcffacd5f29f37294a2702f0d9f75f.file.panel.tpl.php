@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-05-17 09:56:16
+<?php /* Smarty version Smarty-3.1.11, created on 2016-05-20 09:42:23
          compiled from "templates/plantillas/modulos/uniformes/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:480841182573a08ce704831-77642580%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '07d45d4c1ffcffacd5f29f37294a2702f0d9f75f' => 
     array (
       0 => 'templates/plantillas/modulos/uniformes/panel.tpl',
-      1 => 1463496942,
+      1 => 1463755342,
       2 => 'file',
     ),
   ),
@@ -61,7 +61,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="selProveedor" class="col-lg-2">Teléfono</label>
+						<label for="selProveedor" class="col-lg-2">Proveedor</label>
 						<div class="col-lg-4">
 							<select id="selProveedor" name="selProveedor" class="form-control">
 								<?php  $_smarty_tpl->tpl_vars["row"] = new Smarty_Variable; $_smarty_tpl->tpl_vars["row"]->_loop = false;

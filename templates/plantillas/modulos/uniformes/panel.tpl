@@ -33,7 +33,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="selProveedor" class="col-lg-2">Teléfono</label>
+						<label for="selProveedor" class="col-lg-2">Proveedor</label>
 						<div class="col-lg-4">
 							<select id="selProveedor" name="selProveedor" class="form-control">
 								{foreach from=$proveedores item="row"}
