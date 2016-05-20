@@ -534,4 +534,27 @@ $conf['ceditoriales'] = array(
 	'descripcion' => 'Controlador de editoriales',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
+
+/* Libros*/
+$conf['libros'] = array(
+	'controlador' => 'libros.php',
+	'vista' => 'libros/panel.tpl',
+	'descripcion' => 'Administración de libros',
+	'seguridad' => true,
+	'js' => array('libro.class.js'),
+	'jsTemplate' => array('libros.js'),
+	'capa' => LAYOUT_DEFECTO);
+
+$conf['listaLibros'] = array(
+	'controlador' => 'libros.php',
+	'vista' => 'libros/lista.tpl',
+	'descripcion' => 'Lista de libros',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['clibros'] = array(
+	'controlador' => 'libros.php',
+	'descripcion' => 'Controlador de libros',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
 ?>
