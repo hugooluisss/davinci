@@ -65,7 +65,7 @@ $smarty->config_dir = CONFIG;
 $smarty->cache_dir = CACHE;
 $smarty->compile_dir = COMPILE;
 $pageSesion = new TUsuario($sesion['usuario']);
-
+$userSesion = $pageSesion;
 $datosPlantilla = array(
 	"ruta" => DIR_PLANTILLAS."/",
 	"css" => DIR_PLANTILLAS."/css/",

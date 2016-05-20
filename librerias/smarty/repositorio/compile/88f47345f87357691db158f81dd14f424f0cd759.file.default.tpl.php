@@ -1,30 +1,30 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-05-19 23:41:22
+<?php /* Smarty version Smarty-3.1.11, created on 2016-05-20 00:17:06
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:200058433755e4995bd4c484-25432014%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1409721575573e9dd2cda5f9-70823435%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1463719281,
+      1 => 1463720497,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '200058433755e4995bd4c484-25432014',
+  'nocache_hash' => '1409721575573e9dd2cda5f9-70823435',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.11',
-  'unifunc' => 'content_55e4995c01eac4_35789668',
   'variables' => 
   array (
     'PAGE' => 0,
     'script' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.11',
+  'unifunc' => 'content_573e9dd31794e1_29895853',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_55e4995c01eac4_35789668')) {function content_55e4995c01eac4_35789668($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_573e9dd31794e1_29895853')) {function content_573e9dd31794e1_29895853($_smarty_tpl) {?><!DOCTYPE html>
 <html>
 	<head>
 	<meta charset="utf-8">
@@ -200,8 +200,8 @@ plugins/upload/css/jquery.fileupload.css">
 							<span>Almacén</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
 						<ul class="treeview-menu">
-							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='tipoPrendas'||$_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='tallas'){?>class="active"<?php }?>><a href="tipoPrendas"><i class="fa fa-pencil-square-o"></i> Tipo de prendas</a></li>
 							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='proveedores'){?>class="active"<?php }?>><a href="proveedores"><i class="fa fa-truck"></i> Proveedores</a></li>
+							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='tipoPrendas'||$_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='tallas'){?>class="active"<?php }?>><a href="tipoPrendas"><i class="fa fa-pencil-square-o"></i> Tipo de prendas</a></li>
 							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='uniformes'){?>class="active"<?php }?>><a href="uniformes"><i class="fa fa-male"></i> Uniformes</a></li>
 							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='editoriales'){?>class="active"<?php }?>><a href="editoriales"><i class="fa fa-book"></i> Editoriales</a></li>
 							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='ventaUniformes'){?>class="active"<?php }?>><a href="ventaUniformes"><i class="fa fa-shopping-cart"></i> Venta de Uniformes</a></li>

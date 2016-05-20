@@ -427,7 +427,7 @@ $conf['ventaUniformes'] = array(
 	'vista' => 'ventaUniformes/panel.tpl',
 	'descripcion' => 'Administración de ventas',
 	'seguridad' => true,
-	#'js' => array('uniforme.class.js'),
+	'js' => array('venta.class.js'),
 	'jsTemplate' => array('ventaUniformes.js'),
 	'capa' => LAYOUT_DEFECTO);
 	
@@ -435,6 +435,33 @@ $conf['responsablesVenta'] = array(
 	'controlador' => 'responsables.php',
 	'vista' => 'ventaUniformes/listaResponsables.tpl',
 	'descripcion' => 'Lista de responsables',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['listaVentasUniformes'] = array(
+	'controlador' => 'ventas.php',
+	'vista' => 'ventaUniformes/lista.tpl',
+	'descripcion' => 'Lista de ventas',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['cventas'] = array(
+	'controlador' => 'ventas.php',
+	'descripcion' => 'Controlador de ventas',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+
+$conf['listaMovimientos'] = array(
+	'controlador' => 'ventas.php',
+	'vista' => 'ventaUniformes/listaMovimientos.tpl',
+	'descripcion' => 'Lista de movimientos',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['listaUniformesTalla'] = array(
+	'controlador' => 'ventas.php',
+	'vista' => 'ventaUniformes/listaUniformes.tpl',
+	'descripcion' => 'Lista de uniformes',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
 
