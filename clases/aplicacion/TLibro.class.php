@@ -6,9 +6,10 @@
 * @autor Hugo Santiago hugooluisss@gmail.com
 **/
 
-class TLibros{
+class TLibro{
 	private $idLibro;
 	public $editorial;
+	public $asignatura;
 	private $clave;
 	private $nombre;
 	private $preciolista;
@@ -22,8 +23,9 @@ class TLibros{
 	* @access public
 	* @param int $id identificador del objeto
 	*/
-	public function TAsignatura($id = ''){
-		$this->plan = new TEditorial;
+	public function TLibro($id = ''){
+		$this->editorial = new TEditorial;
+		$this->asignatura = new TAsignatura;
 		$this->setId($id);		
 		return true;
 	}
@@ -47,6 +49,9 @@ class TLibros{
 			switch($field){
 				case 'idEditorial':
 					$this->editorial = new TEditorial($val);
+				break;
+				case 'idAsignatura':
+					$this->asignatura = new TAsignatura($val);
 				break;
 				default:
 					$this->$field = $val;
@@ -78,7 +83,22 @@ class TLibros{
 	*/
 	
 	public function setEditorial($val = ""){
-		$this->plan = new TEditorial($val);
+		$this->editorial = new TEditorial($val);
+		
+		return true;
+	}
+	
+	/**
+	* Establece las asignatura
+	*
+	* @autor Hugo
+	* @access public
+	* @param int $val Valor a asignar
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setAsignatura($val = ""){
+		$this->asignatura = new TAsignatura($val);
 		
 		return true;
 	}
@@ -196,7 +216,7 @@ class TLibros{
 	* @return boolean True si se realizó sin problemas
 	*/
 	
-	public function setGrado($val = 0){
+	public function setExistencias($val = 0){
 		$this->existencias = $val;
 		return true;
 	}
@@ -223,11 +243,12 @@ class TLibros{
 	
 	public function guardar(){
 		if ($this->editorial->getId() == '') return false;
+		if ($this->asignatura->getId() == '') return false;
 		
 		$db = TBase::conectaDB();
 		
 		if ($this->getId() == ''){
-			$rs = $db->Execute("INSERT INTO libro(idEditorial) VALUES(".$this->editorial->getId().");");
+			$rs = $db->Execute("INSERT INTO libro(idEditorial, idAsignatura) VALUES(".$this->editorial->getId().", ".$this->asignatura->getId().");");
 			if (!$rs) return false;
 				
 			$this->idLibro = $db->Insert_ID();
@@ -235,14 +256,15 @@ class TLibros{
 		
 		if ($this->getId() == '')
 			return false;
-			
+	
 		$rs = $db->Execute("UPDATE libro
 			SET
 				idEditorial = ".$this->editorial->getId().",
+				idAsignatura = ".$this->asignatura->getId().",
 				nombre = '".$this->getNombre()."',
 				clave = '".$this->getClave()."',
 				preciolista = ".$this->getPrecioLista().",
-				precioventa = ".$this->getPrecioVenta()."
+				precioventa = ".$this->getPrecioVenta().",
 				existencias = ".$this->getExistencias()."
 			WHERE idLibro = ".$this->getId());
 			

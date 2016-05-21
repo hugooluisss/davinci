@@ -24,8 +24,18 @@
 						<label for="selEditorial" class="col-lg-2">Editorial</label>
 						<div class="col-lg-3">
 							<select id="selEditorial" name="selEditorial" class="form-control">
-								{foreach from=$grados item="row"}
+								{foreach from=$editoriales item="row"}
 								<option value="{$row.idEditorial}">{$row.nombre}
+								{/foreach}
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="selAsignatura" class="col-lg-2">Asignaturas</label>
+						<div class="col-lg-6">
+							<select id="selAsignatura" name="selAsignatura" class="form-control">
+								{foreach from=$asignaturas item="row"}
+								<option value="{$row.idAsignatura}">{$row.nombre} - {$row.nivel} - {$row.grado}
 								{/foreach}
 							</select>
 						</div>

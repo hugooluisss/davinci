@@ -17,7 +17,7 @@ $(document).ready(function(){
 			txtClave: {
 				required: true,
 				remote: {
-					url: "./cuniformes",
+					url: "./clibros",
 					type: "post",
 					data: {
 						action: "validaClave",
@@ -29,6 +29,7 @@ $(document).ready(function(){
 			},
 			txtNombre: "required",
 			selEditorial: "required",
+			selAsignatura: "required",
 			txtLista: {
 				required: true,
 				number: "Solo se aceptan números",
@@ -39,26 +40,32 @@ $(document).ready(function(){
 				number: "Solo se aceptan números",
 				min: 0
 			},
-			txtExistencia: {
+			txtExistencias: {
 				required: true,
 				number: "Solo se aceptan números",
 				min: 0
 			}
 		},
-		wrapper: 'span', 
+		wrapper: 'span',
+		messages:{
+			txtClave: {
+				remote: "Esta clave ya está siendo usada..."
+			}
+		},
 		submitHandler: function(form){
 			var obj = new TLibro;
 			obj.add(
 				$("#id").val(), 
 				$("#selEditorial").val(),
+				$("#selAsignatura").val(),
 				$("#txtClave").val(),
 				$("#txtNombre").val(),
 				$("#txtLista").val(),
 				$("#txtVenta").val(),
-				$("#txtExistencia").val(),
+				$("#txtExistencias").val(),
 				{
 					after: function(datos){
-						if (datos.band){
+						if (datos.band == true){
 							getLista();
 							$("#frmAdd").get(0).reset();
 							$('#panelTabs a[href="#listas"]').tab('show');
@@ -73,9 +80,7 @@ $(document).ready(function(){
     });
 		
 	function getLista(){
-		$.post("listaLibros", {
-			"plan": $("#plan").val()
-		}, function( data ) {
+		$.get("listaLibros", function( data ) {
 			$("#dvLista").html(data);
 			
 			$("[action=eliminar]").click(function(){

@@ -1,17 +1,18 @@
 TLibro = function(){
 	var self = this;
 	
-	this.add = function(id,	editorial, clave, nombre, preciolista, precioventa, existencias, fn){
+	this.add = function(id,	editorial, asignatura, clave, nombre, preciolista, precioventa, existencias, fn){
 		if (fn.before !== undefined) fn.before();
 		
 		$.post('clibros', {
 				"action": "add",
 				"id": id,
 				"editorial": editorial,
+				"asignatura": asignatura,
 				"nombre": nombre,
 				"clave": clave,
 				"precioLista": preciolista,
-				"previoVenta": precioventa,
+				"precioVenta": precioventa,
 				"existencias": existencias
 			}, function(data){
 				if (data.band == 'false')

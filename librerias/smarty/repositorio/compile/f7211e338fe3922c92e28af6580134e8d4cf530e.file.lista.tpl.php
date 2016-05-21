@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-05-20 13:46:08
+<?php /* Smarty version Smarty-3.1.11, created on 2016-05-20 23:06:33
          compiled from "templates/plantillas/modulos/libros/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2076433568573f5b37897f99-93190813%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f7211e338fe3922c92e28af6580134e8d4cf530e' => 
     array (
       0 => 'templates/plantillas/modulos/libros/lista.tpl',
-      1 => 1463769966,
+      1 => 1463803589,
       2 => 'file',
     ),
   ),
@@ -32,6 +32,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					<th>Clave</th>
 					<th>Nombre</th>
 					<th>Asignatura</th>
+					<th>Exist</th>
+					<th>P. V.</th>
 					<th>&nbsp;</th>
 				</tr>
 			</thead>
@@ -48,10 +50,14 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 </td>
 						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['asignatura'];?>
 </td>
+						<td class="text-right"><?php echo $_smarty_tpl->tpl_vars['row']->value['existencias'];?>
+</td>
+						<td class="text-right"><?php echo $_smarty_tpl->tpl_vars['row']->value['precioventa'];?>
+</td>
 						<td style="text-align: right">
 							<button type="button" class="btn btn-success btn-circle" action="modificar" title="Modificar" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
 '><i class="fa fa-pencil"></i></button>
-							<button type="button" class="btn btn-danger btn-circle" action="eliminar" title="Eliminar" asignatura="<?php echo $_smarty_tpl->tpl_vars['row']->value['idAsignatura'];?>
+							<button type="button" class="btn btn-danger btn-circle" action="eliminar" title="Eliminar" libro="<?php echo $_smarty_tpl->tpl_vars['row']->value['idLibro'];?>
 "><i class="fa fa-times"></i></button>
 						</td>
 					</tr>
