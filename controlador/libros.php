@@ -23,7 +23,7 @@ switch($objModulo->getId()){
 		
 		$smarty->assign("asignaturas", $datos);
 	break;
-	case 'listaLibros':
+	case 'listaLibros': case 'listaLibrosVender':
 		$db = TBase::conectaDB();
 		
 		$rs = $db->Execute("select a.*, b.nombre as editorial, c.nombre as asignatura from libro a join editorial b using(idEditorial) join asignatura c using(idAsignatura)");

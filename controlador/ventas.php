@@ -11,9 +11,24 @@ switch($objModulo->getId()){
 			
 			$objVenta = new TVenta($rs->fields['idVenta']);
 			$rs->fields['monto'] = sprintf("%.2f", $objVenta->getMontoVenta());
-			/*
-			$rs->fields['saldo'] = sprintf("%.2f", $rs->fields['monto'] - $objVenta->getMontoPagos());
-			*/
+			$rs->fields['json']	= json_encode($rs->fields);
+			
+			array_push($datos, $rs->fields);
+			
+			$rs->moveNext();
+		}
+
+		$smarty->assign("lista", $datos);
+	break;
+	case 'listaVentasLibros':
+		$db = TBase::conectaDB();
+		global $userSesion;
+		$rs = $db->Execute("select a.*, b.* from venta a join responsable b using(idResponsable) where tipo = 2 and aplicada = 0 group by idVenta");
+		$datos = array();
+		while(!$rs->EOF){
+			
+			$objVenta = new TVenta($rs->fields['idVenta']);
+			$rs->fields['monto'] = sprintf("%.2f", $objVenta->getMontoVenta());
 			$rs->fields['json']	= json_encode($rs->fields);
 			
 			array_push($datos, $rs->fields);
@@ -30,9 +45,17 @@ switch($objModulo->getId()){
 		$datos = array();
 		$precio = 0;
 		$existencias = true;
+		$venta = new TVenta($_POST['venta']);
 		while(!$rs->EOF){
 			$el = json_decode($rs->fields['adicional']);
-			$aux = $db->Execute("select existencia from uniforme a join existencias b using(idUniforme) where idUniforme = ".$el->idUniforme." and idTalla = ".$el->idTalla.";");
+			switch($venta->getTipo()){
+				case 1: #Uniformes
+					$aux = $db->Execute("select existencia from uniforme a join existencias b using(idUniforme) where idUniforme = ".$el->idUniforme." and idTalla = ".$el->idTalla.";");
+				break;
+				case 2: #libros
+					$aux = $db->Execute("select existencias as existencia from libro where idLibro = ".$el->idLibro.";");
+				break;
+			}
 			
 			$rs->fields['existencias'] = $aux->fields['existencia'] == ''?0:$aux->fields['existencia'];
 			if ($rs->fields['existencias'] < $rs->fields['cantidad'])
@@ -91,33 +114,33 @@ switch($objModulo->getId()){
 				$obj->setAdicional($_POST['adicional']);
 				
 				if ($obj->guardar() == true)
-					echo json_encode(array("band" => "true"));
+					echo json_encode(array("band" => true));
 				else
-					echo json_encode(array("band" => "false", "mensaje" => "No se guardó"));
+					echo json_encode(array("band" => false, "mensaje" => "No se guardó"));
 			break;
 			case 'del':
 				$obj = new TVenta($_POST['id']);
 				
 				if ($obj->eliminar())
-					echo json_encode(array("band" => "true"));
+					echo json_encode(array("band" => true));
 				else
-					echo json_encode(array("band" => "false"));
+					echo json_encode(array("band" => false));
 			break;
 			case 'delMovimiento':
 				$obj = new TMovimiento($_POST['id']);
 				
 				if ($obj->eliminar())
-					echo json_encode(array("band" => "true"));
+					echo json_encode(array("band" => true));
 				else
-					echo json_encode(array("band" => "false"));
+					echo json_encode(array("band" => false));
 			break;
 			case 'aplicar':
 				$obj = new TVenta($_POST['venta']);
 				
 				if ($obj->aplicar())
-					echo json_encode(array("band" => "true"));
+					echo json_encode(array("band" => true));
 				else
-					echo json_encode(array("band" => "false"));
+					echo json_encode(array("band" => false));
 			break;
 		}
 	break;

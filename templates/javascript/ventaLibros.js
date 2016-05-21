@@ -48,7 +48,7 @@ $(document).ready(function(){
 			obj.guardar(
 				$("#id").val(), 
 				$("#txtResponsable").attr("idResponsable"), 
-				1,
+				2,
 				$("#txtFecha").val(),
 				{
 					before: function(){
@@ -84,8 +84,40 @@ $(document).ready(function(){
 		}
 	}
 	
+	$("#btnBuscarProductos").click(function(){
+		$("#winLibros").modal();
+		
+		$.get("listaLibrosVender", function(html){
+			$("#winLibros .modal-body").html(html);
+			
+			$("#winLibros #tblLibros button[action=seleccionar]").click(function(){
+				var el =  jQuery.parseJSON($(this).attr("producto"));
+				
+				$("#frmAddProductos #txtClave").val(el.clave);
+				$("#frmAddProductos #txtClave").attr("idLibro", el.idLibro);
+				$("#frmAddProductos #txtDescripcion").val(el.nombre + " (" + el.clave + ")");
+				$("#frmAddProductos #txtPrecio").val(el.precioventa);
+				$("#frmAddProductos #txtCantidad").val(1);
+				
+				$("#winLibros").modal("hide");
+				
+				$("#frmAddProductos #txtPrecio").focus();
+			});
+			
+			$("#tblLibros").DataTable({
+				"responsive": true,
+				"language": espaniol,
+				"paging": true,
+				"lengthChange": false,
+				"ordering": true,
+				"info": true,
+				"autoWidth": true
+			});
+		});
+	});
+	
 	function getLista(){
-		$.get("listaVentasUniformes", function(html){
+		$.get("listaVentasLibros", function(html){
 			$("#dvLista").html(html);
 			
 			$("[action=modificar]").click(function(){
@@ -133,39 +165,6 @@ $(document).ready(function(){
 			});
 		});
 	}
-	
-	$("#btnBuscarProductos").click(function(){
-		$("#winUniformes").modal();
-		
-		$.get("listaUniformesTalla", function(html){
-			$("#winUniformes .modal-body").html(html);
-			
-			$("#winUniformes #tblUniformes button[action=seleccionar]").click(function(){
-				var el =  jQuery.parseJSON($(this).attr("producto"));
-				
-				$("#frmAddProductos #txtClave").val(el.clave);
-				$("#frmAddProductos #txtClave").attr("idUniforme", el.idUniforme);
-				$("#frmAddProductos #txtClave").attr("idTalla", el.idTalla);
-				$("#frmAddProductos #txtDescripcion").val(el.nombre + "(" + el.talla + ")");
-				$("#frmAddProductos #txtPrecio").val(el.precioventa);
-				$("#frmAddProductos #txtCantidad").val(1);
-				
-				$("#winUniformes").modal("hide");
-				
-				$("#frmAddProductos #txtPrecio").focus();
-			});
-			
-			$("#tblUniformes").DataTable({
-				"responsive": true,
-				"language": espaniol,
-				"paging": true,
-				"lengthChange": false,
-				"ordering": true,
-				"info": true,
-				"autoWidth": true
-			});
-		});
-	});
 	
 	function getListaMovimientos(){
 		$.post("listaMovimientos", {"venta": $("#frmAdd #id").val()}, function(html){
@@ -242,8 +241,7 @@ $(document).ready(function(){
 		submitHandler: function(form){
 			var adicional = new Object;
 			
-			adicional.idUniforme = $("#txtClave").attr("idUniforme");
-			adicional.idTalla = $("#txtClave").attr("idTalla");
+			adicional.idLibro = $("#txtClave").attr("idLibro");
 			
 			var obj = new TVenta;
 			obj.addMovimiento(

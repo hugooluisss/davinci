@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-05-20 22:11:48
+<?php /* Smarty version Smarty-3.1.11, created on 2016-05-20 23:12:07
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1409721575573e9dd2cda5f9-70823435%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1463771227,
+      1 => 1463803926,
       2 => 'file',
     ),
   ),
@@ -195,7 +195,7 @@ plugins/upload/css/jquery.fileupload.css">
 					</li>
 					<?php }?>
 					<?php if ($_smarty_tpl->tpl_vars['PAGE']->value['usuario']->getIdTipo()!=3){?>
-					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('tipoPrendas','tallas','proveedores','uniformes','editoriales'))){?>active<?php }?> treeview">
+					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('tipoPrendas','tallas','proveedores','uniformes','editoriales','libros'))){?>active<?php }?> treeview">
 						<a href="#">
 							<span>Almacén</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
@@ -208,12 +208,13 @@ plugins/upload/css/jquery.fileupload.css">
 						</ul>
 					</li>
 					<?php }?>
-					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('ventaUniformes'))){?>active<?php }?> treeview">
+					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('ventaUniformes','ventaLibros'))){?>active<?php }?> treeview">
 						<a href="#">
 							<span>Ventas</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
 						<ul class="treeview-menu">
 							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='ventaUniformes'){?>class="active"<?php }?>><a href="ventaUniformes"><i class="fa fa-shopping-cart"></i> Uniformes</a></li>
+							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='ventaLibros'){?>class="active"<?php }?>><a href="ventaLibros"><i class="fa fa-shopping-cart"></i> Libros</a></li>
 						</ul>
 					</li>
 				</ul>

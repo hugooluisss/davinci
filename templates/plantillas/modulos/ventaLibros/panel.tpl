@@ -1,32 +1,6 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-05-20 23:43:21
-         compiled from "templates/plantillas/modulos/ventaUniformes/panel.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:344724532573a9b3aba3b47-47916493%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
-$_valid = $_smarty_tpl->decodeProperties(array (
-  'file_dependency' => 
-  array (
-    '3b22680154cdb55667ba739b2bddb52825e10801' => 
-    array (
-      0 => 'templates/plantillas/modulos/ventaUniformes/panel.tpl',
-      1 => 1463771227,
-      2 => 'file',
-    ),
-  ),
-  'nocache_hash' => '344724532573a9b3aba3b47-47916493',
-  'function' => 
-  array (
-  ),
-  'version' => 'Smarty-3.1.11',
-  'unifunc' => 'content_573a9b3ac49af4_37808668',
-  'variables' => 
-  array (
-    'PAGE' => 0,
-  ),
-  'has_nocache_code' => false,
-),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_573a9b3ac49af4_37808668')) {function content_573a9b3ac49af4_37808668($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_date_format')) include '/Library/WebServer/Documents/davinci/librerias/smarty/plugins/modifier.date_format.php';
-?><div class="row">
+<div class="row">
 	<div class="col-lg-12">
-		<h1 class="page-header">Ventas</h1>
+		<h1 class="page-header">Venta de libros</h1>
 	</div>
 </div>
 
@@ -49,8 +23,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					<div class="form-group">
 						<label for="txtFecha" class="col-sm-2 control-label">Fecha *</label>
 						<div class="col-sm-2">
-							<input type="text" id="txtFecha" name="txtFecha" autofocus="true" class="form-control" autocomplete="false" value="<?php echo smarty_modifier_date_format(time(),"Y-m-d");?>
-" placeholder="Y-m-d"/>
+							<input type="text" id="txtFecha" name="txtFecha" autofocus="true" class="form-control" autocomplete="false" value="{$smarty.now|date_format:"Y-m-d"}" placeholder="Y-m-d"/>
 							<div id="datepicker"></div>
 						</div>
 					</div>
@@ -106,7 +79,5 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	</div>
 </div>
 
-<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/ventaUniformes/winPadres.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
-
-<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/ventaUniformes/winUniformes.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
-<?php }} ?>
+{include file=$PAGE.rutaModulos|cat:"modulos/ventaUniformes/winPadres.tpl"}
+{include file=$PAGE.rutaModulos|cat:"modulos/ventaLibros/winLibros.tpl"}

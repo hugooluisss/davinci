@@ -421,7 +421,7 @@ $conf['listaTallasUniformes'] = array(
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
 	
-/*Uniformes*/
+/*Ventas de uniformes*/
 $conf['ventaUniformes'] = array(
 	'controlador' => 'ventas.php',
 	'vista' => 'ventaUniformes/panel.tpl',
@@ -512,7 +512,7 @@ $conf['casignaturas'] = array(
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
 	
-/* Asignaturas*/
+/* Editoriales*/
 $conf['editoriales'] = array(
 	'controlador' => 'editoriales.php',
 	'vista' => 'editoriales/panel.tpl',
@@ -555,6 +555,43 @@ $conf['listaLibros'] = array(
 $conf['clibros'] = array(
 	'controlador' => 'libros.php',
 	'descripcion' => 'Controlador de libros',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+/*Ventas*/
+$conf['ventaLibros'] = array(
+	'controlador' => 'ventas.php',
+	'vista' => 'ventaLibros/panel.tpl',
+	'descripcion' => 'Administración de ventas',
+	'seguridad' => true,
+	'js' => array('venta.class.js'),
+	'jsTemplate' => array('ventaLibros.js'),
+	'capa' => LAYOUT_DEFECTO);
+	
+$conf['listaVentasLibros'] = array(
+	'controlador' => 'ventas.php',
+	'vista' => 'ventaUniformes/lista.tpl',
+	'descripcion' => 'Lista de ventas',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['cventas'] = array(
+	'controlador' => 'ventas.php',
+	'descripcion' => 'Controlador de ventas',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+
+$conf['listaMovimientos'] = array(
+	'controlador' => 'ventas.php',
+	'vista' => 'ventaUniformes/listaMovimientos.tpl',
+	'descripcion' => 'Lista de movimientos',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['listaLibrosVender'] = array(
+	'controlador' => 'libros.php',
+	'vista' => 'ventaLibros/listaLibros.tpl',
+	'descripcion' => 'Lista de uniformes',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
 ?>

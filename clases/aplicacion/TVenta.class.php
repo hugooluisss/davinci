@@ -251,22 +251,29 @@ class TVenta{
 		if ($this->getId() == '') return false;
 		
 		$db = TBase::conectaDB();
-		if ($this->getTipo() == 1){
-			$rs = $db->Execute("select * from movventa where idVenta = ".$this->getId());
+		$rs = $db->Execute("select * from movventa where idVenta = ".$this->getId());
+		
+		while(!$rs->EOF){
+			$el = json_decode($rs->fields['adicional']);
 			
-			while(!$rs->EOF){
-				$el = json_decode($rs->fields['adicional']);
-
-				$db->Execute("update existencias set existencia = existencia - ".$rs->fields['cantidad']." where idTalla = ".$el->idTalla." and idUniforme = ".$el->idUniforme);
-				$rs->moveNext();
+			switch($this->getTipo()){
+				case 1: #Uniformes
+					$rs2 = $db->Execute("update existencias set existencia = existencia - ".$rs->fields['cantidad']." where idTalla = ".$el->idTalla." and idUniforme = ".$el->idUniforme);
+				break;
+				case 2: #libros
+					$rs2 = $db->Execute("update libro set existencias = existencias - ".$rs->fields['cantidad']." where idLibro = ".$el->idLibro);
+				break;
 			}
 			
-			$rs = $db->Execute("update venta set aplicada = 1 where idVenta = ".$this->getId());
-			
-			return $rs?true:false;
+			if ($rs2)
+				$db->Execute("update movventa set aplicado = 1 where idMovimiento = ".$rs->fields['idMovimiento']);
+				
+			$rs->moveNext();
 		}
 		
-		return false;
+		$rs = $db->Execute("update venta set aplicada = 1 where idVenta = ".$this->getId());
+		
+		return $rs?true:false;
 	}
 }
 ?>
