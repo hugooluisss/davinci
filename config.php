@@ -597,10 +597,16 @@ $conf['listaLibrosVender'] = array(
 	
 /* Reportes */
 $conf['reportesEstudiantes'] = array(
-	#'controlador' => 'ventas.php',
+	'controlador' => 'reportes.php',
 	'vista' => 'reportes/estudiantes.tpl',
 	'descripcion' => 'Reportes de estudiantes',
 	'seguridad' => true,
 	'jsTemplate' => array('reportesEstudiantes.js'),
 	'capa' => LAYOUT_DEFECTO);
+	
+$conf['creportes'] = array(
+	'controlador' => 'reportes.php',
+	'descripcion' => 'Controlador para la generación de reportes',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
 ?>

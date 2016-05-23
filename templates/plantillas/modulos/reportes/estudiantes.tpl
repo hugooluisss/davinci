@@ -12,7 +12,20 @@
 			</h4>
 		</div>
 		<div id="cuidados" class="panel-collapse collapse in">
-			<div class="panel-body">Cuidados
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-md-2">Grupo</div>
+					<div class="col-md-6">
+						<select id="selGrupo" name="selGrupo" class="form-control">
+							{foreach from=$grupos item="row"}
+								<option value="{$row.idGrupo}">{$row.grupo} del grado {$row.grado} de {$row.nivel} del ciclo {$row.ciclo}
+							{/foreach}
+						</select>
+					</div>
+					<div class="col-md-2">
+						<input type="button" class="btn btn-primary" value="generar" id="btnEnviar">
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
