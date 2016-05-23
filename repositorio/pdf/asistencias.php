@@ -10,8 +10,9 @@ class RListaAsistencias extends tFPDF{
 	private $grupo;
 	private $mes;
 	private $anio;
+	private $conDatos;
 	
-	public function RListaAsistencias($anio, $mes, $grupo){
+	public function RListaAsistencias($anio, $mes, $grupo, $conDatos = true){
 		parent::tFPDF('P', 'mm', 'Letter');
 		$this->AddFont('Sans','', 'DejaVuSans.ttf', true);
 		$this->AddFont('Sans','B', 'DejaVuSans-Bold.ttf', true);
@@ -20,6 +21,8 @@ class RListaAsistencias extends tFPDF{
 		$this->grupo = new TGrupo($grupo);
 		$this->mes = $mes;
 		$this->anio = $anio;
+		
+		$this->conDatos = $conDatos;
 		
 		$this->cleanFiles();
 	}	
@@ -67,8 +70,12 @@ class RListaAsistencias extends tFPDF{
 			$this->Cell(8, 5, $cont, 1, 0, 'R');
 			$this->Cell(80, 5, utf8_decode(strtoupper($estudiante->getApp()." ".$estudiante->getApm()." ".$estudiante->getNombre())), 1, 0, 'L');
 			for($dia = 1 ; $dia < 32 ; $dia++){
-				$aux = $db->Execute("select idInscripcion from asistencia where fecha = '".($this->anio.'-'.$this->mes.'-'.$dia)."' and idInscripcion in (select idInscripcion from inscripcion where idEstudiante = ".$rs->fields['idEstudiante']." and idGrupo = ".$this->grupo->getId().")");
-				$this->Cell(3.5, 5, $aux->EOF?'':'X', 1, 0, 'C');
+				$asistio = false;
+				if ($this->conDatos){
+					$aux = $db->Execute("select idInscripcion from asistencia where fecha = '".($this->anio.'-'.$this->mes.'-'.$dia)."' and idInscripcion in (select idInscripcion from inscripcion where idEstudiante = ".$rs->fields['idEstudiante']." and idGrupo = ".$this->grupo->getId().")");
+					$asistio = !$aux->EOF;
+				}
+				$this->Cell(3.5, 5, !$asistio?'':'X', 1, 0, 'C');
 			}
 			$this->Ln(5);
 			$rs->moveNext();

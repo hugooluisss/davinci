@@ -31,13 +31,14 @@ TGrupo = function(){
 		}, "json");
 	};
 	
-	this.generarListaAsistencia = function(grupo, mes, anio, fn){
+	this.generarListaAsistencia = function(grupo, mes, anio, datos, fn){
 		if (fn.before != undefined) fn.before();
 		
 		$.post('?mod=cgrupos&action=listaAsistenciaPDF', {
 			"grupo": grupo,
 			"mes": mes,
-			"anio": anio
+			"anio": anio,
+			"datos": datos?1:0
 		}, function(data){
 			if (fn.after != undefined) fn.after(data);
 			

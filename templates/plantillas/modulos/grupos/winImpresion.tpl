@@ -40,6 +40,7 @@
 			</div>
 			<div class="modal-footer">
 				<button class="btn btn-success" id="btnImprimir">Generar</button>
+				<button class="btn btn-warning" id="btnVacio">Generar vacío</button>
 			</div>
 		</div>
     </div>

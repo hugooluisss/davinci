@@ -115,7 +115,40 @@ $(document).ready(function(){
 		
 		$("#btnImprimir").click(function(){
 			var grupo = new TGrupo;
-			grupo.generarListaAsistencia($("#btnImprimir").attr("grupo"), $("#selMes").val(), $("#selAnio").val(), {
+			grupo.generarListaAsistencia($("#btnImprimir").attr("grupo"), $("#selMes").val(), $("#selAnio").val(), true, {
+				before: function(){
+					$("#btnImprimir").prop("disable", true); 
+					$("#selAnio").prop("disable", true); 
+					$("#selMes").prop("disable", true);
+				},
+				after: function(data){
+					$("#btnImprimir").prop("disable", false); 
+					$("#selAnio").prop("disable", false); 
+					$("#selMes").prop("disable", false);
+					
+					if (data.band == true){
+						if (ventana == undefined || ventana == null)
+							ventana = window.open(data.doc,'_blank');
+						else{
+							try{
+								ventana.location.href = data.doc;
+							}catch(er){
+								ventana = window.open(data.doc,'_blank');
+							}
+							
+							
+						}
+						
+						ventana.focus();
+					}else
+						alert("No se pudo generar la ficha del estudiante");
+				}
+			});
+		});
+		
+		$("#btnVacio").click(function(){
+			var grupo = new TGrupo;
+			grupo.generarListaAsistencia($("#btnImprimir").attr("grupo"), $("#selMes").val(), $("#selAnio").val(), false, {
 				before: function(){
 					$("#btnImprimir").prop("disable", true); 
 					$("#selAnio").prop("disable", true); 

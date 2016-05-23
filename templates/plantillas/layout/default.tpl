@@ -171,6 +171,15 @@
 							<li {if $PAGE.modulo eq 'ventaLibros'}class="active"{/if}><a href="ventaLibros"><i class="fa fa-shopping-cart"></i> Libros</a></li>
 						</ul>
 					</li>
+					<li class="{if in_array($PAGE.modulo, array('reportesEstudiantes', 'reportesVentas'))}active{/if} treeview">
+						<a href="#">
+							<span>Reportes</span> <i class="fa fa-angle-left pull-right"></i>
+						</a>
+						<ul class="treeview-menu">
+							<li {if $PAGE.modulo eq 'reportesEstudiantes'}class="active"{/if}><a href="reportesEstudiantes"><i class="fa fa-graduation-cap"></i> Estudiantes</a></li>
+							<li {if $PAGE.modulo eq 'reportesVentas'}class="active"{/if}><a href="reportesVentas"><i class="fa fa-shopping-cart"></i> Ventas</a></li>
+						</ul>
+					</li>
 				</ul>
 			</section>
 			<!-- /.sidebar -->

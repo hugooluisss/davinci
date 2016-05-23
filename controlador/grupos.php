@@ -60,7 +60,7 @@ switch($objModulo->getId()){
 			case 'listaAsistenciaPDF':
 				require_once(getcwd()."/repositorio/pdf/asistencias.php");
 				
-				$obj = new RListaAsistencias($_POST['anio'], $_POST['mes'], $_POST['grupo']);
+				$obj = new RListaAsistencias($_POST['anio'], $_POST['mes'], $_POST['grupo'], $_POST['datos'] == 1);
 				$obj->generar();
 				$documento = $obj->Output();
 				

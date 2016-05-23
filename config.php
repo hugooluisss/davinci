@@ -594,4 +594,13 @@ $conf['listaLibrosVender'] = array(
 	'descripcion' => 'Lista de uniformes',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
+	
+/* Reportes */
+$conf['reportesEstudiantes'] = array(
+	#'controlador' => 'ventas.php',
+	'vista' => 'reportes/estudiantes.tpl',
+	'descripcion' => 'Reportes de estudiantes',
+	'seguridad' => true,
+	'jsTemplate' => array('reportesEstudiantes.js'),
+	'capa' => LAYOUT_DEFECTO);
 ?>

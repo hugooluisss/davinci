@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-04-02 16:39:36
+<?php /* Smarty version Smarty-3.1.11, created on 2016-05-21 00:01:39
          compiled from "templates/plantillas/modulos/grupos/winImpresion.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:785017705570048ec773b84-64141506%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4b989cb04daae3eb499ffad0fe652159deee3f38' => 
     array (
       0 => 'templates/plantillas/modulos/grupos/winImpresion.tpl',
-      1 => 1459636775,
+      1 => 1463806615,
       2 => 'file',
     ),
   ),
@@ -69,6 +69,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			</div>
 			<div class="modal-footer">
 				<button class="btn btn-success" id="btnImprimir">Generar</button>
+				<button class="btn btn-warning" id="btnVacio">Generar vacío</button>
 			</div>
 		</div>
     </div>
