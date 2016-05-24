@@ -18,8 +18,8 @@ switch($objModulo->getId()){
 			case 'generarCuidados':
 				require_once(getcwd()."/repositorio/pdf/cuidados.php");
 				
-				$obj = new RCuidados($_POST['grupo']);
-				$obj->generar();
+				$obj = new RCuidados();
+				$obj->generar($_POST['grupo']);
 				$documento = $obj->Output();
 				
 				

@@ -157,7 +157,23 @@ class TGrupo{
 	public function getGrado(){
 		return $this->idGrado;
 	}
-
+	
+	/**
+	* Retorna el nombre del grado
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getNombreGrado(){
+		$db = TBase::conectaDB();
+		if ($this->idGrado == '') return '';
+		
+		$rs = $db->Execute("select * from grado where idGrado = ".$this->idGrado);
+		
+		return $rs->fields['nombre'];
+	}
 	
 	/**
 	* Guarda los datos en la base de datos, si no existe un identificador entonces crea el objeto
@@ -209,4 +225,6 @@ class TGrupo{
 		
 		return $rs?true:false;
 	}
+	
+	
 }

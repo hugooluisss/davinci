@@ -21,21 +21,16 @@ class RPlantilla extends tFPDF{
 	public function Header($nombre = ''){   	
     	$this->SetFont('Arial', 'B', 14);
     	$this->Cell(0, 6, "INSTITUTO CULTURAL LEONARDO DA VINCI", 0, 1, 'C');
-    	$this->Cell(0, 6, utf8_decode("CICLO ESCOLAR ".$this->grupo->ciclo->getNombre()), 0, 1, 'C');
     	
-    	if ($this->grupo <> ''){
-	    	$db = TBase::conectaDB();
-	    	$rs = $db->Execute("select a.*, b.nombre as nivel from grado a join nivel b using(idNivel) where idGrado = ".$this->grupo->getGrado());
-	    	$this->Cell(0, 6, utf8_decode($rs->fields['nombre'].' '.$this->grupo->getNombre().'   '.$rs->fields['nivel']), 0, 1, 'C');
-	    	$this->Cell(0, 6, utf8_decode($nombre), 0, 1, 'C');
-	    }
-    	
+    	$this->Cell(0, 6, utf8_decode($nombre), 0, 1, 'C');
     	$this->Ln(10);
     	
-    	$this->Image('repositorio/formato/davinciFormato.jpg', 10, 5, 30, 40);
-    	$this->Image('repositorio/formato/gobiernoFormato.jpg', 180, 5, 30, 30);
+    	$this->Image('repositorio/formato/davinciFormato.jpg', 10, 5, 18, 30);
+    	$this->Image('repositorio/formato/gobiernoFormato.jpg', 180, 5, 28, 25);
     	
     	$this->SetFont('Sans', '', 12);
+    	$this->SetY(36);
+    	$this->Ln(1);
 	}
 		
 	private function cleanFiles(){
