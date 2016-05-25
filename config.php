@@ -604,6 +604,14 @@ $conf['reportesEstudiantes'] = array(
 	'jsTemplate' => array('reportesEstudiantes.js'),
 	'capa' => LAYOUT_DEFECTO);
 	
+$conf['reportesVentas'] = array(
+	'controlador' => 'reportes.php',
+	'vista' => 'reportes/ventas.tpl',
+	'descripcion' => 'Reportes de ventas e inventario',
+	'seguridad' => true,
+	'jsTemplate' => array('reportesVentas.js'),
+	'capa' => LAYOUT_DEFECTO);
+	
 $conf['creportes'] = array(
 	'controlador' => 'reportes.php',
 	'descripcion' => 'Controlador para la generación de reportes',

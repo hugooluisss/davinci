@@ -30,6 +30,66 @@ switch($objModulo->getId()){
 
 				print json_encode($result);
 			break;
+			case 'generarListadoRutas':
+				require_once(getcwd()."/repositorio/pdf/rutas.php");
+				
+				$obj = new RRutasEstudiantes();
+				$obj->generar($_POST['grupo']);
+				$documento = $obj->Output();
+				
+				
+				if ($documento == '')
+					$result = array("doc" => "", "band" => false);
+				else
+					$result = array("doc" => $documento, "band" => true);
+
+				print json_encode($result);
+			break;
+			case 'generarInventarioUniformes':
+				require_once(getcwd()."/repositorio/pdf/inventarioUniformes.php");
+				
+				$obj = new RInventario();
+				$obj->generar();
+				$documento = $obj->Output();
+				
+				
+				if ($documento == '')
+					$result = array("doc" => "", "band" => false);
+				else
+					$result = array("doc" => $documento, "band" => true);
+
+				print json_encode($result);
+			break;
+			case 'generarInventarioLibros':
+				require_once(getcwd()."/repositorio/pdf/inventarioLibros.php");
+				
+				$obj = new RInventario();
+				$obj->generar();
+				$documento = $obj->Output();
+				
+				
+				if ($documento == '')
+					$result = array("doc" => "", "band" => false);
+				else
+					$result = array("doc" => $documento, "band" => true);
+
+				print json_encode($result);
+			break;
+			case 'generarVentas':
+				require_once(getcwd()."/repositorio/pdf/ventas.php");
+				
+				$obj = new RVentas($_POST['inicio'], $_POST['fin']);
+				$obj->generar();
+				$documento = $obj->Output();
+				
+				
+				if ($documento == '')
+					$result = array("doc" => "", "band" => false);
+				else
+					$result = array("doc" => $documento, "band" => true);
+
+				print json_encode($result);
+			break;
 		}
 	break;
 }
