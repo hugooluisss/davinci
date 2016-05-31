@@ -47,9 +47,9 @@ class RVentas extends RPlantilla{
 			$this->Cell(20, 5, $rs->fields['fecha'], 1, 0, 'L');
 			$this->Cell(20, 5, utf8_decode($rs->fields['clave']), 1, 0, 'L');
 			$this->Cell(100, 5, utf8_decode($rs->fields['descripcion']), 1, 0, 'L');
-			$this->Cell(20, 5, $rs->fields['cantidad'], 1, 0, 'R');
-			$this->Cell(20, 5, $rs->fields['precio'], 1, 0, 'R');
-			$this->Cell(20, 5, sprintf("%.2f", $rs->fields['cantidad'] * $rs->fields['precio']), 1, 1, 'R');
+			$this->Cell(20, 5, number_format($rs->fields['cantidad'], 2, '.', ','), 1, 0, 'R');
+			$this->Cell(20, 5, number_format($rs->fields['precio'], 2, '.', ','), 1, 0, 'R');
+			$this->Cell(20, 5, number_format(sprintf("%.2f", $rs->fields['cantidad'] * $rs->fields['precio']), 2, '.', ','), 1, 1, 'R');
 			$total += $rs->fields['cantidad'] * $rs->fields['precio'];
 			
 			$rs->moveNext();
@@ -57,7 +57,7 @@ class RVentas extends RPlantilla{
 		
 		$this->SetFont('Arial', 'B', 7);
 		$this->Cell(180, 5, "TOTAL ", 0, 0, 'R');
-		$this->Cell(20, 5, sprintf("%.2f", $total), 1, 1, 'R');
+		$this->Cell(20, 5, number_format(sprintf("%.2f", $total), 2, '.', ','), 1, 1, 'R');
 	}
 	
 	function Footer(){

@@ -7,7 +7,10 @@ $(document).ready(function(){
 		$("#inventarioUniformes").find("input#btnEnviar").prop("disabled", true);
 		
 		$.post("creportes", {
-			"action": "generarInventarioUniformes"
+			"action": "generarInventarioUniformes",
+			"preciolista": function(){
+				return confirm("¿Deseas incluir el precio de lista?")
+			}
 		}, function(resp){
 			$("#inventarioUniformes").find("input#btnEnviar").prop("disabled", false);
 			
@@ -22,7 +25,10 @@ $(document).ready(function(){
 		$("#inventarioLibros").find("input#btnEnviar").prop("disabled", true);
 		
 		$.post("creportes", {
-			"action": "generarInventarioLibros"
+			"action": "generarInventarioLibros",
+			"preciolista": function(){
+				return confirm("¿Deseas incluir el precio de lista?")
+			}
 		}, function(resp){
 			$("#inventarioLibros").find("input#btnEnviar").prop("disabled", false);
 			

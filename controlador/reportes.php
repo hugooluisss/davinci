@@ -48,7 +48,7 @@ switch($objModulo->getId()){
 			case 'generarInventarioUniformes':
 				require_once(getcwd()."/repositorio/pdf/inventarioUniformes.php");
 				
-				$obj = new RInventario();
+				$obj = new RInventario($_POST['preciolista'] == 'true');
 				$obj->generar();
 				$documento = $obj->Output();
 				
@@ -62,8 +62,7 @@ switch($objModulo->getId()){
 			break;
 			case 'generarInventarioLibros':
 				require_once(getcwd()."/repositorio/pdf/inventarioLibros.php");
-				
-				$obj = new RInventario();
+				$obj = new RInventario($_POST['preciolista'] == 'true');
 				$obj->generar();
 				$documento = $obj->Output();
 				
